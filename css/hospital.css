@@ -1,0 +1,18 @@
+/*!
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+.navbar-inverse {
+    background-color: #4c318f;
+    border-color: #4c318f;
+}
+
+@media (min-width: 768px){
+	.side-nav {
+		background-color: #4c318f;
+	}
+}
+
