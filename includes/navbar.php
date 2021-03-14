@@ -11,6 +11,7 @@
 <!-- Top Menu Items -->
 <!--<div class="collapse navbar-collapse navbar-ex1-collapse">-->
 <ul class="nav navbar-right top-nav">
+	<!--
 	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
 		<ul class="dropdown-menu alert-dropdown">
@@ -38,11 +39,22 @@
 			</li>
 		</ul>
 	</li>
-	<li class="dropdown">
+	-->
+	<?php 
+	if(isset($_SESSION['user_access']) && ($_SESSION['user_access'] == "admin")){ ?>
+	<li>
+		<span style="padding:10px 15px;display: block;padding-top: 15px;color: #f33d14">
+			<i class="fa fa-key"></i><?php echo ' Administrator';?>
+		</span>
+
+	</li>
+	<?php } ?>
+
 	<?php 
 		if(!((isset($_SESSION['is_user_logged'])) && ($_SESSION['is_user_logged'] == true))){
 			// Nobody is logged
 	?>
+	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <b class="caret"></b></a>
 		<ul class="dropdown-menu">
 			<!--
@@ -80,10 +92,12 @@
 			</li>
 			<!-- End Test -->
 		</ul>
+	</li>
 	
   <?php } else{ 
 			//Someone is logged as admin or as employee
 	?>
+	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			<i class="fa fa-user"></i><?php echo ' '.$_SESSION['lastname'].' '.$_SESSION['firstname'];?> <b class="caret"></b>
 		</a>
@@ -96,7 +110,8 @@
 				<a href="includes/logout.php"><i class="fa fa-sign-out-alt"></i> Log Out</a>
 			</li>
 		</ul>	
-	
+	</li>	
 	<?php	} ?>
-	</li>
+
+
 </ul><!--</div>-->

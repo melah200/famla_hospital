@@ -16,3 +16,20 @@
 	}
 }
 
+.search-people{
+  background-image: url('./icon/icon-search-client-48.png');	
+}
+.search-in-list{
+  background-image: url('./icon/search_icon.png');
+}
+
+.search-people, .search-in-list{
+  background-size: 30px;
+  background-position: 2px 2px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 15px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}

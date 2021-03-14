@@ -21,17 +21,7 @@
 						</div>
 						<div class="col-xs-12 table-responsive" style="border-radius:20px">
 
-								 <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search a patient">
-		                        <script>
-		                            $(document).ready(function () {
-		                                $("#myInput").on("keyup", function () {
-		                                    var value = $(this).val().toLowerCase();
-		                                    $("#myTable tr").filter(function () {
-		                                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-		                                    });
-		                                });
-		                            });
-		                        </script>
+								 <input type="text" id="myInput" class="form-control search-people" placeholder="Search a patient">
 								<table class="table table-hover" >
 								  <thead class="thead-light">
 								    <tr>
@@ -65,7 +55,7 @@
 						<?php }?>
 								  </tbody>
 								</table>
-						<?php if($count == 0) echo "<div class='text-center' style='color:red'><b>No Patient</b></div>"; ?>
+						<?php if($count == 0) echo "<div class='text-center' style='color:red'><b>No Patient found</b></div>"; ?>
 						</div>
 
                     </div>
