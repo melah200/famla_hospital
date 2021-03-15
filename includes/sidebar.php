@@ -23,15 +23,7 @@
 			</ul>
 		</li>
 		<li>
-			<a href="javascript:;" data-toggle="collapse" data-target="#demo_1">Jobs Title <i class="fa fa-fw fa-caret-down"></i></a>
-			<ul id="demo_1" class="collapse">
-				<li>
-					<a href="jobtitle"><i class="fa fa-fw fa-plus-circle"></i> Add new job title</a>
-				</li>
-				<li>
-					<a href="#"><i class="fa fa-fw fa-list-ol"></i> List of Jobs Title</a>
-				</li>
-			</ul>
+			<a href="jobtitle">Jobs Title</a>
 		</li>
 			<!--   This part is for employees -->
 
