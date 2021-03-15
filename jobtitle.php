@@ -44,7 +44,7 @@
 							</h4>
 						</div>
 						<form action="" method="POST">
-							<div class="form-group input-group">
+							<div class="form-group input-group col-xs-12">
 								<label for="newjobname">Job Title</label>
 								<input type="text" class="form-control" name="newjobname"  placeholder="Fill new job title">
 							</div>
