@@ -49,4 +49,4 @@
         </div>
         <!-- /#page-wrapper -->
 
-	<?php include "includes/footer.php" ?>
+	<?php include "includes/index_footer.php" ?>
