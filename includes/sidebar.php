@@ -25,6 +25,9 @@
 		<li>
 			<a href="jobtitle">Jobs Title</a>
 		</li>
+		<li>
+			<a href="Doctor.html"><i class="fa fa-fw fa-user-md"></i> Doctors</a>
+		</li>
 			<!--   This part is for employees -->
 
 		 <?php } else if(isset($_SESSION['user_access']) && ($_SESSION['user_access'] === "employee")){ ?>
@@ -39,10 +42,20 @@
 				</li>
 			</ul>
 		</li>
+			<?php  
+			
+				if(isset($_SESSION['user_function']) && (strtolower($_SESSION['user_function']) == strtolower('Doctor'))){
+			?>
+			<li>
+				<a href="Doctor.html"><i class="fa fa-fw fa-user-md"></i> Doctors</a>
+			</li>
+			<?php
+				}
+			?>
+		
 		<?php } else{} ?>
-		<li>
-			<a href="Doctor.html"><i class="fa fa-fw fa-user-md"></i> Doctors</a>
-		</li>
+		
+		<!-- This part is for emplo and admin -->
 		<li>
 			<a href="calender.html"><i class="fa fa-fw fa-calendar-o"></i> Calendrier</a>
 		</li>
