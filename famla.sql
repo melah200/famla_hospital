@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 11. Mrz 2021 um 21:50
+-- Erstellungszeit: 15. Mrz 2021 um 01:36
 -- Server-Version: 5.7.24
 -- PHP-Version: 7.2.14
 
@@ -215,7 +215,15 @@ CREATE TABLE IF NOT EXISTS `jobstitle` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `jobs` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `jobstitle`
+--
+
+INSERT INTO `jobstitle` (`id`, `jobs`) VALUES
+(6, 'doctor'),
+(5, 'nurse');
 
 -- --------------------------------------------------------
 
