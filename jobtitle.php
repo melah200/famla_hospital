@@ -4,7 +4,32 @@
 
         <!-- Navigation -->
 		<?php include "includes/navigation.php" ?>
-	
+	<?php
+		if(isset($_POST['addjob'])){
+			if ($_POST['newjobname'] != "") {
+				# code...
+				$jobtitle = escape($_POST['newjobname']);
+				$isJobExist = checkEntryInDB("jobstitle", "*", "jobs='$jobtitle'");
+				// Check if the job title already exist
+				if($isJobExist){
+					// Job title exist already.
+					$msgJobTitleExist = "The Job name '$jobtitle' already exist";
+				}else{
+					// Job title do not exist already.
+					// Save the new name in database
+					$result = add2table("jobstitle", "jobs", "$jobtitle");
+					if($result){
+						$msgJobTitleSucces = "The new Job name '$jobtitle' has been saved";
+					}
+
+				}
+			} else{
+				$msgjobtitle = 'The Job name should not be empty';
+			}
+		}
+
+
+	?>
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -20,8 +45,8 @@
 						</div>
 						<form action="" method="POST">
 							<div class="form-group input-group">
-								<label for="newjob">Job Title</label>
-								<input type="text" class="form-control" name="newjob"  placeholder="Fill new job title">
+								<label for="newjobname">Job Title</label>
+								<input type="text" class="form-control" name="newjobname"  placeholder="Fill new job title">
 							</div>
 							<div class="form-group input-group">
 								<input type="submit" class="btn btn-primary" name="addjob" value="Create" style="margin-top:5px">
@@ -29,6 +54,19 @@
 							
 
 						</form>
+						<?php 
+							if (isset($msgJobTitleSucces)) {
+								# code...
+								# The job name has been save successfully.
+								echo "<div style='color:green'>$msgJobTitleSucces</div>";
+							} else if (isset($msgJobTitleExist)) {
+								# code...
+								# The job name Exist already.
+								echo "<div style='color:red'>$msgJobTitleExist</div>";
+							}
+
+
+						?>
                 	</div>
                     <div class="col-lg-8">
 						<!-- entry column to view, change and delete Job title. -->
@@ -51,7 +89,7 @@
 								  </thead>
 								  <tbody id="myTable">
 						<?php
-							$patlist = readAllDbTable('employees');
+							$patlist = readAllDbTable('jobstitle');
 							$count = 0;
 							while ($row = mysqli_fetch_assoc($patlist)) {
 								# code...
@@ -60,7 +98,7 @@
 
 								    <tr>
 								      <th scope="row"><?php echo $count; ?></th>
-								      <td><?php echo $row['lastname']; ?></td>
+								      <td><?php echo $row['jobs']; ?></td>
 								      <td><input type="submit" class="btn btn-warning" name="change" value="Change"></td>
 								      <td><input type="submit" class="btn btn-danger" name="delete" value="Delete"></td>
 								    </tr>							
@@ -69,7 +107,7 @@
 
 								  </tbody>
 								</table>
-						<?php if($count == 0) echo "<div class='text-center' style='color:red'><b>No Patient</b></div>"; ?>
+						<?php if($count == 0) echo "<div class='text-center' style='color:red'><b>No Jobs Title</b></div>"; ?>
 						</div>
 
                     </div>

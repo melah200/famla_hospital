@@ -145,10 +145,16 @@
 
 									<select class="form-select form-control" aria-label="Default select example" name="user_function">
 									  <option selected>Choose a Job Title</option>
-									  <option value="1">Doctor</option>
-									  <option value="2">Medical Assistant</option>
-									  <option value="3">Nurse</option>
-									  <option value="4">Dermatology Nurse</option>
+
+									<?php
+										$jobname = readAllDbTable('jobstitle');
+										$count = 0;
+										while ($row = mysqli_fetch_assoc($jobname)) {
+											# code...
+											$count++;
+									?>	
+									  <option value="<?php echo $row['jobs']; ?>"><?php echo $row['jobs']; ?></option>
+									<?php } ?>
 									</select>
 
 									<!--<input type="text" class="form-control" name="user_function" value="<?php //if(isset($user_function)) echo $user_function; ?>">-->
