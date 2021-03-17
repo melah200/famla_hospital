@@ -127,11 +127,11 @@
 
 							<form action="" method="post">
 								<div class="form-group">
-									<label for="lname">Name*</label>
+									<label for="lname">lastname*</label>
 									<input type="text" class="form-control" name="lname" value="<?php if(isset($lname)) echo $lname; ?>" />
 								</div>
 								<div class="form-group">
-									<label for="fname">Vorname*</label>
+									<label for="fname">firstnamename*</label>
 									<input type="text" class="form-control" name="fname" value="<?php if(isset($fname)) echo $fname; ?>">
 								</div>								
 								<div class="form-group">
