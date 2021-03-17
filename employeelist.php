@@ -21,7 +21,7 @@
 						</div>
 						<div class="col-xs-12 table-responsive" style="border-radius:20px">
 
-								 <input type="text" id="myInput" class="form-control search-people" placeholder="Search a patient...">
+								 <input type="text" id="myInput" class="form-control search-people" placeholder="Search a employees...">
 								<table class="table table-hover" >
 								  <thead class="thead-light">
 								    <tr>
