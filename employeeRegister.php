@@ -12,9 +12,9 @@
 			$fname = escape($_POST['firstname']);
 			$lname = escape($_POST['lastname']);
 			$birth = escape($_POST['birthday']);
-			print_r($_POST);
-			echo "next line die()";
-			die($_POST['user_function']);
+			//print_r($_POST);
+			//echo "next line die()";
+			//die($_POST['user_function']);
 
 			$username = escape($_POST['username']);
 			$user_access = 'employee';
