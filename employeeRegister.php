@@ -100,7 +100,7 @@
 								{
 							?>
 									<div style="color:red; margin: 10px 10px 0 10px;font-size:bold;text-align:center">
-										<b>The Patient exist already!</b>
+										<b>The employee exist already!</b>
 									
 									</div>
 								<?php }
