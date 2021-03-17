@@ -26,8 +26,8 @@
 								  <thead class="thead-light">
 								    <tr>
 								      <th scope="col">#</th>
-								      <th scope="col">Name</th>
-								      <th scope="col">Vorname</th>
+								      <th scope="col">lastname</th>
+								      <th scope="col">firstname</th>
 								      <th scope="col">Gender</th>
 								      <th scope="col">Birth</th>
 								      <th scope="col">Status</th>
