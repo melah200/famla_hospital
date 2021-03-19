@@ -1,4 +1,12 @@
 	<?php include "includes/header.php" ?>
+	<?php
+
+		//before the user make any action the session is checked first and if no session has been created then redirect to home page
+		if(!isset($_SESSION['username'])){
+			//The session is not created. redirect to home
+			redirect('./index');
+		}
+	?>
 
     <div id="wrapper">
 

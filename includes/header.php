@@ -6,7 +6,10 @@
 	/* start session to be able to create global variable for the each created session */
 	session_start();
 ?>
-<?php include "database/db.php" ?>
+<?php 
+    include "database/db.php" ;
+    include "includes/functions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
