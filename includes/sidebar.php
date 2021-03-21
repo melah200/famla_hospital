@@ -39,6 +39,9 @@
 				</li>
 				<li>
 					<a href="patientlist"><i class="fa fa-fw fa-list-ol"></i> List of Patients</a>
+				</li>				
+				<li>
+					<a href="patientlist"><i class="fa fa-fw fa-bed"></i> Station and Rooms</a>
 				</li>
 			</ul>
 		</li>
