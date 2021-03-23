@@ -58,7 +58,7 @@
 								      <td><?php echo $row['gender']; ?></td>
 								      <td><?php echo $row['birthday']; ?></td>
 								      <td>Status</td>
-								      <td><input type="submit" class="btn btn-primary" name="submit" value="More..."></td>
+								      <td><a href="patientprofil.php"><input type="submit" class="btn btn-primary" name="submit" value="More..."></a></td>
 								    </tr>							
 						<?php }?>
 								  </tbody>
