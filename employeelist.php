@@ -23,7 +23,7 @@
 						<!--<div class="col-xs-1">
 						</div>-->
 						<div class="col-xs-12">		
-							<h4 class="page-header text-center" style="background-color:#1000ff1f;border-radius:20px;padding: 15px 0">
+							<h4 class="page-header text-center" style="background-color:#90caf9;border-radius:20px;padding: 15px 0">
 								<b>List of Employees</b>        
 							</h4>
 						</div>
