@@ -2,10 +2,15 @@
 #loginform{
 	background: url(../images/laquintinie.jpg);
 	background-size:cover;
+	/*background-color:#90caf9;*/
 }
 
 .loginform-page-header {
     padding-bottom: 9px;
     margin: 40px 0 20px;
+	/*background-color:#90caf9;*/
     /* border-bottom: 1px solid #eee; */
 }
+/*element.style{
+	color:white;
+}*/
