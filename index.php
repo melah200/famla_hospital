@@ -14,13 +14,13 @@
 
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-12" style="background-color:#373754a1;margin-bottom:0px">
+                    <div class="col-lg-12" style="background-color:#90caf9;margin-bottom:0px">
                         <h1 class="loginform-page-header text-center" style="color:white;margin-top: 0px;margin-bottom: 0px;padding: 5px 0">
                             Welcome To Famla Hospital <br>
                             <?php if(isset($_SESSION['user_access'])){ ?>
-                            	<small style="color: #e47171;">You are logged as <?php echo $_SESSION['username']; ?></small>
+                            	<small style="color: white;">You are logged as <?php echo $_SESSION['username']; ?></small>
                             <?php }else{ ?>
-                            	<small style="color:#c3b3b3;">Enter your Login Data</small>
+                            	<small style="color:white;">Enter your Login Data</small>
                             <?php } ?>
                         </h1>
                     </div>
