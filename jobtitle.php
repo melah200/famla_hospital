@@ -45,7 +45,7 @@
                 	<!-- entry column to create new Job title. -->
                 	<div class="col-lg-4">
 						<div class="col-xs-12">		
-							<h4 class="page-header text-center" style="background-color:#1000ff1f;border-radius:20px;padding: 15px 0">
+							<h4 class="page-header text-center" style="background-color:#90caf9;border-radius:20px;padding: 15px 0">
 								<b>Create new Job title</b>        
 							</h4>
 						</div>
