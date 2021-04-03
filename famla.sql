@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 15. Mrz 2021 um 01:36
+-- Erstellungszeit: 03. Apr 2021 um 13:08
 -- Server-Version: 5.7.24
 -- PHP-Version: 7.2.14
 
@@ -228,6 +228,33 @@ INSERT INTO `jobstitle` (`id`, `jobs`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `patienthealthinfo`
+--
+
+DROP TABLE IF EXISTS `patienthealthinfo`;
+CREATE TABLE IF NOT EXISTS `patienthealthinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `patient_id` int(11) NOT NULL,
+  `bloodtype` varchar(3) DEFAULT NULL,
+  `rhesus` varchar(1) DEFAULT NULL,
+  `allergies` text,
+  `bloodpressure` varchar(20) DEFAULT NULL,
+  `heartrate` varchar(20) DEFAULT NULL,
+  `symptom` text,
+  `diagnostic` text,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `patienthealthinfo`
+--
+
+INSERT INTO `patienthealthinfo` (`id`, `patient_id`, `bloodtype`, `rhesus`, `allergies`, `bloodpressure`, `heartrate`, `symptom`, `diagnostic`) VALUES
+(1, 60204, 'O', '-', 'Milk, orange', '12', '120', 'fieber', '');
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `patreg`
 --
 
@@ -247,15 +274,14 @@ CREATE TABLE IF NOT EXISTS `patreg` (
   `registrationTime` varchar(16) NOT NULL,
   `patient_id` int(11) NOT NULL,
   PRIMARY KEY (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `patreg`
 --
 
 INSERT INTO `patreg` (`pid`, `fname`, `lname`, `gender`, `birthday`, `email`, `phone`, `address`, `bloodtype`, `rhesus`, `registrationDate`, `registrationTime`, `patient_id`) VALUES
-(35, 'koko', 'koko', 'Male', '2021-03-13', 'kloklo@gmx.de', '494967676', 'street 5656', 'AB', '+', '10-03-2021', '00:58:07', 38072),
-(36, 'Bertrand', 'Takam', 'Male', '2021-03-11', 'kloklo@gmx.de', '494967676', 'street 5656', 'AB', '+', '10-03-2021', '00:59:02', 77056);
+(38, 'Pierre', 'Cardin', 'Male', '2021-03-29', 'pcardin@yahoo.fr', '12345678', '', 'O', '-', '02-04-2021', '09:28:12', 60204);
 
 -- --------------------------------------------------------
 
