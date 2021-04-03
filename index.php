@@ -24,21 +24,20 @@
                             <?php } ?>
                         </h1>
                     </div>
-					<?php 
-						if(!((isset($_SESSION['is_user_logged'])) && ($_SESSION['is_user_logged'] == true))){
-							// The login form is only display when the user is not logged
+                    <?php 
+                        if((isset($_SESSION['is_user_logged'])) && ($_SESSION['is_user_logged'] == true)){
+                            //check if the user is the admin or employee
+                            if(isset($_SESSION['user_access'])){
+                                //login was successful
+                                //include the sidebar. This should be included in navigation.php
+                                echo "<div id='loginform' style='height:400px'></div>";
+                            }
+                        }
+                        else{
+                            // The login form is only display when the user is not logged
 							include "includes/loginform.php";
-						} else{
-							//check if the user is the admin or employee
-							if(isset($_SESSION['user_access'])){
-								//Login was successful
-								//include "includes/sidebar.php";
-								echo "<div id='loginform' style='height:400px'></div>";
-							}else{
-								
-							}
-							
-						}
+                        }
+                        
 						?>
                 </div>
                 <!-- /.row -->
