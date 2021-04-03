@@ -101,4 +101,52 @@ function readDataWithSpecColumn($table, $key, $value){
 	
 }
 
+// Function to read data with specific column value
+function readAllColWithValue($table, $value){
+	global $connection;
+	
+	$query = "SELECT * FROM $table WHERE $value";
+	$query_read = mysqli_query($connection, $query);
+	
+	return $query_read;
+	
+}
+
+// Function to update Data in database
+function updateDB($table, $key, $value, $keyword, $keywordValue){
+	global $connection;
+	
+	$allkeys = explode("<=>", $key);
+	$allValues = explode("<=>", $value);
+	$Lengthallkeys = count($allkeys);
+	$LengthallValues = count($allValues);
+
+	if($Lengthallkeys == $LengthallValues){
+		$query = "UPDATE $table SET ";
+		$firstCall = 1;
+		for($i=0; $i < $LengthallValues; $i++){
+		//foreach($allValues as $input){
+			// echo $input.'<br>';
+			if($firstCall){
+				$query .= "$allkeys[$i] = '$allValues[$i]'";
+			} else{
+			$query .= ", $allkeys[$i] = '$allValues[$i]'";
+			}
+			$firstCall = 0;
+			
+		}
+		
+		$query .= " Where $keyword='$keywordValue'";
+		
+		//print_r($query);
+			
+		$query_update = mysqli_query($connection, $query);
+		//print_r($query_update);	
+		return $query_update;
+	}else{
+		return '';
+	}
+
+}
+
 ?>
