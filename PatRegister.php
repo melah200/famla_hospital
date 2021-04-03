@@ -1,4 +1,12 @@
 	<?php include "includes/header.php" ?>
+	<?php
+
+//before the user make any action the session is checked first and if no session has been created then redirect to home page
+if(!isset($_SESSION['username'])){
+	//The session is not created. redirect to home
+	redirect('./index');
+}
+?>	
 
 <?php 
 	if(isset($_POST['submit']))
@@ -61,6 +69,11 @@
 				$value = "$fname,$lname,$gender,$birth,$email,$phone,$address,$bloodtype,$rhesus,$date,$time,$patientid";
 				
 				$result = add2table($table, $key, $value);
+				//register the patient in the patienthealthinfo table
+				$table="patienthealthinfo";
+				$key="patient_id, bloodtype, rhesus";
+				$value="$patientid,$bloodtype,$rhesus";
+				$resulthealtinfo = add2table($table, $key, $value);
 				if($result){
 					//echo "Data have been saved in database";
 				}
@@ -80,14 +93,6 @@
 
         <!-- Navigation -->
 		<?php include "includes/navigation.php" ?>
-		<?php
-
-			//before the user make any action the session is checked first and if no session has been created then redirect to home page
-			if(!isset($_SESSION['username'])){
-				//The session is not created. redirect to home
-				redirect('./index');
-			}
-		?>
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -134,11 +139,11 @@
 
 							<form action="" method="post">
 								<div class="form-group">
-									<label for="lname">lastname*</label>
+									<label for="lname">Lastname*</label>
 									<input type="text" class="form-control" name="lname" value="<?php if(isset($lname)) echo $lname; ?>" />
 								</div>
 								<div class="form-group">
-									<label for="fname">firstnamename*</label>
+									<label for="fname">Firstname*</label>
 									<input type="text" class="form-control" name="fname" value="<?php if(isset($fname)) echo $fname; ?>">
 								</div>								
 								<div class="form-group">
