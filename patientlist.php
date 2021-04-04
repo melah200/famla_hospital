@@ -49,6 +49,7 @@
 							while ($row = mysqli_fetch_assoc($patlist)) {
 								# code...
 								$count++;
+								$patientid = $row['patient_id'];
 						?>	
 
 								    <tr>
@@ -58,7 +59,9 @@
 								      <td><?php echo $row['gender']; ?></td>
 								      <td><?php echo $row['birthday']; ?></td>
 								      <td>Status</td>
-								      <td><a href="patientprofil.php?profil=<?php echo $row['patient_id']; ?>"><input type="submit" class="btn btn-primary" name="submit" value="More..."></a></td>
+								      <td><a href="patientprofil.php?profil=<?php echo $row['patient_id']; ?>" class="btn btn-primary" >More...</a></td>
+								      <td><a href="delete.php?deleteprofil=true&profil=<?php echo $row['patient_id']; ?>" class="btn btn-danger btn-del" >Delete</a></td>
+								   
 								    </tr>							
 						<?php }?>
 								  </tbody>
@@ -76,5 +79,13 @@
         </div>
         <!-- /#page-wrapper -->
 
-
 	<?php include "includes/footer.php" ?>
+<?php 
+if(isset($_GET['deletesuccess']) && $_GET['deletesuccess'] == 1) {
+?>
+<script>
+	swal("The entry has been deleted!", {
+		  icon: "success"
+		});	
+</script>
+<?php } ?>

@@ -149,4 +149,12 @@ function updateDB($table, $key, $value, $keyword, $keywordValue){
 
 }
 
+// Function to delete data with specific column value
+function deleteDBEntry($table, $key, $value){
+	global $connection;
+	
+	$query = "DELETE FROM $table WHERE $key=$value";
+	$query_delete = mysqli_query($connection, $query);	
+}
+
 ?>
