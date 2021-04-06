@@ -127,7 +127,13 @@
 								<input type="text" class="text-center" name="patientid" value="<?php if(isset($patinfo)) {echo $patinfo['patient_id'];} ?>" style="color:red;border:2px solid #000;border-radius:4px" readonly></b>
 							</div>
 							<?php if(isset($_GET['profilupdate']) && $_GET['profilupdate'] == 1) {?>
-							<div class="col-md-12 mar-top-bot-5"><b>Blood type:</b>
+							<div class="col-md-12 mar-top-bot-5"><b>Station: </b>
+								<input type="text" class="text-center" name="station" value="<?php if(isset($patinfo)) {/*echo $patinfo['station'];*/} ?>">
+							</div>
+							<div class="col-md-12 mar-top-bot-5"><b>Room: </b>
+								<input type="text" class="text-center" name="room" value="<?php if(isset($patinfo)) {/*echo $patinfo['room'];*/} ?>">
+							</div>
+							<div class="col-md-12 mar-top-bot-5 text-center"><b>Blood type:</b>
 								<select class="form-select form-control" aria-label="Default select example" name="bloodtype" disableds style="border:none">
 									<option value="none">Choose the bloodtype of the patient</option> 
 									<option value="A+" <?php if(isset($patinfo) && $patinfo['bloodtype'].$patinfo['rhesus'] == "A+") echo "selected"; ?>>A+</option> 
@@ -140,14 +146,14 @@
 									<option value="O-" <?php if(isset($patinfo) && $patinfo['bloodtype'].$patinfo['rhesus'] == "O-") echo "selected"; ?>>O-</option>
 								</select>
 							</div>
-							<div class="col-md-12 mar-top-bot-5"><b>Allergies:</b> 
-								<input type="text" name="allergie" value="<?php if(isset($patinfo)) {echo $patinfo['allergies'];} ?>">
-							</div>
 							<div class="col-md-12 mar-top-bot-5"><b>Blood Pressure:</b>
 							 	<input type="text" name="bloodpressure" value="<?php if(isset($patinfo)) {echo $patinfo['bloodpressure'];} ?>">
 							</div>
 							<div class="col-md-12 mar-top-bot-5"><b>Heart Rate:</b>
 								<input type="text" name="heartrate" value="<?php if(isset($patinfo)) {echo $patinfo['heartrate'];} ?>">
+							</div>
+							<div class="col-md-12 mar-top-bot-5"><label for="allergie">Allergies:</label><textarea id="allergie" class="form-control" name="allergie" rows="3" cols="35"> <?php if(isset($patinfo)) {echo $patinfo['allergies'];} ?>
+								</textarea>
 							</div>
 							<div class="col-md-12 mar-top-bot-5"><label for="sym">Symptom:</label><textarea id="sym" class="form-control" name="symptom" rows="5" cols="35"> <?php if(isset($patinfo)) {echo $patinfo['symptom'];} ?>
 								</textarea>
@@ -163,6 +169,8 @@
 							</div>
 							
 							<?php } else {?>
+							<div class="col-md-12 mar-top-bot-5"><b>Station:</b> <?php if(isset($patinfo)) {/*echo $patinfo['station'];*/}?></div>
+							<div class="col-md-12 mar-top-bot-5"><b>Room:</b> <?php if(isset($patinfo)) {/*echo $patinfo['room'];*/}?></div>
 							<div class="col-md-12 mar-top-bot-5"><b>Blood type:</b> <?php if(isset($patinfo)) {echo $patinfo['bloodtype'].$patinfo['rhesus'];}?></div>
 							<div class="col-md-12 mar-top-bot-5"><b>Allergies:</b> <?php if(isset($patinfo)) {echo $patinfo['allergies'];}else{echo "---";} ?></div>
 							<div class="col-md-12 mar-top-bot-5"><b>Blood Pressure:</b> <?php if(isset($patinfo)) {echo $patinfo['bloodpressure'];}else{echo "---";} ?></div>
