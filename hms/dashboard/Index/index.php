@@ -1,7 +1,6 @@
+
 <?php
 session_start();
-?>
-<?php
 if(!isset($_SESSION['username']))
 {// echo "string";exit();
   header("location:../index.php");
