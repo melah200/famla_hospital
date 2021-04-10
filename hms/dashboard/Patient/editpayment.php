@@ -66,7 +66,7 @@ if(isset($_POST['b1']))
              <i class="fa fa-plus-circle"></i> <h3 class="box-title">Edit Payment </h3>
             </div>
                 
-      <div class="container">
+      <div class="container-fluid">
       <form method="POST" >
       <div class="col-md-4">
       <label>Invoice Number</label>
@@ -85,12 +85,12 @@ if(isset($_POST['b1']))
 </select>
 <input type ="hidden" name="service" id="service" value="">
 
-<select name="subservice" id="subservice" size="10" style="width: 100px;" multiple="multiple" >
+<select name="subservice" id="subservice" size="10" style="width: 100%;" multiple="multiple" >
 
 </select>
 </div>  
  <div class="col-md-2">
-<div class="box" style="height: 100px;">
+<div class="box" style="height: 100%;">
   
   <div id="sub">
     <?php $s1="SELECT categoryselect FROM addpayment WHERE  id='".$_GET['id']."'";
