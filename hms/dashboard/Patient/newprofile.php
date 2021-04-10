@@ -76,7 +76,7 @@ $error = $_FILES["profile_pic"]["error"];//size
     </section>
     <section class="content">
       <div class="row">
-        <div class="container">
+        <div class="container-fluid">
           <div class="box box-primary">
            <h3>&nbsp;&nbsp;&nbsp;Patient Personal Info</h3>
             <div class="box-body box-profile" >

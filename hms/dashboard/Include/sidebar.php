@@ -50,11 +50,12 @@ include"../inc/connect.php ";
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../Patient/patientlist.php"><i class="fa fa-user"></i> Patient List</a></li>
-            <li><a class="popup" onclick="myFunction()"><i class="fa fa-plus"></i> Add New Profile<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a></li>
+            <li><a href="../Patient/patientlist.php"><i class="fa fa-list-alt"></i> Patient List</a></li>
+            <li><a href="../Patient/newprofile.php"><i class="fa fa-plus"></i> Add New Profile</a></li>
             <li><a href="../Patient/payments.php"><i class="fa fa-dollar"></i> Payments</a></li>
             <li><a href="../Patient/casehistory.php"><i class="fa fa-book"></i> Case History</a></li>
-            <li><a class="popup" onclick="myFunction()"><i class="fa fa-wheelchair"></i> Patients<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a></li>
+            <!--<li><a class="popup" onclick="myFunction()"><i class="fa fa-wheelchair"></i> Patients<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a></li>-->
+            <li><a href="#"><i class="fa fa-wheelchair"></i> Patients</a></li>
              <li><a href="../Patient/document.php"><i class="fa fa-file-text-o"></i> Documents</a></li>
            </ul>
         </li>
@@ -66,8 +67,9 @@ include"../inc/connect.php ";
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a class="popup" onclick="myFunction()"><i class="fa fa-plus"></i> Add Appointment<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a></li>
-            <li><a class="popup" onclick="myFunction()"><i class="fa fa-list"></i> All Appointment</a></li>
+            <!--<li><a class="popup" onclick="myFunction()"><i class="fa fa-plus"></i> Add Appointment<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a></li>-->
+            <li><a href="#"><i class="fa fa-plus"></i> Add Appointment</a></li>
+            <li><a href="#"><i class="fa fa-list"></i> All Appointment</a></li>
             <li><a href="../Appointment/appointment.php"><i class="fa fa-calendar"></i> Appointment</a></li>
             <li><a href="../Appointment/today.php"><i class="fa fa-laptop"></i> Today's Appointment</a></li>
             <li><a href="../Appointment/upcomming.php"><i class="fa fa-calendar-plus-o"></i> Upcomming Appointment</a></li>

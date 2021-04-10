@@ -1,6 +1,5 @@
 <?php 
   include("../inc/connect.php") ;
-  
     //session_start();
   $sql="SELECT * FROM patientregister WHERE id='".$_GET['id']."'";
   $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));

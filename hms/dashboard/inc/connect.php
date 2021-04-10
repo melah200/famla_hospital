@@ -1,6 +1,9 @@
 <?php
 //error_reporting(0);
-if(!isset($_SESSION["username"]))
+if(!isset($_SESSION)){
+  session_start();
+}
+if(!isset($_SESSION['username']))
 {
 	//redirect to home page if the user is not logged
 	header("Location: ../../");

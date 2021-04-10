@@ -146,11 +146,11 @@ function mysql_fetch_all($query)
 <td><?php echo $row['phone'];?></td>
 <td><a href="editpatient1.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a>
 
- <a href="info.php?id=<?php echo $row['id']; ?>"><span class="btn btn-primary bg-orange"><i class="fa fa-info"></i> Info</span>&nbsp;&nbsp;
+ <a href="info.php?id=<?php echo $row['id']; ?>"><span class="btn btn-primary bg-orange"><i class="fa fa-info"></i> Info</span></a>&nbsp;&nbsp;
 
-  <a href="casehistory.php"> <span class="btn  btn-primary disabled"><i class="fa fa-history"></i> History</span>&nbsp;&nbsp;
+  <a href="casehistory.php"> <span class="btn  btn-primary disabled"><i class="fa fa-history"></i> History</span></a>&nbsp;&nbsp;
 
-  <a class="popup" onclick="myFunction()"><span class="btn btn-primary"><i class="fa fa-money"></i> Payment<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></span></a>&nbsp;&nbsp;
+  <a href="payments.php"><span class="btn btn-primary"><i class="fa fa-money"></i> Payment</span></a>&nbsp;&nbsp;
 
   <a href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 </tr>
