@@ -7,16 +7,16 @@ include"../inc/connect.php ";
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
+	   <?php
+			$user_s = $_SESSION['username'];
+			$sql="SELECT * FROM login WHERE username='$user_s'";
+			$write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
+			$row2=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
+		?>
       <div class="user-panel">
         <div class="pull-left image">
-           <?php
-		   $user_s = $_SESSION['username'];
-$sql="SELECT * FROM login WHERE username='$user_s'";
-    $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
-     $row2=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
-     //print_r($row2?>
-          <img src="../../dashboard/Upload/Adminprofile/<?php echo $row2['profile'];?>" class="img-circle" alt="User Image">
-        </div>
+          <img src="../../dashboard/Upload/Adminprofile/<?php if($row2['profile']!= "") {echo $row2['profile'];}else{echo "doctor.png";} ?>" class="img-circle" alt="User Image">
+		</div>
         <div class="pull-left info">
           <p><?php echo $row2['fname'];?>&nbsp;
            <?php echo $row2['lname'];?></p>

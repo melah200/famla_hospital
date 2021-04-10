@@ -140,7 +140,7 @@ $sql="SELECT * FROM login WHERE username='$user_h'";
      $row2=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
      //print_r($row2); exit();
 ?>
-              <img src="../../dashboard/Upload/Adminprofile/<?php echo $row2['profile'];?>" class="user-image" alt="User Image">
+              <img src="../../dashboard/Upload/Adminprofile/<?php if($row2['profile']!= "") {echo $row2['profile'];}else{echo "doctor.png";} ?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $row2['fname'];?>&nbsp;
            <?php echo $row2['lname'];?></span>
             </a>
