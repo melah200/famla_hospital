@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 16, 2018 at 07:18 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Host: 127.0.0.1:3306
+-- Erstellungszeit: 09. Apr 2021 um 16:54
+-- Server-Version: 5.7.26
+-- PHP-Version: 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,28 +19,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hms`
+-- Datenbank: `hms`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addappointment`
+-- Tabellenstruktur für Tabelle `addappointment`
 --
 
-CREATE TABLE `addappointment` (
-  `id` int(20) NOT NULL,
+DROP TABLE IF EXISTS `addappointment`;
+CREATE TABLE IF NOT EXISTS `addappointment` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `patient` varchar(25) NOT NULL,
   `doctor` varchar(25) NOT NULL,
   `app_date` varchar(100) NOT NULL,
   `starttime` varchar(100) DEFAULT NULL,
   `endtime` varchar(100) DEFAULT NULL,
   `remark` varchar(20) NOT NULL,
-  `sms` enum('0','1') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
+  `sms` enum('0','1') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
 
 --
--- Dumping data for table `addappointment`
+-- Daten für Tabelle `addappointment`
 --
 
 INSERT INTO `addappointment` (`id`, `patient`, `doctor`, `app_date`, `starttime`, `endtime`, `remark`, `sms`) VALUES
@@ -51,19 +53,21 @@ INSERT INTO `addappointment` (`id`, `patient`, `doctor`, `app_date`, `starttime`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adddeposit`
+-- Tabellenstruktur für Tabelle `adddeposit`
 --
 
-CREATE TABLE `adddeposit` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `adddeposit`;
+CREATE TABLE IF NOT EXISTS `adddeposit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `patient` int(11) NOT NULL,
   `invoice` int(20) NOT NULL,
   `depositammount` int(20) NOT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `adddeposit`
+-- Daten für Tabelle `adddeposit`
 --
 
 INSERT INTO `adddeposit` (`id`, `patient`, `invoice`, `depositammount`, `date`) VALUES
@@ -78,19 +82,21 @@ INSERT INTO `adddeposit` (`id`, `patient`, `invoice`, `depositammount`, `date`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addfiles`
+-- Tabellenstruktur für Tabelle `addfiles`
 --
 
-CREATE TABLE `addfiles` (
-  `id` int(20) NOT NULL,
+DROP TABLE IF EXISTS `addfiles`;
+CREATE TABLE IF NOT EXISTS `addfiles` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `doc_date` varchar(100) NOT NULL,
   `patient` varchar(30) NOT NULL,
   `title` varchar(30) NOT NULL,
-  `file` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `file` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `addfiles`
+-- Daten für Tabelle `addfiles`
 --
 
 INSERT INTO `addfiles` (`id`, `doc_date`, `patient`, `title`, `file`) VALUES
@@ -100,18 +106,20 @@ INSERT INTO `addfiles` (`id`, `doc_date`, `patient`, `title`, `file`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addmedicalhistory`
+-- Tabellenstruktur für Tabelle `addmedicalhistory`
 --
 
-CREATE TABLE `addmedicalhistory` (
-  `id` int(20) NOT NULL,
+DROP TABLE IF EXISTS `addmedicalhistory`;
+CREATE TABLE IF NOT EXISTS `addmedicalhistory` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `patient` varchar(30) NOT NULL,
-  `description` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
+  `description` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
 
 --
--- Dumping data for table `addmedicalhistory`
+-- Daten für Tabelle `addmedicalhistory`
 --
 
 INSERT INTO `addmedicalhistory` (`id`, `date`, `patient`, `description`) VALUES
@@ -120,11 +128,12 @@ INSERT INTO `addmedicalhistory` (`id`, `date`, `patient`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addnewmedicine`
+-- Tabellenstruktur für Tabelle `addnewmedicine`
 --
 
-CREATE TABLE `addnewmedicine` (
-  `id` int(20) NOT NULL,
+DROP TABLE IF EXISTS `addnewmedicine`;
+CREATE TABLE IF NOT EXISTS `addnewmedicine` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `category` varchar(100) NOT NULL,
   `price` int(11) NOT NULL,
@@ -132,11 +141,12 @@ CREATE TABLE `addnewmedicine` (
   `genericname` varchar(30) NOT NULL,
   `company` varchar(30) NOT NULL,
   `effect` varchar(30) NOT NULL,
-  `expiredate` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `expiredate` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `addnewmedicine`
+-- Daten für Tabelle `addnewmedicine`
 --
 
 INSERT INTO `addnewmedicine` (`id`, `name`, `category`, `price`, `quantity`, `genericname`, `company`, `effect`, `expiredate`) VALUES
@@ -148,20 +158,22 @@ INSERT INTO `addnewmedicine` (`id`, `name`, `category`, `price`, `quantity`, `ge
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addnewpres`
+-- Tabellenstruktur für Tabelle `addnewpres`
 --
 
-CREATE TABLE `addnewpres` (
-  `id` int(25) NOT NULL,
+DROP TABLE IF EXISTS `addnewpres`;
+CREATE TABLE IF NOT EXISTS `addnewpres` (
+  `id` int(25) NOT NULL AUTO_INCREMENT,
   `date` varchar(20) NOT NULL,
   `patient` varchar(30) NOT NULL,
   `history` text NOT NULL,
   `medication` text NOT NULL,
-  `note` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `note` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `addnewpres`
+-- Daten für Tabelle `addnewpres`
 --
 
 INSERT INTO `addnewpres` (`id`, `date`, `patient`, `history`, `medication`, `note`) VALUES
@@ -172,11 +184,12 @@ INSERT INTO `addnewpres` (`id`, `date`, `patient`, `history`, `medication`, `not
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addpayment`
+-- Tabellenstruktur für Tabelle `addpayment`
 --
 
-CREATE TABLE `addpayment` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `addpayment`;
+CREATE TABLE IF NOT EXISTS `addpayment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice` varchar(100) NOT NULL,
   `patient` int(30) NOT NULL,
   `refdbydoctor` varchar(30) NOT NULL,
@@ -188,11 +201,12 @@ CREATE TABLE `addpayment` (
   `depositammount` varchar(100) NOT NULL,
   `date` varchar(100) NOT NULL,
   `vatper` int(100) NOT NULL,
-  `discount` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `discount` int(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `addpayment`
+-- Daten für Tabelle `addpayment`
 --
 
 INSERT INTO `addpayment` (`id`, `invoice`, `patient`, `refdbydoctor`, `categoryselect`, `subtotal`, `addp_discount`, `grosstotal`, `amountreceived`, `depositammount`, `date`, `vatper`, `discount`) VALUES
@@ -205,38 +219,43 @@ INSERT INTO `addpayment` (`id`, `invoice`, `patient`, `refdbydoctor`, `categorys
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Tabellenstruktur für Tabelle `login`
 --
 
-CREATE TABLE `login` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `login`;
+CREATE TABLE IF NOT EXISTS `login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `profile` varchar(100) NOT NULL,
   `fname` varchar(100) NOT NULL,
   `lname` varchar(100) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `login`
+-- Daten für Tabelle `login`
 --
 
 INSERT INTO `login` (`id`, `profile`, `fname`, `lname`, `username`, `password`) VALUES
-(1, 'download.jpg', 'Nikhil', 'Bhalerao', 'admin@admin.com', '202cb962ac59075b964b07152d234b70');
+(1, 'download.jpg', 'Nikhil', 'Bhalerao', 'admin@admin.com', '202cb962ac59075b964b07152d234b70'),
+(2, '', 'admin', 'Doc', 'admin@gmail.com', '12345');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mainservices`
+-- Tabellenstruktur für Tabelle `mainservices`
 --
 
-CREATE TABLE `mainservices` (
-  `id` int(100) NOT NULL,
-  `mainservicename` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `mainservices`;
+CREATE TABLE IF NOT EXISTS `mainservices` (
+  `id` int(100) NOT NULL AUTO_INCREMENT,
+  `mainservicename` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mainservices`
+-- Daten für Tabelle `mainservices`
 --
 
 INSERT INTO `mainservices` (`id`, `mainservicename`) VALUES
@@ -252,17 +271,19 @@ INSERT INTO `mainservices` (`id`, `mainservicename`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medicinecategory`
+-- Tabellenstruktur für Tabelle `medicinecategory`
 --
 
-CREATE TABLE `medicinecategory` (
-  `id` int(20) NOT NULL,
+DROP TABLE IF EXISTS `medicinecategory`;
+CREATE TABLE IF NOT EXISTS `medicinecategory` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `category` varchar(30) NOT NULL,
-  `description` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `description` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `medicinecategory`
+-- Daten für Tabelle `medicinecategory`
 --
 
 INSERT INTO `medicinecategory` (`id`, `category`, `description`) VALUES
@@ -278,11 +299,12 @@ INSERT INTO `medicinecategory` (`id`, `category`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `patientinfo`
+-- Tabellenstruktur für Tabelle `patientinfo`
 --
 
-CREATE TABLE `patientinfo` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `patientinfo`;
+CREATE TABLE IF NOT EXISTS `patientinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `patient_id` int(20) NOT NULL,
   `profilepic` varchar(20) NOT NULL,
   `firstname` varchar(30) NOT NULL,
@@ -295,11 +317,12 @@ CREATE TABLE `patientinfo` (
   `address` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `status` enum('1','0') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `status` enum('1','0') NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `patientinfo`
+-- Daten für Tabelle `patientinfo`
 --
 
 INSERT INTO `patientinfo` (`id`, `patient_id`, `profilepic`, `firstname`, `middlename`, `lastname`, `gender`, `bloodgroup`, `birthdate`, `phone`, `address`, `email`, `password`, `status`) VALUES
@@ -309,11 +332,12 @@ INSERT INTO `patientinfo` (`id`, `patient_id`, `profilepic`, `firstname`, `middl
 -- --------------------------------------------------------
 
 --
--- Table structure for table `patientregister`
+-- Tabellenstruktur für Tabelle `patientregister`
 --
 
-CREATE TABLE `patientregister` (
-  `id` int(20) NOT NULL,
+DROP TABLE IF EXISTS `patientregister`;
+CREATE TABLE IF NOT EXISTS `patientregister` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `doctor` varchar(30) NOT NULL,
   `name` varchar(25) NOT NULL,
   `email` varchar(35) NOT NULL,
@@ -324,15 +348,15 @@ CREATE TABLE `patientregister` (
   `birthdate` date NOT NULL,
   `bloodgroup` varchar(5) NOT NULL,
   `imageupload` varchar(20) NOT NULL,
-  `status` enum('1','0') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `status` enum('1','0') NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `patientregister`
+-- Daten für Tabelle `patientregister`
 --
 
 INSERT INTO `patientregister` (`id`, `doctor`, `name`, `email`, `password`, `address`, `phone`, `gender`, `birthdate`, `bloodgroup`, `imageupload`, `status`) VALUES
-(1, '', '   sunita', 'sunita@gmail.com', 'sunita', 'pune', '8482838002', 'Female', '2018-05-07', 'A+', 'Lighthouse.jpg', '1'),
 (2, '', ' Nikita', 'niku@gmail.com', '', 'Vani', '8482838002', 'Female', '2018-05-08', 'B+', 'Tulips.jpg', '1'),
 (3, '', ' Dhanu', 'dhanu@gmail.com', '', 'Nashik', '8482838002', 'Female', '2018-05-01', 'B+', 'Chrysanthemum.jpg', '1'),
 (4, '', ' Yogita', 'yogita@gmail.com', '', 'Shivaji Nagar', '8482838002', 'Female', '2018-05-05', 'A+', 'Hydrangeas.jpg', '1');
@@ -340,18 +364,20 @@ INSERT INTO `patientregister` (`id`, `doctor`, `name`, `email`, `password`, `add
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profile`
+-- Tabellenstruktur für Tabelle `profile`
 --
 
-CREATE TABLE `profile` (
-  `profileid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE IF NOT EXISTS `profile` (
+  `profileid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `changepassword` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `email` varchar(20) NOT NULL,
+  PRIMARY KEY (`profileid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `profile`
+-- Daten für Tabelle `profile`
 --
 
 INSERT INTO `profile` (`profileid`, `name`, `changepassword`, `email`) VALUES
@@ -367,18 +393,20 @@ INSERT INTO `profile` (`profileid`, `name`, `changepassword`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subservices`
+-- Tabellenstruktur für Tabelle `subservices`
 --
 
-CREATE TABLE `subservices` (
-  `service_id` int(100) NOT NULL,
+DROP TABLE IF EXISTS `subservices`;
+CREATE TABLE IF NOT EXISTS `subservices` (
+  `service_id` int(100) NOT NULL AUTO_INCREMENT,
   `sid` int(100) NOT NULL,
   `subservicename` varchar(100) NOT NULL,
-  `Fee` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Fee` int(100) NOT NULL,
+  PRIMARY KEY (`service_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `subservices`
+-- Daten für Tabelle `subservices`
 --
 
 INSERT INTO `subservices` (`service_id`, `sid`, `subservicename`, `Fee`) VALUES
@@ -390,169 +418,7 @@ INSERT INTO `subservices` (`service_id`, `sid`, `subservicename`, `Fee`) VALUES
 (6, 5, 'USG-sub', 2000),
 (7, 7, 'sub-service', 1500),
 (9, 9, 'test sub service', 8000);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `addappointment`
---
-ALTER TABLE `addappointment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adddeposit`
---
-ALTER TABLE `adddeposit`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `addfiles`
---
-ALTER TABLE `addfiles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `addmedicalhistory`
---
-ALTER TABLE `addmedicalhistory`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `addnewmedicine`
---
-ALTER TABLE `addnewmedicine`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `addnewpres`
---
-ALTER TABLE `addnewpres`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `addpayment`
---
-ALTER TABLE `addpayment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `login`
---
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mainservices`
---
-ALTER TABLE `mainservices`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `medicinecategory`
---
-ALTER TABLE `medicinecategory`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `patientinfo`
---
-ALTER TABLE `patientinfo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `patientregister`
---
-ALTER TABLE `patientregister`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `profile`
---
-ALTER TABLE `profile`
-  ADD PRIMARY KEY (`profileid`);
-
---
--- Indexes for table `subservices`
---
-ALTER TABLE `subservices`
-  ADD PRIMARY KEY (`service_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `addappointment`
---
-ALTER TABLE `addappointment`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `adddeposit`
---
-ALTER TABLE `adddeposit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `addfiles`
---
-ALTER TABLE `addfiles`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `addmedicalhistory`
---
-ALTER TABLE `addmedicalhistory`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `addnewmedicine`
---
-ALTER TABLE `addnewmedicine`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `addnewpres`
---
-ALTER TABLE `addnewpres`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `addpayment`
---
-ALTER TABLE `addpayment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `login`
---
-ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mainservices`
---
-ALTER TABLE `mainservices`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `medicinecategory`
---
-ALTER TABLE `medicinecategory`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `patientinfo`
---
-ALTER TABLE `patientinfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `patientregister`
---
-ALTER TABLE `patientregister`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `profile`
---
-ALTER TABLE `profile`
-  MODIFY `profileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `subservices`
---
-ALTER TABLE `subservices`
-  MODIFY `service_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;COMMIT;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
