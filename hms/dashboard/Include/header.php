@@ -1,4 +1,6 @@
-<?php include"../inc/connect.php";
+<?php 
+	if(!isset($_SESSION['username'])) header("Location: ../../");  /* redirect to home page if the user is not logged */
+include"../inc/connect.php";
  ?>
  <!DOCTYPE html>
 <html>
