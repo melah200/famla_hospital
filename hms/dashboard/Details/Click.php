@@ -5,7 +5,7 @@ include("../inc/connect.php") ;
 
 $sql="SELECT * FROM addappointment WHERE `app_date` = '".date('Y-m-d')."'";
 //echo $sql;
-$q=mysqli_query($db_connect, $sql)or die (mysql_error($db_connect));
+$q=mysqli_query($db_connect, $sql)or die (mysqli_error($db_connect));
 
 function mysql_fetch_all($query) 
 {
@@ -42,9 +42,9 @@ $q_row=mysql_fetch_all($q);
      foreach ($q_row as $row)
       {
         $sql1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
-$write1 =mysqli_query($db_connect, $sql1) or die(mysql_error($db_connect));
+$write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
 //print_r($sql); exit;
-$row2=mysqli_fetch_array($write1)or die (mysql_error($db_connect));
+$row2=mysqli_fetch_array($write1)or die (mysqli_error($db_connect));
 
 ?>  <center><font size="5">
            

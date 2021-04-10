@@ -4,9 +4,9 @@
 include("../inc/connect.php") ;
 
 $s="SELECT * FROM addappointment";
-$query=mysqli_query($db_connect, $s)or die (mysql_error($db_connect));
+$query=mysqli_query($db_connect, $s)or die (mysqli_error($db_connect));
 
-$numrows=mysqli_num_rows($query)or die (mysql_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
 function mysql_fetch_all($query) {
     $all = array();
@@ -15,7 +15,7 @@ function mysql_fetch_all($query) {
 }
 //echo 'xdgfdxg'.count($numrows); exit;
 //print_r($row1); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 
 <div class="content-wrapper">
@@ -75,9 +75,9 @@ function mysql_fetch_all($query) {
      foreach ($row1 as $row)
       { 
 $sql1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
-  $write1 =mysqli_query($db_connect, $sql1) or die(mysql_error($db_connect));
+  $write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
  //print_r($sql); exit;
-    $row2=mysqli_fetch_array($write1)or die (mysql_error($db_connect));
+    $row2=mysqli_fetch_array($write1)or die (mysqli_error($db_connect));
 //print_r($row2); echo $row2['name']; exit;
    //echo "$description"; exit();
 

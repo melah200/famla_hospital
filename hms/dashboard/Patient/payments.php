@@ -43,9 +43,9 @@ if(isset($_POST['submit']))
    
     
       
-      $write =mysqli_query($db_connect, "INSERT INTO patientregister(`name`,`email`,`address`,`phone`,`gender`,`birthdate`,`bloodgroup`,`imageupload`) VALUES ('$name','$email','$address','$phone', '$gender','$birthdate','$bloodgroup','$imageupload')") or die(mysql_error($db_connect));
+      $write =mysqli_query($db_connect, "INSERT INTO patientregister(`name`,`email`,`address`,`phone`,`gender`,`birthdate`,`bloodgroup`,`imageupload`) VALUES ('$name','$email','$address','$phone', '$gender','$birthdate','$bloodgroup','$imageupload')") or die(mysqli_error($db_connect));
       $last_id = mysql_insert_id();
-      $deposit =mysqli_query($db_connect, "INSERT INTO `addpayment`(`patient`,`invoice`) VALUES ('$last_id','')") or die(mysql_error($db_connect));
+      $deposit =mysqli_query($db_connect, "INSERT INTO `addpayment`(`patient`,`invoice`) VALUES ('$last_id','')") or die(mysqli_error($db_connect));
       
      // echo " <script>alert('Records Successfully Inserted..');</script>";
     }
@@ -56,15 +56,15 @@ if(isset($_POST['submit']))
 include("../inc/connect.php") ;
 
 
-$query=mysqli_query($db_connect, "SELECT `id`,`name`,`phone` FROM patientregister")or die (mysql_error());
-$numrows=mysqli_num_rows($query)or die (mysql_error());
+$query=mysqli_query($db_connect, "SELECT `id`,`name`,`phone` FROM patientregister")or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
 function mysql_fetch_all($query) {
     $all = array();
     while ($all[] = mysqli_fetch_assoc($query)) {$temp=$all;}
     return $temp;
 }
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
   <div class="content-wrapper">
     <section class="content-header">

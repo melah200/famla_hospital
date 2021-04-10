@@ -12,8 +12,8 @@ include"../inc/connect.php ";
            <?php
 		   $user_s = $_SESSION['username'];
 $sql="SELECT * FROM login WHERE username='$user_s'";
-    $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
-     $row2=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
+     $row2=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
      //print_r($row2?>
           <img src="../../dashboard/Upload/Adminprofile/<?php echo $row2['profile'];?>" class="img-circle" alt="User Image">
         </div>

@@ -6,9 +6,9 @@ include("../inc/connect.php") ;
   
 $sql="SELECT * FROM login WHERE username='".$_SESSION['username']."'";
 //echo $sql;
-  $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+  $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
 //print_r($sql); exit;
-$row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+$row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
 //print_r($row); exit;
      $profile=$row['profile'];
       $fname =$row['fname'];
@@ -65,7 +65,7 @@ if(isset($_POST['submit']))
   {
     if($password==$Confirmpassword)
     {
-      $write=mysqli_query($db_connect, "UPDATE login SET profile='$name',fname='$fname',lname='$lname',username='$username',password='$password1' WHERE username='".$_SESSION['username']."'")or die(mysql_error($db_connect));
+      $write=mysqli_query($db_connect, "UPDATE login SET profile='$name',fname='$fname',lname='$lname',username='$username',password='$password1' WHERE username='".$_SESSION['username']."'")or die(mysqli_error($db_connect));
       $_SESSION['username']=$username;
       echo " <script>alert('Records Successfully Updated..');</script>";
     }
@@ -77,7 +77,7 @@ if(isset($_POST['submit']))
   else
   {
     $password=$pswd;
-    $write=mysqli_query($db_connect, "UPDATE login SET profile='$name',fname='$fname',lname='$lname',username='$username',password='$password' WHERE username='".$_SESSION['username']."'")or die(mysql_error($db_connect));
+    $write=mysqli_query($db_connect, "UPDATE login SET profile='$name',fname='$fname',lname='$lname',username='$username',password='$password' WHERE username='".$_SESSION['username']."'")or die(mysqli_error($db_connect));
       $_SESSION['username']=$username;
       echo " <script>alert('Records Successfully Updated..');</script>";
   }

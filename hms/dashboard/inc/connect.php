@@ -7,6 +7,6 @@ if(!isset($_SESSION["username"]))
 }
 $db_connect =mysqli_connect("localhost","root","");
 $connection = $db_connect;
-mysqli_select_db($db_connect, "hms") or die(mysql_error($db_connect));
+mysqli_select_db($db_connect, "hms") or die(mysqli_error($db_connect));
 
 ?>

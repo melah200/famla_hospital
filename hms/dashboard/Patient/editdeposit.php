@@ -6,9 +6,9 @@ include("../inc/connect.php") ;
 //session_start();
 $sql="SELECT * FROM addpayment WHERE id='".$_GET['id']."'";
 //SELECT `id`, `invoice`,`depositammount`,`date` FROM addpayment
-$write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+$write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
 // print_r($sql); exit;
-$row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+$row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
 $date=$row['date'];
 $invoice =$row['invoice'];
 $subtotal=$row['subtotal'];
@@ -30,10 +30,10 @@ $d1=date('Y-m-d');
 //$date=$_POST['date'];
 //$id=$_GET['id'];
 
-$query=mysqli_query($db_connect, "UPDATE addpayment SET invoice='$invoice',subtotal='$subtotal',depositammount='$depositammount',date='$d1' WHERE id='".$_GET['id']."'") or die(mysql_error($db_connect));
+$query=mysqli_query($db_connect, "UPDATE addpayment SET invoice='$invoice',subtotal='$subtotal',depositammount='$depositammount',date='$d1' WHERE id='".$_GET['id']."'") or die(mysqli_error($db_connect));
  	echo "<script>alert('Records Successfully Updated..');</script>";
 	 //  	$fetch="SELECT * FROM addpayment WHERE id=".$_GET['id']."";
-  //     	$q=mysqli_query($db_connect, $fetch) or die(mysql_error($db_connect));
+  //     	$q=mysqli_query($db_connect, $fetch) or die(mysqli_error($db_connect));
 		// $result=mysqli_fetch_array($q);
 		// header("location:paymenthistory.php?id=".$result['patient']);
 }

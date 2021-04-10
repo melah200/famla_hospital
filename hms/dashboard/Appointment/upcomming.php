@@ -5,12 +5,12 @@ include("../inc/connect.php") ;
 
 
 $s="SELECT * FROM addappointment WHERE  `app_date`>'".date('Y-m-d')."'";
-$query=mysqli_query($db_connect, $s)or die (mysql_error($db_connect));
-//$numrows=mysqli_num_rows($query)or die (mysql_error());
+$query=mysqli_query($db_connect, $s)or die (mysqli_error($db_connect));
+//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
 
-$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysql_error($db_connect));
-$p_numrows=mysqli_num_rows($p_query)or die (mysql_error($db_connect));
+$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysql_fetch_all($p_query);
 function mysql_fetch_all($query)
 {
@@ -20,7 +20,7 @@ function mysql_fetch_all($query)
     return $temp;
 }
 //print_r($row1); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 
  <!-- Content Wrapper. Contains page content -->

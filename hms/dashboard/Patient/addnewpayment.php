@@ -18,9 +18,9 @@ if(isset($_POST['b1']))
     $grosstotal=$_POST['grosstotal'];
     $amountreceived =$_POST['amountreceived'];
     //$date=$_POST['date'];
-  $write =mysqli_query($db_connect, "INSERT INTO addpayment(`invoice`,`patient`,`categoryselect`,`subtotal`,`addp_discount`,`grosstotal`,`amountreceived`) VALUES ('$invoice','$patient','$categoryselect','$subtotal','$addp_discount','$grosstotal','$amountreceived')") or die(mysql_error($db_connect));
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+  $write =mysqli_query($db_connect, "INSERT INTO addpayment(`invoice`,`patient`,`categoryselect`,`subtotal`,`addp_discount`,`grosstotal`,`amountreceived`) VALUES ('$invoice','$patient','$categoryselect','$subtotal','$addp_discount','$grosstotal','$amountreceived')") or die(mysqli_error($db_connect));
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
        echo " <script>alert('Records Successfully Inserted..');</script>";
 //header("location:paymenthistory.php?id=".$p_row1['id']);
   //  header("location:./Patient/paymenthistory.php");
@@ -28,19 +28,19 @@ if(isset($_POST['b1']))
 ?>
 <?php
 //include("../inc/connect.php") ;
-$q1=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysql_error());
-$p_numrows=mysqli_num_rows($q1)or die (mysql_error());
+$q1=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($q1)or die (mysqli_error($db_connect));
 $m_row=mysql_fetch_all($q1);
 
-$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE  id='".$_GET['id']."'")or die (mysql_error());
-$p_numrows=mysqli_num_rows($p_query)or die (mysql_error());
+$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE  id='".$_GET['id']."'")or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysqli_fetch_array($p_query);
 
 // $sql="SELECT * FROM addpayment ";
 // //SELECT `id`, `invoice`,`depositammount`,`date` FROM addpayment
-// $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+// $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
 // // print_r($sql); exit;
-// $a_row=mysql_fetch_all($write)or die (mysql_error($db_connect));
+// $a_row=mysql_fetch_all($write)or die (mysqli_error($db_connect));
 
 function mysql_fetch_all($query)
  {
@@ -50,7 +50,7 @@ function mysql_fetch_all($query)
     return $temp;
 }
 //print_r($a_row); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 <?php
 //include("../inc/connect.php") ;
@@ -91,9 +91,9 @@ if(isset($_POST['submit']))
   }
       $imageupload=$_FILES["imageupload"]["name"];
 
-   $write =mysqli_query($db_connect, "INSERT INTO patientregister(`doctor`,`name`,`email`,`password`,`address`,`phone`,`gender`,`birthdate`,`bloodgroup`,`imageupload`) VALUES ('$doctor','$name','$email','$password','$address','$phone', '$gender','$birthdate','$bloodgroup','$imageupload')") or die(mysql_error($db_connect));
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-     //$numrows=mysqli_num_rows($query)or die (mysql_error());
+   $write =mysqli_query($db_connect, "INSERT INTO patientregister(`doctor`,`name`,`email`,`password`,`address`,`phone`,`gender`,`birthdate`,`bloodgroup`,`imageupload`) VALUES ('$doctor','$name','$email','$password','$address','$phone', '$gender','$birthdate','$bloodgroup','$imageupload')") or die(mysqli_error($db_connect));
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+     //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
       echo " <script>alert('Records Successfully Inserted..');</script>";
     }
     ?>
@@ -202,8 +202,8 @@ if(isset($_POST['submit']))
 <label>Invoice Number</label>
   <?php 
 $query = "SELECT * FROM addpayment ORDER BY id DESC LIMIT 1";
-$w4=mysqli_query($db_connect, $query) or die(mysql_error($db_connect));
-$r4=mysqli_fetch_array($w4)or die (mysql_error($db_connect));
+$w4=mysqli_query($db_connect, $query) or die(mysqli_error($db_connect));
+$r4=mysqli_fetch_array($w4)or die (mysqli_error($db_connect));
 // $result = mysqli_query($db_connect, $query);
 // mysqli_num_rows($result);
 $no=$r4['id'];

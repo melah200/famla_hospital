@@ -3,9 +3,9 @@
 <?php 
   include("../inc/connect.php") ;
   $m_sql="SELECT * FROM medicinecategory ";
-  $m_write =mysqli_query($db_connect, $m_sql) or die(mysql_error($db_connect));
+  $m_write =mysqli_query($db_connect, $m_sql) or die(mysqli_error($db_connect));
  // print_r($sql); exit;
-    $m_row=mysqli_fetch_array($m_write)or die (mysql_error($db_connect));
+    $m_row=mysqli_fetch_array($m_write)or die (mysqli_error($db_connect));
     $category=$m_row['category ']; 
 //     function mysql_fetch_all($query) {
 //     $all = array();
@@ -14,9 +14,9 @@
 // }
     //session_start();
   $sql="SELECT * FROM addnewmedicine WHERE id='".$_GET['id']."'";
-  $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+  $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
  // print_r($sql); exit;
-    $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
     $name=$row['name'];
     $category=$row['category'];
     $price=$row['price'];
@@ -45,9 +45,9 @@ if(isset($_POST['submit']))
    
     
     
-      $write =mysqli_query($db_connect, "UPDATE addnewmedicine SET name='$name',category='$category',price='$price',quantity='$quantity',genericname='$genericname',company='$company',effect='$effect',expiredate='$expiredate' WHERE id='".$_GET['id']."'") or die(mysql_error());
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+      $write =mysqli_query($db_connect, "UPDATE addnewmedicine SET name='$name',category='$category',price='$price',quantity='$quantity',genericname='$genericname',company='$company',effect='$effect',expiredate='$expiredate' WHERE id='".$_GET['id']."'") or die(mysqli_error($db_connect));
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
      echo " <script>setTimeout(\"location.href='../Medicine/medicinelist.php';\",150);</script>";
 }
 

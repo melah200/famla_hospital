@@ -4,15 +4,15 @@
 include("../inc/connect.php") ;
 
 $sql="SELECT * FROM addpayment WHERE  id='".$_GET['id']."'";
-$write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
-$a_row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+$write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
+$a_row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
 
-$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE id='".$a_row['patient']."'")or die (mysql_error());
-$p_numrows=mysqli_num_rows($p_query)or die (mysql_error());
+$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE id='".$a_row['patient']."'")or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysqli_fetch_array($p_query);
 
-$q1=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysql_error($db_connect));
-$p_numrows=mysqli_num_rows($q1)or die (mysql_error($db_connect));
+$q1=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($q1)or die (mysqli_error($db_connect));
 $m_row=mysql_fetch_all($q1);
 
 function mysql_fetch_all($query) {
@@ -21,7 +21,7 @@ function mysql_fetch_all($query) {
     return $temp;
 }
 //print_r($a_row); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 <?php
 //include("../inc/connect.php") ;
@@ -38,7 +38,7 @@ if(isset($_POST['b1']))
     $amountreceived=$_POST['amountreceived'];
    // $date=$_POST['date']
 
-      $write =mysqli_query($db_connect, "UPDATE addpayment SET invoice='$invoice',patient='$patient',categoryselect='$categoryselect',subtotal='$subtotal',addp_discount='$addp_discount',grosstotal='$grosstotal',amountreceived='$amountreceived' WHERE id='".$_GET['id']."'") or die(mysql_error($db_connect));
+      $write =mysqli_query($db_connect, "UPDATE addpayment SET invoice='$invoice',patient='$patient',categoryselect='$categoryselect',subtotal='$subtotal',addp_discount='$addp_discount',grosstotal='$grosstotal',amountreceived='$amountreceived' WHERE id='".$_GET['id']."'") or die(mysqli_error($db_connect));
 
   echo " <script>alert('Records Successfully Updated..');</script>";
 
@@ -94,8 +94,8 @@ if(isset($_POST['b1']))
   
   <div id="sub">
     <?php $s1="SELECT categoryselect FROM addpayment WHERE  id='".$_GET['id']."'";
-$w1 =mysqli_query($db_connect, $s1) or die(mysql_error($db_connect));
-$row=mysqli_fetch_array($w1)or die (mysql_error($db_connect));
+$w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
+$row=mysqli_fetch_array($w1)or die (mysqli_error($db_connect));
 //print_r($row);
 $categoryselect=$row['categoryselect'];
 $val= explode(',',$categoryselect);
@@ -104,8 +104,8 @@ $val= explode(',',$categoryselect);
 $s_row='';
 for ($i=1;$i<count($val);$i++) 
 {
- $s_q1=mysqli_query($db_connect, "SELECT Fee FROM subservices WHERE  sid='".$val[$i]."'")or die (mysql_error($db_connect));
-$s_row=mysqli_fetch_array($s_q1)or die (mysql_error($db_connect));
+ $s_q1=mysqli_query($db_connect, "SELECT Fee FROM subservices WHERE  sid='".$val[$i]."'")or die (mysqli_error($db_connect));
+$s_row=mysqli_fetch_array($s_q1)or die (mysqli_error($db_connect));
 echo 'Fee : '.$s_row['Fee'].'<br>';
 }?> 
 <input type ="hidden" name="newservice" id="newservice" value="<?php echo $categoryselect;?>"> 

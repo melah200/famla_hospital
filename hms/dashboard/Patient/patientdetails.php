@@ -3,9 +3,9 @@
   
     //session_start();
   $sql="SELECT * FROM patientregister WHERE id='".$_GET['id']."'";
-  $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+  $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
  // print_r($sql); exit;
-    $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
     $id=$row['id'];
     $name=$row['name'];
     $email=$row['email'];

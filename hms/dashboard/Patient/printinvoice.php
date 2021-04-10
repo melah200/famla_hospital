@@ -2,11 +2,11 @@
 <?php include"../Include/sidebar.php";?>
 <?php
 include("../inc/connect.php") ;
-$p_query=mysqli_query($db_connect, "SELECT * FROM addpayment WHERE id='".$_GET['id']."'")or die (mysql_error($db_connect));
-$p_numrows=mysqli_num_rows($p_query)or die (mysql_error($db_connect));
+$p_query=mysqli_query($db_connect, "SELECT * FROM addpayment WHERE id='".$_GET['id']."'")or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysqli_fetch_array($p_query);
 //print_r($p_row1); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 <?php
     //  $subtotal=0;
@@ -44,10 +44,10 @@ if(isset($_POST['submit']))
  $discount=$_POST['discount'];
 
  
-  $write =mysqli_query($db_connect, "UPDATE addpayment SET vatper='$vatper',discount='$discount' WHERE id='".$_GET['id']."'") or die(mysql_error($db_connect));
+  $write =mysqli_query($db_connect, "UPDATE addpayment SET vatper='$vatper',discount='$discount' WHERE id='".$_GET['id']."'") or die(mysqli_error($db_connect));
 
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
  //echo " <script>alert('Records Successfully Updated..');</script>";
 
     }
@@ -103,8 +103,8 @@ if(isset($_POST['submit']))
             <?php
 			$sql="SELECT name,address,phone FROM patientregister WHERE id='".$p_row1['patient']."'";
 			//echo "$sql";
-			$query=mysqli_query($db_connect, $sql)or die (mysql_error($db_connect));
-			$numrows=mysqli_num_rows($query)or die (mysql_error($db_connect));
+			$query=mysqli_query($db_connect, $sql)or die (mysqli_error($db_connect));
+			$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 			$row1=mysqli_fetch_array($query);
 			?>
             <?php echo $row1['name'];?> ,<br>

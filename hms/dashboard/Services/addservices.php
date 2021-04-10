@@ -5,15 +5,15 @@
 include("../inc/connect.php") ;
 
 
-$query=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysql_error());
-$numrows=mysqli_num_rows($query)or die (mysql_error());
+$query=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
 function mysql_fetch_all($query) {
     $all = array();
     while ($all[] = mysqli_fetch_assoc($query)) {$temp=$all;}
     return $temp;
 }
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 <?php
 include("../inc/connect.php") ;
@@ -24,7 +24,7 @@ if(isset($_POST['submit']))
     $id=$_POST['id'];
     $mainservicename=$_POST['mainservicename'];
     
- $write =mysqli_query($db_connect, "INSERT INTO mainservices(`mainservicename`) VALUES ('$mainservicename')") or die(mysql_error($db_connect));
+ $write =mysqli_query($db_connect, "INSERT INTO mainservices(`mainservicename`) VALUES ('$mainservicename')") or die(mysqli_error($db_connect));
 
    // echo "<script>alert('Records Successfully Inserted..');</script>";
       echo " <script>setTimeout(\"location.href='../Services/addservices.php';\",150);</script>";

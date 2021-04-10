@@ -7,12 +7,12 @@ if(isset($_POST['submit']))
      foreach ($set as $k) {
      	$s="DELETE FROM patientregister WHERE  id='".$k."'";
      	//echo "string"; exit;
-     	mysqli_query($db_connect, $s)or die (mysql_error($db_connect));
+     	mysqli_query($db_connect, $s)or die (mysqli_error($db_connect));
      	
      }
        
       //print_r($sql);
-       // $write=mysqli_fetch_array($sql) or die(mysql_error($db_connect));
+       // $write=mysqli_fetch_array($sql) or die(mysqli_error($db_connect));
             
               header("location:patient.php");
       }
@@ -25,12 +25,12 @@ if(isset($_POST['submit']))
      {
       $s="UPDATE patientregister SET status='1' WHERE id='".$k."'";
   //echo $s; exit;
-      mysqli_query($db_connect, $s)or die (mysql_error($db_connect));
+      mysqli_query($db_connect, $s)or die (mysqli_error($db_connect));
       
      }
        
       //print_r($sql);
-       // $write=mysqli_fetch_array($sql) or die(mysql_error($db_connect));
+       // $write=mysqli_fetch_array($sql) or die(mysqli_error($db_connect));
             
               header("location:patient.php");
       }
@@ -43,12 +43,12 @@ if(isset($_POST['submit']))
      {
       $s="UPDATE patientregister SET status='0' WHERE id='".$k."'";
   //echo $s; exit;
-      mysqli_query($db_connect, $s)or die (mysql_error($db_connect));
+      mysqli_query($db_connect, $s)or die (mysqli_error($db_connect));
       
      }
        
       //print_r($sql);
-       // $write=mysqli_fetch_array($sql) or die(mysql_error($db_connect));
+       // $write=mysqli_fetch_array($sql) or die(mysqli_error($db_connect));
             
               header("location:patient.php");
       }

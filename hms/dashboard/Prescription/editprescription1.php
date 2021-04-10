@@ -7,9 +7,9 @@
   
     //session_start();
   $sql="SELECT * FROM addnewpres WHERE id='".$_GET['id']."'";
-  $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+  $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
  // print_r($sql); exit;
-    $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
     $date =$row['date'];
     $patient=$row['patient'];
     $history=$row['history'];
@@ -33,9 +33,9 @@ if(isset($_POST['submit']))
     $medication=$_POST['medication'];
     $note=$_POST['note'];
    
-      $write =mysqli_query($db_connect, "UPDATE addnewpres SET date='$date',patient='$patient',history='$history',medication='$medication',note='$note' WHERE id='".$_GET['id']."'") or die(mysql_error());
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+      $write =mysqli_query($db_connect, "UPDATE addnewpres SET date='$date',patient='$patient',history='$history',medication='$medication',note='$note' WHERE id='".$_GET['id']."'") or die(mysqli_error($db_connect));
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
        echo " <script>setTimeout(\"location.href='../prescription/addprescription.php';\",150);</script>";
 }
    

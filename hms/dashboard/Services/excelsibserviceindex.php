@@ -1,8 +1,8 @@
 <?php
 include("../inc/connect.php") ;
 
-$query=mysqli_query($db_connect, "SELECT * FROM subservices")or die (mysql_error($db_connect));
-$numrows=mysqli_num_rows($query)or die (mysql_error($db_connect));
+$query=mysqli_query($db_connect, "SELECT * FROM subservices")or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 
 
 // $row1=mysql_fetch_all($query);

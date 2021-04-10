@@ -2,12 +2,12 @@
 <?php include"../Include/sidebar.php";?>
 <?php
 include("../inc/connect.php") ;
-$query=mysqli_query($db_connect, "SELECT * FROM addfiles")or die (mysql_error($db_connect));
-$numrows=mysqli_num_rows($query)or die (mysql_error($db_connect));
+$query=mysqli_query($db_connect, "SELECT * FROM addfiles")or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
 //echo $row1; 
-$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysql_error());
-$p_numrows=mysqli_num_rows($p_query)or die (mysql_error());
+$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysql_fetch_all($p_query);
 
 function mysql_fetch_all($query)
@@ -19,7 +19,7 @@ return $temp;
 }
 //print_r($row1); 
 //print_r($p_row1);exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 <?php
 //session_start();
@@ -55,9 +55,9 @@ else
 }
 
 
-  $write =mysqli_query($db_connect, "INSERT INTO addfiles( `doc_date`,`patient`,`title`,`file`) VALUES (' $d1','$patient','$title','$name')") or die(mysql_error($db_connect));
-  //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-  //$numrows=mysqli_num_rows($query)or die (mysql_error());
+  $write =mysqli_query($db_connect, "INSERT INTO addfiles( `doc_date`,`patient`,`title`,`file`) VALUES (' $d1','$patient','$title','$name')") or die(mysqli_error($db_connect));
+  //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+  //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",150);</script>";
 }
 
@@ -157,9 +157,9 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
    foreach ($row1 as $row)
     {
 $s1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
-$w1 =mysqli_query($db_connect, $s1) or die(mysql_error($db_connect));
+$w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
 //print_r($w1); exit;
-$row2=mysqli_fetch_array($w1)or die (mysql_error($db_connect));
+$row2=mysqli_fetch_assoc($w1)or die (mysqli_error($db_connect));
  //print_r($row2); exit();
 ?> <tr>  
 <td><?php echo $row['doc_date'];?></td>

@@ -4,8 +4,8 @@
 <?php
 
 include("../inc/connect.php") ;
-$query=mysqli_query($db_connect, "SELECT `id`,`name`,`phone` FROM patientregister")or die (mysql_error($db_connect));
-$numrows=mysqli_num_rows($query)or die (mysql_error($db_connect));
+$query=mysqli_query($db_connect, "SELECT `id`,`name`,`phone` FROM patientregister")or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 //echo $numrows; exit;
 $row1=mysql_fetch_all($query);  
 function mysql_fetch_all($query) 
@@ -14,7 +14,7 @@ function mysql_fetch_all($query)
     while ($all[] = mysqli_fetch_assoc($query)) {$temp=$all;}
     return $temp;
 }
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 
 <div class="content-wrapper">

@@ -11,9 +11,9 @@ if(isset($_POST['submit']))
     
     if( $category &&  $description )
   { 
-      $write =mysqli_query($db_connect, "INSERT INTO medicinecategory(`category`, `description`) VALUES ('$category','$description')") or die(mysql_error());
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+      $write =mysqli_query($db_connect, "INSERT INTO medicinecategory(`category`, `description`) VALUES ('$category','$description')") or die(mysqli_error($db_connect));
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
        //echo " <script>alert('Records Successfully Inserted..');</script>";
       echo " <script>setTimeout(\"location.href='../Medicine/medicinecategory.php';\",150);</script>";
     }

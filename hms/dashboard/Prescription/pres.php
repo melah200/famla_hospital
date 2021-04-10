@@ -4,8 +4,8 @@
 <?php
 include("../inc/connect.php") ;
 
-$query=mysqli_query($db_connect, "SELECT * FROM addnewpres")or die (mysql_error());
-$numrows=mysqli_num_rows($query)or die (mysql_error());
+$query=mysqli_query($db_connect, "SELECT * FROM addnewpres")or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
 function mysql_fetch_all($query) {
 $all = array();
@@ -13,7 +13,7 @@ while ($all[] = mysqli_fetch_assoc($query)) {$temp=$all;}
 return $temp;
 }
 //print_r($row1); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 
 <div class="content-wrapper">
@@ -72,9 +72,9 @@ Prescription
 foreach ($row1 as $row)
 {
   $s1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
-  $w1 =mysqli_query($db_connect, $s1) or die(mysql_error($db_connect));
+  $w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
   //print_r($s1); exit;
-    $row1=mysqli_fetch_array($w1)or die (mysql_error($db_connect));
+    $row1=mysqli_fetch_array($w1)or die (mysqli_error($db_connect));
 //print_r($row1); exit;
  //echo $row1; exit();
 

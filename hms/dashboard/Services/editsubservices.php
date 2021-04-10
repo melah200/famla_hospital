@@ -5,9 +5,9 @@
   
     //session_start();
   $sql="SELECT * FROM subservices WHERE service_id='".$_GET['id']."'";
-  $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+  $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
 // print_r($sql); exit;
-    $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
     $service_id=$row['service_id'];
     $subservicename=$row['subservicename'];
      $Fee=$row['Fee'];
@@ -24,7 +24,7 @@ if(isset($_POST['submit']))
     $subservicename=$_POST['subservicename'];
     $Fee=$_POST['Fee'];
     
-    $write=mysqli_query($db_connect, "UPDATE subservices SET subservicename='$subservicename',Fee='$Fee' WHERE service_id='".$_GET['id']."'") or die(mysql_error($db_connect));
+    $write=mysqli_query($db_connect, "UPDATE subservices SET subservicename='$subservicename',Fee='$Fee' WHERE service_id='".$_GET['id']."'") or die(mysqli_error($db_connect));
    
       echo " <script>setTimeout(\"location.href='../Services/services.php';\",150);</script>";
 }

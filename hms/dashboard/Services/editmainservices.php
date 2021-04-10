@@ -5,9 +5,9 @@
   
     //session_start();
   $sql="SELECT * FROM mainservices WHERE id='".$_GET['id']."'";
-  $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+  $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
 // print_r($sql); exit;
-    $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
     $id=$row['id'];
     $mainservicename=$row['mainservicename'];
    
@@ -23,7 +23,7 @@ if(isset($_POST['submit']))
     $id=$_POST['id'];
     $mainservicename=$_POST['mainservicename'];
     
-    $write=mysqli_query($db_connect, "UPDATE mainservices SET mainservicename='$mainservicename' WHERE id='".$_GET['id']."'") or die(mysql_error($db_connect));
+    $write=mysqli_query($db_connect, "UPDATE mainservices SET mainservicename='$mainservicename' WHERE id='".$_GET['id']."'") or die(mysqli_error($db_connect));
    
       echo " <script>setTimeout(\"location.href='../Services/addservices.php';\",150);</script>";
 }

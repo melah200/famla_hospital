@@ -7,8 +7,8 @@ include("../inc/connect.php") ;
 /*$setSql = "SELECT `ur_Id`,`ur_username`,`ur_password` FROM `tbl_user`";
 $setRec = mysqli_query($conn,$setSql);*/
 
-$query=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysql_error($db_connect));
-$numrows=mysqli_num_rows($query)or die (mysql_error($db_connect));
+$query=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 
 
 $columnHeader ='';

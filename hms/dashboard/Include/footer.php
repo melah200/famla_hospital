@@ -189,8 +189,8 @@ function myFunction() {
     //   
 //print_r($row2); exit;
     $s1="SELECT * FROM addappointment ";
-    $w1 =mysqli_query($db_connect, $s1) or die(mysql_error($db_connect));
-     $row1=mysqli_fetch_array($w1)or die (mysql_error($db_connect));
+    $w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
+     $row1=mysqli_fetch_array($w1)or die (mysqli_error($db_connect));
   //    function mysql_fetch_all($s1) {
   //   $all = array();
   //   while ($all[] = mysqli_fetch_assoc($s1)) {$temp=$all;}
@@ -209,9 +209,9 @@ function myFunction() {
 // foreach ($row as $row1)
 //  {
   $sql1=" SELECT name FROM patientregister WHERE id='".$row1['patient']."'";
-  $write1 =mysqli_query($db_connect, $sql1) or die(mysql_error($db_connect));
+  $write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
  //print_r($sql); exit;
-    $row2=mysqli_fetch_array($write1)or die (mysql_error($db_connect));
+    $row2=mysqli_fetch_array($write1)or die (mysqli_error($db_connect));
        ?>
         events    : [
         {

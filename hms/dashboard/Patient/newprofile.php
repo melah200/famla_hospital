@@ -48,11 +48,11 @@ $error = $_FILES["profile_pic"]["error"];//size
     $bloodgroup=$_POST['bloodgroup'];
     $status=$_POST['active'];
       
-      $write =mysqli_query($db_connect, "INSERT INTO patientregister(`name`,`email`,`address`,`phone`,`gender`,`birthdate`,`bloodgroup`,`imageupload`,`status`) VALUES ('$name','$email','$address','$phone','$gender','$birthdate','$bloodgroup','$imgname',' $status')") or die(mysql_error($db_connect));
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+      $write =mysqli_query($db_connect, "INSERT INTO patientregister(`name`,`email`,`address`,`phone`,`gender`,`birthdate`,`bloodgroup`,`imageupload`,`status`) VALUES ('$name','$email','$address','$phone','$gender','$birthdate','$bloodgroup','$imgname',' $status')") or die(mysqli_error($db_connect));
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
            $last_id = mysql_insert_id();
-      $deposit =mysqli_query($db_connect, "INSERT INTO `addpayment`(`patient`,`invoice`) VALUES ('$last_id','')") or die(mysql_error($db_connect));
+      $deposit =mysqli_query($db_connect, "INSERT INTO `addpayment`(`patient`,`invoice`) VALUES ('$last_id','')") or die(mysqli_error($db_connect));
      echo " <script>setTimeout(\"location.href='../Patient/patient.php';\",150);</script>";
     }
     

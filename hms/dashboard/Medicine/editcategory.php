@@ -5,9 +5,9 @@
   
     //session_start();
   $sql="SELECT * FROM medicinecategory WHERE id='".$_GET['id']."'";
-  $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+  $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
 // print_r($sql); exit;
-    $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
     $category=$row['category'];
     $description=$row['description'];
    
@@ -23,10 +23,10 @@ if(isset($_POST['submit']))
     $category=$_POST['category'];
     $description=$_POST['description'];
     
-    $write=mysqli_query($db_connect, "UPDATE medicinecategory SET category='$category',description='$description' WHERE id='".$_GET['id']."'") or die(mysql_error($db_connect));
+    $write=mysqli_query($db_connect, "UPDATE medicinecategory SET category='$category',description='$description' WHERE id='".$_GET['id']."'") or die(mysqli_error($db_connect));
    //print_r($write); exit();
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
       echo " <script>setTimeout(\"location.href='../Medicine/medicinecategory.php';\",150);</script>";
 }
 

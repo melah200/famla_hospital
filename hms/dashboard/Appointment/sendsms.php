@@ -3,8 +3,8 @@
 <?php
 include("../inc/connect.php") ;
 
-$p_query=mysqli_query($db_connect, "SELECT phone FROM patientregister WHERE id='".$_GET['id']."'")or die (mysql_error($db_connect));
-$p_numrows=mysqli_num_rows($p_query)or die (mysql_error($db_connect));
+$p_query=mysqli_query($db_connect, "SELECT phone FROM patientregister WHERE id='".$_GET['id']."'")or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysqli_fetch_array($p_query);
 if (isset($_POST['send'])) 
 {

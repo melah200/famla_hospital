@@ -5,9 +5,9 @@
   
     //session_start();
   $sql="SELECT * FROM addmedicalhistory WHERE id='".$_GET['id']."'";
-  $w =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+  $w =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
  // print_r($sql); exit;
-    $row=mysqli_fetch_array($w)or die (mysql_error($db_connect));
+    $row=mysqli_fetch_array($w)or die (mysqli_error($db_connect));
     $date=$row['date'];
      $patient=$row['patient'];
     $description=$row['description'];
@@ -28,9 +28,9 @@ if(isset($_POST['submit']))
     $patient=$_POST['patient'];
     $description=$_POST['description'];
     
-    $write =mysqli_query($db_connect, "UPDATE addmedicalhistory SET date='$date',patient='$patient',description='$description' WHERE id='".$_GET['id']."'") or die(mysql_error());
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+    $write =mysqli_query($db_connect, "UPDATE addmedicalhistory SET date='$date',patient='$patient',description='$description' WHERE id='".$_GET['id']."'") or die(mysqli_error($db_connect));
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
       echo " <script>setTimeout(\"location.href='../Patient/casehistory.php';\",150);</script>";
     }
       
@@ -39,14 +39,14 @@ if(isset($_POST['submit']))
 
 <?php
 
-$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysql_error());
-$p_numrows=mysqli_num_rows($p_query)or die (mysql_error());
+$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysql_fetch_all($p_query);
 
 
 
-/*$file_query=mysqli_query($db_connect, "SELECT * FROM addfiles")or die (mysql_error());
-$file_numrows=mysqli_num_rows($file_query)or die (mysql_error());
+/*$file_query=mysqli_query($db_connect, "SELECT * FROM addfiles")or die (mysqli_error($db_connect));
+$file_numrows=mysqli_num_rows($file_query)or die (mysqli_error($db_connect));
 $file_row1=mysql_fetch_all($file_query);*/
 
 function mysql_fetch_all($query) {
@@ -55,7 +55,7 @@ function mysql_fetch_all($query) {
     return $temp;
 }
 //print_r($row1); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

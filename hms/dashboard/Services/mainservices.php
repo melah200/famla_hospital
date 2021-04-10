@@ -9,7 +9,7 @@ if(isset($_POST['submit']))
     $id=$_POST['id'];
 		$mainservicename=$_POST['mainservicename'];
 		
- $write =mysqli_query($db_connect, "INSERT INTO mainservices(`mainservicename`) VALUES ('$mainservicename')") or die(mysql_error($db_connect));
+ $write =mysqli_query($db_connect, "INSERT INTO mainservices(`mainservicename`) VALUES ('$mainservicename')") or die(mysqli_error($db_connect));
 echo " <script>setTimeout(\"location.href='../Services/addservices.php';\",100);</script>";
    // echo "<script>alert('Records Successfully Inserted..');</script>";
 }

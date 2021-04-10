@@ -6,9 +6,9 @@ include("../inc/connect.php") ;
 //session_start();
 $sql="SELECT * FROM login";
 
-$w =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
+$w =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
 // print_r($sql); exit;
-$row=mysqli_fetch_array($w)or die (mysql_error($db_connect));
+$row=mysqli_fetch_array($w)or die (mysqli_error($db_connect));
 $fname=$row['fname'];
 $lname=$row['lname'];
 $password=$row['password'];
@@ -30,9 +30,9 @@ if(isset($_POST['submit']))
     $passwordP=md5("$password");
     $username=$_POST['username'];
    
-      $write =mysqli_query($db_connect, "UPDATE login SET fname='$fname',lname='$lname',username='$username',password='$passwordP'") or die(mysql_error());
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+      $write =mysqli_query($db_connect, "UPDATE login SET fname='$fname',lname='$lname',username='$username',password='$passwordP'") or die(mysqli_error($db_connect));
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
       echo " <script>alert('Records Successfully Updated..');</script>";
     
 }

@@ -13,7 +13,7 @@ $user= $_SESSION['username'];
 	// 	$connect=mysql_connect("localhost","root","")or die("couldn't connect");
 	// mysql_select_db("hms") or die("Couldn't find db");
 	
-	$queryget=mysqli_query($db_connect, "SELECT password FROM login WHERE username='$user'")or die (mysql_error($db_connect));
+	$queryget=mysqli_query($db_connect, "SELECT password FROM login WHERE username='$user'")or die (mysqli_error($db_connect));
 	$numrows=mysqli_num_rows($queryget);
 	$row=mysqli_fetch_array($queryget);
 	

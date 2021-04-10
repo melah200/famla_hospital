@@ -1,4 +1,7 @@
 <?php 
+if(!isset($_SESSION)){
+  session_start();
+}
 	if(!isset($_SESSION['username'])) header("Location: ../../");  /* redirect to home page if the user is not logged */
 include"../inc/connect.php";
  ?>
@@ -117,7 +120,7 @@ include"../inc/connect.php";
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>H</b>MS</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Doctor</b>Plus</span>
+      <span class="logo-lg"><b>Famla</b> Hospital</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -133,8 +136,8 @@ include"../inc/connect.php";
           <?php
 		  $user_h = $_SESSION['username'];
 $sql="SELECT * FROM login WHERE username='$user_h'";
-    $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
-     $row2=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
+     $row2=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
      //print_r($row2); exit();
 ?>
               <img src="../../dashboard/Upload/Adminprofile/<?php echo $row2['profile'];?>" class="user-image" alt="User Image">

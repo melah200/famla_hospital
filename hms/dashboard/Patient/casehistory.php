@@ -12,9 +12,9 @@ if(isset($_POST['submit']))
     $date=$_POST['date'];
     $patient=$_POST['patient'];
     $description=$_POST['description'];
-   $write =mysqli_query($db_connect, "INSERT INTO addmedicalhistory(`date`,`patient`,`description`) VALUES ('$date','$patient','$description')") or die(mysql_error());
-      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysql_error());
-      //$numrows=mysqli_num_rows($query)or die (mysql_error());
+   $write =mysqli_query($db_connect, "INSERT INTO addmedicalhistory(`date`,`patient`,`description`) VALUES ('$date','$patient','$description')") or die(mysqli_error($db_connect));
+      //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
+      //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
     echo " <script>setTimeout(\"location.href='../Patient/casehistory.php';\",150);</script>";
     }
       
@@ -22,12 +22,12 @@ if(isset($_POST['submit']))
 ?>
 <?php
 //include("../inc/connect.php") ;
-$query=mysqli_query($db_connect, "SELECT * FROM addmedicalhistory")or die (mysql_error());
-$numrows=mysqli_num_rows($query)or die (mysql_error());
+$query=mysqli_query($db_connect, "SELECT * FROM addmedicalhistory") or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
 
-$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysql_error());
-$p_numrows=mysqli_num_rows($p_query)or die (mysql_error());
+$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister") or die (mysqli_error($db_connect));
+$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysql_fetch_all($p_query);
 
 
@@ -37,7 +37,7 @@ function mysql_fetch_all($query) {
     return $temp;
 }
 //print_r($row1); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 <div class="content-wrapper">
     <section class="content-header">
@@ -126,9 +126,9 @@ function mysql_fetch_all($query) {
 foreach ($row1 as $row)
 {
   $sql1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
-  $write1 =mysqli_query($db_connect, $sql1) or die(mysql_error($db_connect));
+  $write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
  //print_r($sql); exit;
-    $row1=mysqli_fetch_array($write1)or die (mysql_error($db_connect));
+    $row1=mysqli_fetch_array($write1)or die (mysqli_error($db_connect));
 //print_r($row1); exit;
    //echo "$description"; exit();
 ?> <tr>

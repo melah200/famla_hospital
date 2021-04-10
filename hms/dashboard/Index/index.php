@@ -31,8 +31,8 @@ include"../inc/connect.php ";
             <div class="inner">
            <?php 
                 $sql="SELECT count(*) FROM patientregister";
-    $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
-     $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
+     $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
    //print_r($row); exit;
                 ?>
               <h3><?php echo $row[0];?></h3>
@@ -53,8 +53,8 @@ include"../inc/connect.php ";
             <div class="inner">
               <?php 
                 $sql="SELECT count(*) FROM addappointment";
-    $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
-     $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
+     $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
    //print_r($row); exit;
                 ?>
               <h3><?php echo $row[0];?></h3>
@@ -75,8 +75,8 @@ include"../inc/connect.php ";
             <div class="inner">
                    <?php 
                 $sql="SELECT count(*) FROM addnewmedicine";
-    $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
-     $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
+     $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
    //print_r($row); exit;
                 ?>
               <h3><?php echo $row[0];?></h3>
@@ -96,8 +96,8 @@ include"../inc/connect.php ";
             <div class="inner">
                    <?php 
                 $sql="SELECT count(*) FROM addnewpres";
-    $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
-     $row=mysqli_fetch_array($write)or die (mysql_error($db_connect));
+    $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
+     $row=mysqli_fetch_array($write)or die (mysqli_error($db_connect));
    //print_r($row); exit;
                 ?>
               <h3><?php echo $row[0];?></h3>

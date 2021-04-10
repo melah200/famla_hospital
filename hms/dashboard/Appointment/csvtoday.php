@@ -2,8 +2,8 @@
 include("../inc/connect.php") ;
 
 
-$query=mysqli_query($db_connect, "SELECT `id`, `patient`,`app_date`, `starttime`, `endtime`, `remark`, `sms` FROM addappointment WHERE `app_date` = '".date('Y-m-d')."'")or die (mysql_error());
-$numrows=mysqli_num_rows($query)or die (mysql_error());
+$query=mysqli_query($db_connect, "SELECT `id`, `patient`,`app_date`, `starttime`, `endtime`, `remark`, `sms` FROM addappointment WHERE `app_date` = '".date('Y-m-d')."'")or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $data=mysql_fetch_all($query);
 function mysql_fetch_all($query) {
     $all = array();
@@ -11,7 +11,7 @@ function mysql_fetch_all($query) {
     return $temp;
 }
 //print_r($row1); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 
 <?php

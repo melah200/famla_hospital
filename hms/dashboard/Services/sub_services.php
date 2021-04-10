@@ -3,8 +3,8 @@
 <?php
 
 include("../inc/connect.php") ;
-$query=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysql_error());
-$numrows=mysqli_num_rows($query)or die (mysql_error());
+$query=mysqli_query($db_connect, "SELECT * FROM mainservices")or die (mysqli_error($db_connect));
+$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
 
 function mysql_fetch_all($query) 
@@ -13,7 +13,7 @@ function mysql_fetch_all($query)
     while ($all[] = mysqli_fetch_assoc($query)) {$temp=$all;}
     return $temp;
 }
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 <?php
 include("../inc/connect.php") ;
@@ -25,7 +25,7 @@ if(isset($_POST['submit']))
 		$subservicename=$_POST['subservicename'];
 		$Fee=$_POST['Fee'];
     $sid=$_POST['sid'];
- $write =mysqli_query($db_connect, "INSERT INTO subservices(`sid`,`subservicename`,`Fee`) VALUES ('$sid','$subservicename','$Fee')") or die(mysql_error($db_connect));
+ $write =mysqli_query($db_connect, "INSERT INTO subservices(`sid`,`subservicename`,`Fee`) VALUES ('$sid','$subservicename','$Fee')") or die(mysqli_error($db_connect));
   echo " <script>setTimeout(\"location.href='../Services/services.php';\",100);</script>";
   // echo "<script>alert('Records Successfully Inserted..');</script>";
 }

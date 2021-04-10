@@ -4,21 +4,21 @@
 include("../inc/connect.php") ;
 
 
-// $query=mysqli_query($db_connect, "SELECT * FROM addappointment  WHERE patient='".$_GET['id']."'")or die (mysql_error($db_connect));
-// $numrows=mysqli_num_rows($query)or die (mysql_error($db_connect));
+// $query=mysqli_query($db_connect, "SELECT * FROM addappointment  WHERE patient='".$_GET['id']."'")or die (mysqli_error($db_connect));
+// $numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 // $row1=mysql_fetch_all($query);
 
-$query1=mysqli_query($db_connect, "SELECT * FROM addnewpres WHERE patient='".$_GET['id']."'")or die (mysql_error());
-$numrows1=mysqli_num_rows($query1)or die (mysql_error($db_connect));
+$query1=mysqli_query($db_connect, "SELECT * FROM addnewpres WHERE patient='".$_GET['id']."'")or die (mysqli_error($db_connect));
+$numrows1=mysqli_num_rows($query1)or die (mysqli_error($db_connect));
 $p_row=mysql_fetch_all($query1);
 
-$query2=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE id='".$_GET['id']."'")or die (mysql_error());
-$numrows2=mysqli_num_rows($query2)or die (mysql_error($db_connect));
+$query2=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE id='".$_GET['id']."'")or die (mysqli_error($db_connect));
+$numrows2=mysqli_num_rows($query2)or die (mysqli_error($db_connect));
 $p_row1=mysql_fetch_all($query2);
 
 
-/*$file_query=mysqli_query($db_connect, "SELECT * FROM addfiles")or die (mysql_error());
-$file_numrows=mysqli_num_rows($file_query)or die (mysql_error());
+/*$file_query=mysqli_query($db_connect, "SELECT * FROM addfiles")or die (mysqli_error($db_connect));
+$file_numrows=mysqli_num_rows($file_query)or die (mysqli_error($db_connect));
 $file_row1=mysql_fetch_all($file_query);*/
 
 function mysql_fetch_all($query) {
@@ -27,7 +27,7 @@ function mysql_fetch_all($query) {
     return $temp;
 }
 //print_r($p_row); exit;
-//$row1[]=mysqli_fetch_assoc($query)or die (mysql_error());
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->

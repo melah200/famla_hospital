@@ -1,8 +1,8 @@
 <?php
 include("../inc/connect.php") ;
 $service_id=$_POST['sub_id'];
-$sub_q=mysqli_query($db_connect, "SELECT * FROM subservices WHERE sid='".$service_id."'")or die (mysql_error());
-$sub_numrows=mysqli_num_rows($sub_q)or die (mysql_error());
+$sub_q=mysqli_query($db_connect, "SELECT * FROM subservices WHERE sid='".$service_id."'")or die (mysqli_error($db_connect));
+$sub_numrows=mysqli_num_rows($sub_q)or die (mysqli_error($db_connect));
 $sub_row=mysql_fetch_all($sub_q);
 function mysql_fetch_all($query)
  {

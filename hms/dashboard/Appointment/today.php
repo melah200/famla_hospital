@@ -4,9 +4,9 @@
 include("../inc/connect.php") ;
 
 $s="SELECT * FROM addappointment WHERE `app_date` = '".date('Y-m-d')."'";
-$query=mysqli_query($db_connect, $s)or die (mysql_error($db_connect));
+$query=mysqli_query($db_connect, $s)or die (mysqli_error($db_connect));
 
-$row1=mysql_fetch_all($query);
+
 function mysql_fetch_all($query) 
 {
   $temp='';
@@ -15,6 +15,8 @@ while ($all[] = mysqli_fetch_assoc($query)) {$temp=$all;}
 return $temp;
 // print_r($numrows);echo "string"; exit();
 }
+$row1=mysql_fetch_all($query);
+
 ?>
 
 <div class="content-wrapper">
@@ -69,16 +71,22 @@ Today's Appointment
 </thead>
 <tbody>
 <?php
-foreach ($row1 as $row)
-{ 
-$sql1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
-$write1 =mysqli_query($db_connect, $sql1) or die(mysql_error($db_connect));
-//print_r($sql); exit;
-$row2=mysqli_fetch_array($write1)or die (mysql_error($db_connect));
-//print_r($row2); echo $row2['name']; exit;
-//echo "$description"; exit();
-//print_r($row1); exit;
-//echo "$description"; exit();
+// print_r($row1);
+ // print_r($query);
+//die("");
+$row_cnt = mysqli_num_rows($query);
+//check if a entry match the current date
+if($row_cnt > 0) {
+	foreach ($row1 as $row)
+	{ 
+	$sql1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
+	$write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
+	//print_r($sql); exit;
+	$row2=mysqli_fetch_assoc($write1)or die (mysqli_error($db_connect));
+	//print_r($row2); echo $row2['name']; exit;
+	//echo "$description"; exit(); 
+	// print_r($row2); exit;
+	//echo "$description"; exit();
 
 
 ?> <tr>
@@ -90,7 +98,9 @@ $row2=mysqli_fetch_array($write1)or die (mysql_error($db_connect));
 <td><?php echo $row['remark'];?></td>
 <td><a href="deletet.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td> 
 </tr>
-<?php } ?>
+<?php }
+
+} ?>
 
 </tbody>
 </table>

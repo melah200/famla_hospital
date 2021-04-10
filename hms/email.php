@@ -10,7 +10,7 @@ $username=$_POST['username'];
 //echo$password; exit();
 if($username)
 {
-  $query=mysqli_query($db_connect, "SELECT * FROM login WHERE username='$username' ")or die (mysql_error($db_connect));
+  $query=mysqli_query($db_connect, "SELECT * FROM login WHERE username='$username' ")or die (mysqli_error($db_connect));
   $numrows=mysqli_num_rows($query);
   //echo $numrows;
   if ($numrows!=0)
