@@ -10,7 +10,8 @@ include"../inc/connect.php ";
       <div class="user-panel">
         <div class="pull-left image">
            <?php
-$sql="SELECT * FROM login";
+		   $user_s = $_SESSION['username'];
+$sql="SELECT * FROM login WHERE username='$user_s'";
     $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
      $row2=mysqli_fetch_array($write)or die (mysql_error($db_connect));
      //print_r($row2?>

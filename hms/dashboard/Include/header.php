@@ -131,7 +131,8 @@ include"../inc/connect.php";
         <li class="dropdown user user-menu">
          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <?php
-$sql="SELECT * FROM login";
+		  $user_h = $_SESSION['username'];
+$sql="SELECT * FROM login WHERE username='$user_h'";
     $write =mysqli_query($db_connect, $sql) or die(mysql_error($db_connect));
      $row2=mysqli_fetch_array($write)or die (mysql_error($db_connect));
      //print_r($row2); exit();
