@@ -4,7 +4,7 @@
     <div class="pull-right">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2018 <a href="http://upturnit.com">Upturn India Technologies</a>.</strong> All rights
+    <strong>Copyright &copy; 2021 <a href="../../../templates/Medicio">Famla Hospital</a>.</strong> All rights
     reserved.
   </footer>
 
