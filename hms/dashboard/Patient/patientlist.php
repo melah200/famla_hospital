@@ -37,7 +37,7 @@ function mysql_fetch_all($query)
         <i class="fa fa-user"></i> <h3 class="box-title">Patient Database</h3>
       </div>
          <div class="box-header">
- <button class="popup" onclick="myFunction()" type="button" ><i class="fa fa-plus-square"></i> Add New<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></button>
+ <button onclick="window.location.href='newprofile'" type="button" ><i class="fa fa-plus-square"></i> Add New</button>
 </div>
       <div class="modal fade" id="myModal" role="dialog">
        <div class="modal-dialog">

@@ -88,7 +88,7 @@ $error = $_FILES["profile_pic"]["error"];//size
          <div class="col-md-8">
    &nbsp;&nbsp;&nbsp;&nbsp;
     <span style="color:red;">*</span><b>Full Name</b><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" name="name" required=""><br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" name="name" required="" style="width:50%"><br><br>
 
 
          <div class="col-md-3">
@@ -131,7 +131,7 @@ $error = $_FILES["profile_pic"]["error"];//size
     <div class="box-footer">
            <button type="submit"  name="Save" class="btn btn-success bg-green" ><i class="fa fa-file-text"></i> Save</button>
            <button type="reset"  name="reset" class="btn btn-primary" value="reset"><i class="f fa fa-undo"></i> Reset</button>
-          <a href="./patient.php"><button type="button" name="cancel" class="btn btn-primary"><i class="fa fa-times"></i> Cancel</button></a>
+          <a href="./patientlist.php"><button type="button" name="cancel" class="btn btn-primary"><i class="fa fa-times"></i> Cancel</button></a>
           </div>
         </div>
       </form>
