@@ -2,7 +2,7 @@
 <?php
 session_start();
   include("./inc/connect.php") ;
-  global $db_connect;
+  //global $db_connect;
 if(isset($_POST['login']))
 {
 $username=$_POST['username'];
@@ -12,7 +12,7 @@ $password=$_POST['password'];
 if($username && $password)
 {
 	
-	$query=mysqli_query($db_connect, "SELECT * FROM login WHERE username='$username' ")or die (mysql_error());
+	$query=mysqli_query($db_connect, "SELECT * FROM login WHERE username='$username' ")or die (mysqli_error($db_connect));
 	$numrows=mysqli_num_rows($query);
 	//echo $numrows;
 	if ($numrows!=0)
@@ -60,20 +60,30 @@ else
 <head>
   <meta charset="UTF-8">
   <title> Login Form </title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel=stylesheet>
-<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css>
+ <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel=stylesheet>
+<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css>-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+   <link href="css/bootstrap.min.css" rel="stylesheet">
 
-      <link rel="stylesheet" href="css/style.css">
+      <!--<link rel="stylesheet" href="css/style.css">-->
+      <link rel="stylesheet" href="css/loginform.css">
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/fontawesome.css" rel="stylesheet" type="text/css">
 
   
 </head>
 
 <body>
-<div class="container">
+<div class="container1">
   <div class="row">
+  <!-- login form -->
+  <?php include "inc/loginform.php" ?>
+  
+  <!-- login form original -->
+  <!--
     <form  method="POST" class="col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
       <div class="row">
         <h1><i class="fa fa-lock"></i> log-in</h1>
@@ -93,6 +103,7 @@ else
         <p>Forgot your <a href="email.php">password</a>?</p>
       </div>
     </form>
+	<!-- /form -->
   </div>
 </div>
   
