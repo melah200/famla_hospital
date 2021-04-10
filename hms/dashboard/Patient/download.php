@@ -1,5 +1,8 @@
 
 <?php
+if(!isset($_SESSION["username"])){
+	header("Location: ../../");
+}
 if(isset($_REQUEST["file"])){
     // Get parameters
     $file = $_REQUEST["file"]; // Decode URL-encoded string
