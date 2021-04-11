@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 09. Apr 2021 um 16:54
+-- Erstellungszeit: 11. Apr 2021 um 11:32
 -- Server-Version: 5.7.26
 -- PHP-Version: 7.2.18
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `addappointment` (
   `remark` varchar(20) NOT NULL,
   `sms` enum('0','1') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
 
 --
 -- Daten für Tabelle `addappointment`
@@ -47,8 +47,9 @@ CREATE TABLE IF NOT EXISTS `addappointment` (
 
 INSERT INTO `addappointment` (`id`, `patient`, `doctor`, `app_date`, `starttime`, `endtime`, `remark`, `sms`) VALUES
 (1, '1', '', '2018-05-16', '07:00', '08:00', 'srtggt', '1'),
-(2, '2', '', '2018-05-16', '08:15', '09:15', 'trhu', '1'),
-(3, '3', '', '2018-05-28', '09:00', '10:00', 'dhanu', '1');
+(2, '2', 'Amadou', '2021-04-18', '08:15', '09:15', 'trhu', '1'),
+(3, '3', 'donfack', '2021-04-12', '09:00', '10:00', 'dhanu', '1'),
+(5, '2', 'kamto', '2021-04-11', '20:00', '21:00', 'ok', '0');
 
 -- --------------------------------------------------------
 
@@ -212,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `addpayment` (
 INSERT INTO `addpayment` (`id`, `invoice`, `patient`, `refdbydoctor`, `categoryselect`, `subtotal`, `addp_discount`, `grosstotal`, `amountreceived`, `depositammount`, `date`, `vatper`, `discount`) VALUES
 (1, '', 1, '', '', 0, 0, 0, 0, '', '', 0, 0),
 (2, 'INV-00000001', 1, '', '1,1,4,7', 2746, 25, 2060, 65000, '5000', '2018-05-16', 0, 0),
-(3, '', 2, '', '', 0, 0, 0, 0, '', '', 0, 0),
+(3, '45421', 2, '', '', 0, 0, 0, 0, '', '', 0, 0),
 (4, '', 3, '', '', 0, 0, 0, 0, '', '', 0, 0),
 (5, '', 4, '', '', 0, 0, 0, 0, '', '', 0, 0);
 
@@ -252,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `mainservices` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `mainservicename` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `mainservices`
@@ -266,7 +267,11 @@ INSERT INTO `mainservices` (`id`, `mainservicename`) VALUES
 (5, 'USG-Pregnancy Pro'),
 (7, 'Service'),
 (8, 'services1'),
-(9, 'test service');
+(9, 'test service'),
+(10, 'famla12'),
+(12, 'famla'),
+(13, 'famla12'),
+(14, 'famla123');
 
 -- --------------------------------------------------------
 
