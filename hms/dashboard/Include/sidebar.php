@@ -83,7 +83,7 @@ include"../inc/connect.php ";
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../Services/addservices.php"><i class="fa fa-briefcase"></i> Main Services</a></li>
+            <li><a href="../Services/mainservices.php"><i class="fa fa-briefcase"></i> Main Services</a></li>
             <li><a href="../Services/services.php"><i class="fa fa-briefcase"></i> Sub Services</a></li>
           </ul>
         </li>
