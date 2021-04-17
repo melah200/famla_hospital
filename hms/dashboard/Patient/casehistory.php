@@ -128,19 +128,20 @@ foreach ($row1 as $row)
   $sql1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
   $write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
  //print_r($sql); exit;
-    $row1=mysqli_fetch_array($write1)or die (mysqli_error($db_connect));
+    // $row1=mysqli_fetch_array($write1)or die (mysqli_error($db_connect));
 //print_r($row1); exit;
    //echo "$description"; exit();
+   while($row1=mysqli_fetch_array($write1)){
 ?> <tr>
   
 <td><?php echo $row['date'];?></td>
 <td><?php echo $row1['name'];?></td>
 <td><?php echo $row['description'];?></td> 
 <td><a href="editmedicalhistory.php?id=<?php echo $row['id']; ?>"> <button type="button" class="btn btn-success"><i class="fa fa-edit"></i> Edit</button></a>
-<a href="d1.php?id=<?php echo $row['id'];?>"><button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
+<a class="btn-del" href="d1.php?id=<?php echo $row['id'];?>"><button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
 </a></td>
 </tr>
-<?php } ?>
+<?php } } ?>
                 </tfoot>
               </tbody>
               </table>
