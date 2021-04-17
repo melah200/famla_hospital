@@ -142,7 +142,7 @@ else
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
 <div class="box-body">
-		  <input type="text" id="myInput" class="form-control search-people" placeholder="Search...">
+		  <input type="text" id="myInput" class="form-control search-in-list" placeholder="Search...">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>

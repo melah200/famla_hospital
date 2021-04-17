@@ -119,7 +119,8 @@ include"../inc/connect.php";
     <!-- Logo -->
     <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>H</b>MS</span>
+      <!-- <span class="logo-mini"><b>H</b>MS</span> -->
+      <span class="logo-mini"><i class="fa fa-hospital-o fa-2x"></i></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Famla</b> Hospital</span>
     </a>
