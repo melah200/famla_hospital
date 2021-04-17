@@ -152,7 +152,7 @@ function mysql_fetch_all($query)
 
   <a href="payments.php"><span class="btn btn-primary"><i class="fa fa-money"></i> Payment</span></a>&nbsp;&nbsp;
 
-  <a href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+  <a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 </tr>
 <?php }  ?>
   </tbody>

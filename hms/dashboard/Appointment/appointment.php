@@ -39,13 +39,13 @@ $temp = $_FILES["file"]["tmp_name"];
 $error = $_FILES["file"]["error"];//size
 if($error>0)
 {
-die("Error uploading file! Code $error.");
+// die("Error uploading file! Code $error.");
 }
 else
 { 
 if ($type=="images/" || $size > 5000000)
 {
-  die("that format is not allowed or file size is too big!");
+  // die("that format is not allowed or file size is too big!");
 }
 else
 { //echo "string"; exit;
@@ -159,8 +159,9 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 $s1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
 $w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
 //print_r($w1); exit;
-$row2=mysqli_fetch_assoc($w1)or die (mysqli_error($db_connect));
+// $row2=mysqli_fetch_assoc($w1)or die (mysqli_error($db_connect));
  //print_r($row2); exit();
+ while($row2=mysqli_fetch_assoc($w1)){
 ?> <tr>  
 <td><?php echo $row['doc_date'];?></td>
 <td><?php echo $row2['name'];?></td>
@@ -169,10 +170,10 @@ $row2=mysqli_fetch_assoc($w1)or die (mysqli_error($db_connect));
 <td><img src="../Upload/File/<?php echo $row['file'];?>" style="height:100px;width:100px;"/></td>
  
 <td><a href="./download.php?file=<?php echo $row['file'];?>"><button type="button" class="btn btn-success"><i class="fa fa-plus-square"></i> Download</button></a>&nbsp;
-<a href="deletea.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td>
+<a class="btn-del" href="deletea.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td>
 
 </tr>
-<?php } ?>
+	<?php } } ?>
      </tbody>
     </table>
       </div>

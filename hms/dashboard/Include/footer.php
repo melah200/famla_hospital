@@ -60,6 +60,8 @@
 <script src="../plugins/input-mask/jquery.inputmask.js"></script>
 <script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="../sweetalert/sweetalert.js"></script>
+<script src="../famla-js/famla.js"></script>
 <!-- Page script -->
 
 <script>
