@@ -79,7 +79,7 @@ function mysql_fetch_all($query) {
                 </select><br>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Description</label>
-                  <textarea id="editor1" name="description" style="width:50px;" class="form-control">
+                  <textarea id="editor1" name="description" style="width:150px;" class="form-control">
                   </textarea>
                 </div>
                    <button type="submit"  name="submit" class="btn btn-primary">Submit</button>

@@ -1,6 +1,7 @@
 
 // make sure that the document is ready before the script is run
 $(document).ready(function() {
+	
 	$('.btn-del').on('click', function(e){
 		e.preventDefault();
 		const href = $(this).attr('href');	
@@ -22,5 +23,13 @@ $(document).ready(function() {
 		  }
 		});
 	});
+
+	$("#myInput").on("keyup", function () {
+		var value = $(this).val().toLowerCase();
+		$("#myTable tr").filter(function () {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	});
+
 });
 

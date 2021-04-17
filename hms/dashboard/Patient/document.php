@@ -39,13 +39,13 @@ $temp = $_FILES["file"]["tmp_name"];
 $error = $_FILES["file"]["error"];//size
 if($error>0)
 {
-die("Error uploading file! Code $error.");
+// die("Error uploading file! Code $error.");
 }
 else
 { 
 if ($type=="images/" || $size > 5000000)
 {
-  die("that format is not allowed or file size is too big!");
+  // die("that format is not allowed or file size is too big!");
 }
 else
 { //echo "string"; exit;
@@ -106,14 +106,14 @@ else
 
            <div class="form-group">
                <label for="exampleInputPassword1">Title</label>
-              <input type="text" name="title" class="form-control" id="exampleInputPassword1" placeholder="">
+              <input type="text" name="title" class="form-control" id="exampleInputPassword1" placeholder="" required>
            </div>
 
               <td><b>Image Upload</b></font>
-              <input type="file" name="file" id="fileToUpload"></td>
+              <input type="file" name="file" id="fileToUpload" required></td>
 
             <div class="box-footer">
-              <button type="submit" onclick="myfunction()"  name="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" onclick="myfunction()"  name="submit" class="btn btn-primary submit-doc">Submit</button>
              </div>
 
           <div class="modal-footer">
@@ -142,6 +142,7 @@ else
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
 <div class="box-body">
+		  <input type="text" id="myInput" class="form-control search-people" placeholder="Search...">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -152,15 +153,16 @@ else
             <th>Option</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="myTable">
                <?php
    foreach ($row1 as $row)
     {
 $s1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
 $w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
 //print_r($w1); exit;
-$row2=mysqli_fetch_array($w1)or die (mysqli_error($db_connect));
+//$row2=mysqli_fetch_array($w1)or die (mysqli_error($db_connect));
  //print_r($row2); exit();
+while($row2=mysqli_fetch_array($w1)){
 ?> <tr>  
 <td><?php echo $row['doc_date'];?></td>
 <td><?php echo $row2['name'];?></td>
@@ -169,10 +171,10 @@ $row2=mysqli_fetch_array($w1)or die (mysqli_error($db_connect));
 <td><img src="../Upload/File/<?php echo $row['file'];?>" style="height:100px;width:100px;" alt="<?php echo pathinfo($row['file'], PATHINFO_FILENAME) ?>"/></td>
  
 <td><a href="./download.php?file=<?php echo $row['file'];?>"><button type="submit" class="btn btn-success"><i class="fa fa-plus-square"></i> Download</button></a>&nbsp;
-<a href="deleted.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td>
+<a class="btn-del" href="deleted.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td>
 
 </tr>
-<?php } ?>
+	<?php } } ?>
      </tbody>
     </table>
       </div>

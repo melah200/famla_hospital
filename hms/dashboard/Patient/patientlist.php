@@ -124,6 +124,7 @@ function mysql_fetch_all($query)
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
 <div class="box-body">
+<input type="text" id="myInput" class="form-control search-people" placeholder="Search...">
 <table id="example1" class="table table-bordered table-hover">
 <thead>
  <tr>
@@ -134,7 +135,7 @@ function mysql_fetch_all($query)
                   
 </tr>
 </thead>
-<tbody>
+<tbody id="myTable">
 <?php 
      foreach ($row1 as $row)
       {
