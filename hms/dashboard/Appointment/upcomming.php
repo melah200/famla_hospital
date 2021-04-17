@@ -62,6 +62,7 @@ function mysql_fetch_all($query)
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
  <div class="box-body">
+			  <input type="text" id="myInput" class="form-control search-in-list" placeholder="Search an appointment...">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -74,7 +75,7 @@ function mysql_fetch_all($query)
                   <th>Option</th>
                  </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
  <?php
 //foreach ($row1 as $row)
      for ($i=0; $i <count($row1) ; $i++) 
@@ -100,7 +101,7 @@ foreach ($p_row1 as $p)
 <td><?php echo $row1[$i]['remark'];?></td>
 <td><a href="sendsms.php?id=<?php echo $row1[$i]['id'];?>"><input type="button" name="submit" value="SMS" class="btn btn-success"></a>
 <!-- <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal<?php $row1[$i]['id'];?>" style="height: 30px;"><i class="fa fa-plus-square"></i> SMS</button> &nbsp; -->
-  <a href="deleteu.php?id=<?php echo $row1[$i]['id'];?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td>
+  <a class="btn-del" href="deleteu.php?id=<?php echo $row1[$i]['id'];?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td>
 
 <!--  <div class="modal fade" id="myModal<?php $row1[$i]['id'];?>" role="dialog">
     <div class="modal-dialog"> -->

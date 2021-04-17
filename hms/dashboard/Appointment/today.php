@@ -57,6 +57,7 @@ Today's Appointment
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
 <div class="box-body">
+<input type="text" id="myInput" class="form-control search-in-list" placeholder="Search an appointment...">
 <table id="example1" class="table table-bordered table-striped">
 <thead>
 <tr>
@@ -69,7 +70,7 @@ Today's Appointment
 <th> Option </th>
 </tr>
 </thead>
-<tbody>
+<tbody id="myTable">
 <?php
 // print_r($row1);
  // print_r($query);

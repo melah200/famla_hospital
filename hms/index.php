@@ -60,8 +60,8 @@ else
 <head>
   <meta charset="UTF-8">
   <title> Login Form </title>
- <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel=stylesheet>
-<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css>-->
+ <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel=stylesheet> -->
+<!-- <link rel=stylesheet href='maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'> -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>

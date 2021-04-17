@@ -88,7 +88,7 @@ if(isset($_POST['submit']))
 <td><?php echo $row['id'];?></td>
 <td><?php echo $row['mainservicename'];?></td>
 <td><a href="editmainservices.php?id=<?php echo $row['id'];?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a>
-<a href="delete.php?id=<?php echo $row['id'];?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+<a class="btn-del" href="delete.php?id=<?php echo $row['id'];?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 </tr>
 <?php } ?>
 

@@ -93,7 +93,7 @@ if(isset($_POST['submit']))
 <td><?php echo $row['Fee'];?></td>
 
 <td><a href="editsubservices.php?id=<?php echo $row['service_id'];?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a>
-<a href="subdelete.php?id=<?php echo $row['service_id'];?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+<a class="btn-del" href="subdelete.php?id=<?php echo $row['service_id'];?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 </tr>
 <?php } ?>
 </tbody>
