@@ -7,18 +7,23 @@ include("../inc/connect.php") ;
 $s="SELECT * FROM addappointment WHERE  `app_date`>'".date('Y-m-d')."'";
 $query=mysqli_query($db_connect, $s)or die (mysqli_error($db_connect));
 //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
-$row1=mysql_fetch_all($query);
 
 $p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysqli_error($db_connect));
 $p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysql_fetch_all($p_query);
+
 function mysql_fetch_all($query)
 {
+    $temp = '';
     $all = array();
+    
     while ($all[] = mysqli_fetch_assoc($query))
      {$temp=$all;}
     return $temp;
 }
+
+$row1=mysql_fetch_all($query);
+
 //print_r($row1); exit;
 //$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
@@ -49,6 +54,7 @@ function mysql_fetch_all($query)
 <!--    <td>
 <button type="button" class="btn btn-default">Copy</button>
 </td> -->
+<!--
 <td>
 <a href="Excelupcomming.php"> <button type="button" class="btn btn-default">Excel</button></a>
 </td>&nbsp;&nbsp;
@@ -57,7 +63,7 @@ function mysql_fetch_all($query)
 </td>&nbsp;&nbsp;
 <td>
 <a href="./PDF/upcomming_pdf.php"><button type="button" class="btn btn-default">PDF</button></a>
-</td>&nbsp;&nbsp;
+</td>&nbsp;&nbsp; -->
 <td>
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
@@ -78,6 +84,9 @@ function mysql_fetch_all($query)
                 <tbody id="myTable">
  <?php
 //foreach ($row1 as $row)
+$row_cnt = mysqli_num_rows($query);
+//check if a entry match the upcoming date
+if($row_cnt > 0) {
      for ($i=0; $i <count($row1) ; $i++) 
       {
 
@@ -128,7 +137,7 @@ foreach ($p_row1 as $p)
       </div>
     </div>  -->
 </tr>
-<?php }   ?>
+  <?php } }  ?>
 </tbody>
  </table>
 </div>
