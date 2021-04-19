@@ -42,7 +42,7 @@ include"../inc/connect.php ";
             <div class="icon">
               <i class="fa fa-wheelchair"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="../patient/patientlist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -64,7 +64,7 @@ include"../inc/connect.php ";
             <div class="icon">
               <i class="fa fa-calendar-check-o"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="../appointment/allappointment.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -107,7 +107,7 @@ include"../inc/connect.php ";
             <div class="icon">
               <i class="fa fa-pencil-square-o"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="../prescription/prescription.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
