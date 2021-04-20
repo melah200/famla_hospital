@@ -86,7 +86,7 @@ function mysql_fetch_all($query) {
 			<i class="fa fa-user"></i> <h3 class="box-title">Patient Payments</h3>
 		</div>
  		<div class="box-header">
- 			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" style="height: 50px;"><i class="fa fa-plus-square"></i> Register Patient</button>
+ 			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square"></i> Register Patient</button>
  <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
 <div class="modal-dialog">
@@ -166,6 +166,7 @@ function mysql_fetch_all($query) {
 <!--    <td>
  <button type="button" class="btn btn-default">Copy</button>
 </td> -->
+<!-- button for Excel, CSV and PDF
 <td>
    <a href="./Excelpayment.php"> <button type="button" class="btn btn-default">Excel</button></a>
 </td>&nbsp;&nbsp;
@@ -174,7 +175,7 @@ function mysql_fetch_all($query) {
 </td>&nbsp;&nbsp;
 <td>
    <a href="./PDF/payments_pdf.php"><button type="button" class="btn btn-default">PDF</button></a>
-</td>&nbsp;&nbsp;
+</td>&nbsp;&nbsp; -->
 <td>
    <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
