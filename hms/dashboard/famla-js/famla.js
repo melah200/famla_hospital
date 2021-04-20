@@ -31,9 +31,6 @@ $(document).ready(function() {
 		});
 	});
 	
-	$(".print").on("click", function(){
-		alert("pressed");
-	});
 
 });
 

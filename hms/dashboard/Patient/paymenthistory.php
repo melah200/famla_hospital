@@ -26,6 +26,7 @@ $p_row1=mysqli_fetch_array($p_query);
 
 $sql="SELECT * FROM addpayment WHERE patient='".$id."'";
 $write =mysqli_query($db_connect, $sql) or die(mysqli_error($db_connect));
+$pay_numrows=mysqli_num_rows($write)or die (mysqli_error($db_connect));
 // print_r($sql); exit;
 $a_row=mysql_fetch_all($write)or die (mysqli_error($db_connect));
 //print_r($a_row);exit;
@@ -139,9 +140,10 @@ return $temp;
         <div class="form-group">
         <label for="exampleInputPassword1">Invoice</label>
         <select name="invoice" class="form-control"  placeholder="" >
- <?php foreach ($a_row as $p) {?>
+ <?php if($pay_numrows > 0) {
+	 foreach ($a_row as $p) {?>
 <option value="<?php echo $p['id'];?>"><?php echo  $p['invoice'];?></option>
-<?php } ?>
+ <?php } } ?>
 </select>
            </div>
         <div class="form-group">
@@ -184,7 +186,7 @@ return $temp;
         </tr>
 
 
-        <?php if(count($a_row)>0) 
+        <?php if($pay_numrows > 0) 
         { 
         foreach ($a_row as $row) { ?>
         <tr>

@@ -44,6 +44,7 @@ Today's Appointment
 <!--    <td>
 <button type="button" class="btn btn-default">Copy</button>
 </td> -->
+<!-- Excel, CSV and PDF
 <td>
 <a href="./Exceltoday.php"><button type="button" class="btn btn-default">Excel</button></a>
 </td>&nbsp;&nbsp;
@@ -52,7 +53,7 @@ Today's Appointment
 </td>&nbsp;&nbsp;
 <td>
 <a href="./PDF/today_pdf.php"><button type="button" class="btn btn-default">PDF</button></a>
-</td>&nbsp;&nbsp;
+</td>&nbsp;&nbsp; -->
 <td>
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
