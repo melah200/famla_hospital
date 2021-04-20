@@ -43,7 +43,9 @@
 
 <div class="container">
   <div class="box box-primary">
-    <h3 >&nbsp;&nbsp;&nbsp;Patient Personal Info</h3>
+    <h3>&nbsp;&nbsp;&nbsp;Patient Personal Info &nbsp;&nbsp;&nbsp;
+	  <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
+	</h3>
    <div class="box-body box-profile" >
     <form method="POST" enctype="multipart/form-data" >
          <div class="col-md-8">
@@ -85,8 +87,9 @@
   <?php if($row['status']=='1'){ echo 'Active'; } ?>
  <?php if($row['status']=='0'){ echo 'Inactive'; } ?>
 </div><br><br><br><br>
-<div class="box-footer">
-    <a href="./patientlist.php"><button type="button" name="cancel" class="btn btn-primary"><i class="fa fa-times"></i> Cancel</button></a>
+<div class="box-footer section_to_print">
+    <a href="./patientlist.php"><button type="button" name="cancel" class="btn btn-primary"><i class="fa fa-times"></i> Cancel</button></a>&nbsp;
+    <a href="editpatient1.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a>
   </div>
 </div>
 </form>
@@ -96,4 +99,5 @@
 </div>
 </section>
 </div>
+
  <?php include "../Include/footer.php";?>

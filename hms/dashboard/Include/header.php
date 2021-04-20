@@ -108,6 +108,17 @@ include"../inc/connect.php";
     from {opacity: 0;}
     to {opacity:1 ;}
 }
+@media print {
+	  a[href] {
+    display: none !important;
+  }
+  a[href]:after {
+    content: none !important;
+  }
+  button[type="button"]{
+	 display: none;
+  }
+} 
 </style>
 
   

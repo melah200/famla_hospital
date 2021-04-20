@@ -37,7 +37,7 @@ function mysql_fetch_all($query)
         <i class="fa fa-user"></i> <h3 class="box-title">Patient Database</h3>
       </div>
          <div class="box-header">
- <button onclick="window.location.href='newprofile'" type="button" ><i class="fa fa-plus-square"></i> Add New</button>
+ <button onclick="window.location.href='newprofile'" type="button" class="btn btn-success bg-blue" ><i class="fa fa-plus-square"></i> Add New</button>
 </div>
       <div class="modal fade" id="myModal" role="dialog">
        <div class="modal-dialog">
@@ -110,6 +110,7 @@ function mysql_fetch_all($query)
 <!--    <td>
 <button type="button" class="btn btn-default">Copy</button>
 </td> -->
+<!-- comment button for Excel CSV and PDF
 <td>
 
 <a class="popup" onclick="myFunction()"> <button type="button" class="btn btn-default">Excel</button><span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a>
@@ -119,7 +120,7 @@ function mysql_fetch_all($query)
 </td>&nbsp;&nbsp;&nbsp;
 <td>
 <a class="popup" onclick="myFunction()"><button type="submit" class="btn btn-default">PDF</button><span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a>
-</td>&nbsp;&nbsp;
+</td>&nbsp;&nbsp; -->
 <td>
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
