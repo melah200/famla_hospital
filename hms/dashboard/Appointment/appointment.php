@@ -73,7 +73,7 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
     <li class="active">Patient</li>
-    <li class="active"> Document</li>
+    <li class="active"> Appointment</li>
   </ol>
 </section>
 <section class="content">
@@ -81,10 +81,10 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 <div class="col-xs-12">
 <div class="box box-primary">
 <div class="box-header with-border">
-<i class="fa fa-user"></i> <h3 class="box-title">Patient Document</h3>
+<i class="fa fa-user"></i> <h3 class="box-title">Patient Appointment</h3>
 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" style="height: 50px;"><i class="fa fa-plus-square"></i> Add New</button><br>
-
+<!--
 <div class="modal fade" id="myModal" role="dialog">
 <div class="modal-dialog">
   <div class="modal-content">
@@ -124,11 +124,13 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
     </div>
 </div>
 </div>
+-->
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <!--    <td>
 <button type="button" class="btn btn-default">Copy</button>
 </td> -->
+<!--
 <td>
 <a href="./excelapp.php"> <button type="button" class="btn btn-default">Excel</button></a>
 </td>&nbsp;&nbsp;
@@ -141,6 +143,8 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 <td>
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
+-->
+<!--
 <div class="box-body">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
@@ -177,11 +181,139 @@ $w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
      </tbody>
     </table>
       </div>
+-->
   
 </div>
 </div>
 </div>
+<!-- DATE -->
+<div style="display: flex">
+
+    <div style="margin-right: 10px;">
+      <div id="nav"></div>
+    </div>
+
+    <div style="flex-grow: 1;">
+      <div id="calendar"></div>
+    </div>
+</div>
+<!-- END DATE -->
 </section>
 </div>
+<script src="../daypilot/daypilot-all.min.js"></script>
+<script type="text/javascript">
+
+  var nav = new DayPilot.Navigator("nav");
+  nav.showMonths = 3;
+  nav.skipMonths = 3;
+  nav.selectMode = "week";
+  nav.onTimeRangeSelected = function (args) {
+    dp.startDate = args.day;
+    dp.update();
+    loadEvents();
+  };
+  nav.init();
+
+  var dp = new DayPilot.Calendar("dp");
+  dp.viewType = "Week";
+
+  dp.eventDeleteHandling = "Update";
+
+  dp.onEventDeleted = function (args) {
+    DayPilot.Http.ajax({
+      url: "backend_delete.php",
+      data: {
+        id: args.e.id()
+      },
+      success: function () {
+        console.log("Deleted.");
+      }
+    })
+
+  };
+
+  dp.onEventMoved = function (args) {
+    DayPilot.Http.ajax({
+      url: "backend_move.php",
+      data: {
+        id: args.e.id(),
+        newStart: args.newStart,
+        newEnd: args.newEnd
+      },
+      success: function () {
+        console.log("Moved.");
+      }
+    });
+  };
+
+  dp.onEventResized = function (args) {
+    DayPilot.Http.ajax({
+      url: "backend_move.php",
+      data: {
+        id: args.e.id(),
+        newStart: args.newStart,
+        newEnd: args.newEnd
+      },
+      success: function () {
+        console.log("Resized.");
+      }
+    });
+  };
+
+  // event creating
+  dp.onTimeRangeSelected = function (args) {
+    var name = prompt("New event name:", "Event")
+    dp.clearSelection();
+    if (!name) {
+      return;
+    }
+
+    DayPilot.Http.ajax({
+      url: "backend_create.php",
+      data: {
+        start: args.start,
+        end: args.end,
+        text: name
+      },
+      success: function (ajax) {
+        var data = ajax.data;
+        dp.events.add(new DayPilot.Event({
+          start: args.start,
+          end: args.end,
+          id: data.id,
+          text: name
+        }));
+        console.log("Created.");
+      }
+    });
+
+  };
+
+  dp.onEventClick = function (args) {
+    alert("clicked: " + args.e.id());
+  };
+
+  dp.init();
+
+  loadEvents();
+
+  function loadEvents() {
+    dp.events.load("backend_events.php");
+  }
+
+</script>
+
+<script type="text/javascript">
+  var elements = {
+    theme: document.querySelector("#theme")
+  };
+
+  elements.theme.addEventListener("change", function () {
+    dp.theme = this.value;
+    dp.update();
+  });
+
+</script>
+
 <?php include "../Include/footer.php";?>
 
