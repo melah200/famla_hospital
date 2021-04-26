@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>HTML5/JavaScript Event Calendar (Open-Source)</title>
+
+  <style type="text/css">
+      p, body, td { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 10pt; }
+      body { padding: 0px; margin: 0px; background-color: #ffffff; }
+      a { color: #1155a3; }
+      .space { margin: 10px 0px 10px 0px; }
+      .header { background: #003267; background: linear-gradient(to right, #011329 0%, #00639e 44%, #011329 100%); padding: 20px 10px; color: white; box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75); }
+      .header a { color: white; }
+      .header h1 a { text-decoration: none; }
+      .header h1 { padding: 0px; margin: 0px; }
+      .main { padding: 10px; margin-top: 10px; }
+  </style>
+
+  <!-- DayPilot library -->
+  <script src="js/daypilot/daypilot-all.min.js"></script>
+
+  <!-- additional themes -->
+  <link type="text/css" rel="stylesheet" href="themes/calendar_g.css"/>
+  <link type="text/css" rel="stylesheet" href="themes/calendar_green.css"/>
+  <link type="text/css" rel="stylesheet" href="themes/calendar_traditional.css"/>
+  <link type="text/css" rel="stylesheet" href="themes/calendar_transparent.css"/>
+  <link type="text/css" rel="stylesheet" href="themes/calendar_white.css"/>
+
+</head>
+<body>
+<!--
+<div class="header">
+  <h1><a href='https://code.daypilot.org/17910/html5-event-calendar-open-source'>HTML5/JavaScript Event Calendar (Open-Source)</a></h1>
+  <div><a href="https://javascript.daypilot.org/">DayPilot for JavaScript</a> - HTML5 Calendar/Scheduling Components for JavaScript/Angular/React/Vue</div>
+</div>
+-->
+<div class="main">
+  <div style="display: flex">
+
+    <div style="margin-right: 10px;">
+      <div id="nav"></div>
+    </div>
+
+    <div style="flex-grow: 1;">
+<!--
+      <div class="space">
+        Theme: <select id="theme">
+        <option value="calendar_default">Default</option>
+        <option value="calendar_white">White</option>
+        <option value="calendar_g">Google-Like</option>
+        <option value="calendar_green">Green</option>
+        <option value="calendar_traditional">Traditional</option>
+        <option value="calendar_transparent">Transparent</option>
+      </select>
+      </div>
+-->
+      <div id="dpy"></div>
+    </div>
+
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  var nav = new DayPilot.Navigator("nav");
+  nav.showMonths = 3;
+  nav.skipMonths = 3;
+  nav.selectMode = "week";
+  nav.onTimeRangeSelected = function (args) {
+    dp.startDate = args.day;
+    dp.update();
+    loadEvents();
+  };
+  nav.init();
+
+  var dp = new DayPilot.Calendar("dp");
+  dp.viewType = "Week";
+
+  dp.eventDeleteHandling = "Update";
+
+  dp.onEventDeleted = function (args) {
+    DayPilot.Http.ajax({
+      url: "backend_delete.php",
+      data: {
+        id: args.e.id()
+      },
+      success: function () {
+        console.log("Deleted.");
+      }
+    })
+
+  };
+
+  dp.onEventMoved = function (args) {
+    DayPilot.Http.ajax({
+      url: "backend_move.php",
+      data: {
+        id: args.e.id(),
+        newStart: args.newStart,
+        newEnd: args.newEnd
+      },
+      success: function () {
+        console.log("Moved.");
+      }
+    });
+  };
+
+  dp.onEventResized = function (args) {
+    DayPilot.Http.ajax({
+      url: "backend_move.php",
+      data: {
+        id: args.e.id(),
+        newStart: args.newStart,
+        newEnd: args.newEnd
+      },
+      success: function () {
+        console.log("Resized.");
+      }
+    });
+  };
+
+  // event creating
+  dp.onTimeRangeSelected = function (args) {
+    var name = prompt("New event name:", "Event")
+    dp.clearSelection();
+    if (!name) {
+      return;
+    }
+
+    DayPilot.Http.ajax({
+      url: "backend_create.php",
+      data: {
+        start: args.start,
+        end: args.end,
+        text: name
+      },
+      success: function (ajax) {
+        var data = ajax.data;
+        dp.events.add(new DayPilot.Event({
+          start: args.start,
+          end: args.end,
+          id: data.id,
+          text: name
+        }));
+        console.log("Created.");
+      }
+    });
+
+  };
+
+  dp.onEventClick = function (args) {
+    alert("clicked: " + args.e.id());
+  };
+
+  dp.init();
+
+  loadEvents();
+
+  function loadEvents() {
+    dp.events.load("backend_events.php");
+  }
+
+</script>
+
+<script type="text/javascript">
+  var elements = {
+    theme: document.querySelector("#theme")
+  };
+
+  elements.theme.addEventListener("change", function () {
+    dp.theme = this.value;
+    dp.update();
+  });
+
+</script>
+
+
+</body>
+</html>
+
