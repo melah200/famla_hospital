@@ -117,7 +117,7 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
            </div>
            <div class="form-group">
                <label for="time-app">Time <span style="color:red">*</span></label>
-              <input type="Time" name="time" value="7:30" min="7:30" max="17:30" step="1800" class="form-control" id="time-app" placeholder="" required>
+              <input type="time" name="time" list="calltimeslist" min="07:30" max="17:30" class="form-control" id="time-app" placeholder="" required>
            </div>
             <div class="box-footer">
               <button type="submit" name="submit" class="btn btn-primary">Submit</button>
@@ -127,6 +127,14 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
           </form>
+		<!-- Data List -->
+		<datalist id="calltimeslist">
+		  <option value="16:00">
+		  <option value="16:30">
+		  <option value="17:00">
+		  <option value="17:30" readonly>
+		</datalist>
+		<!-- End List -->
       </div>
     </div>
 </div>
