@@ -178,13 +178,14 @@ function myFunction() {
       header    : {
         left  : 'prev,next today',
         center: 'title',
-        right : 'month,agendaWeek,agendaDay'
+        right : 'month,agendaWeek,agendaDay,list'
       },
       buttonText: {
         today: 'today',
         month: 'month',
         week : 'week',
-        day  : 'day'
+        day  : 'day',
+		list : 'list'
       },
       //Random default events
             <?php
@@ -192,53 +193,49 @@ function myFunction() {
 //print_r($row2); exit;
     $s1="SELECT * FROM addappointment ";
     $w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
-     $row1=mysqli_fetch_array($w1)or die (mysqli_error($db_connect));
-  //    function mysql_fetch_all($s1) {
-  //   $all = array();
-  //   while ($all[] = mysqli_fetch_assoc($s1)) {$temp=$all;}
-  //   return $temp;
-  // }
- //print_r($row); exit;
-       ?>
-     
-        // {
-        //   title          : 'All Day Event',
-        //   start          : new Date(y, m, 1),
-        //   backgroundColor: '#f56954', //red
-        //   borderColor    : '#f56954' //red
-        // },
-          <?php 
-// foreach ($row as $row1)
-//  {
+  $events=array();
+  while($row1=mysqli_fetch_assoc($w1))  //or die (mysqli_error($db_connect));
+  {
+
   $sql1=" SELECT name FROM patientregister WHERE id='".$row1['patient']."'";
   $write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
  //print_r($sql); exit;
     $row2=mysqli_fetch_array($write1)or die (mysqli_error($db_connect));
-       ?>
-        events    : [
-        {
-          title          : 'Remark:<?php echo $row1['remark'];echo $row2['name'];?>',
-          start          : new Date(y, m, d ),
-          end            : new Date(y, m, d - 2),
-      	  backgroundColor: '#f39c12', //yellow
-          borderColor    : '#f39c12' //yellow
-        },
-        {
-          title          : 'Click for details',
-          start          : new Date(y, m, d ),
-          end            : new Date(y, m, d - 2),
-          url            : '../Details/Click.php',
-          backgroundColor: '#3c8dbc', //Primary (light-blue)
-          borderColor    : '#3c8dbc' //Primary (light-blue)
-        },
-        {
-          title          : 'Appointment',
-          start          : new Date(y, m, d),
-          allDay         : false,
-          backgroundColor: '#0073b7', //Blue
-          borderColor    : '#0073b7' //Blue
-        },
-         ],
+	$EventColor = "#ffffff";
+	if($row1["app_status"] == "upcoming"){
+		$EventColor = "#f39c12";
+	}else if($row1["app_status"] == "perceived"){
+		$EventColor = "green";
+	}else if($row1["app_status"] == "cancelled"){
+		$EventColor = "red";
+	}
+	$id = $row1['patient'];
+	$title = 'Patient Name :  '.$row2['name']." \nDoctor :  ".$row1['doctor']." \nRemark :  ".$row1['remark'];
+    $start = $row1['app_date'].'T'.$row1['starttime'];
+    $end = $row1['app_date'].'T'.$row1['endtime'];
+    $url = "#";
+    $backgroundColor = $EventColor;
+    $borderColor = $EventColor;
+
+    $eventsArray['id'] = $id;
+    $eventsArray['title'] = $title;
+    $eventsArray['start'] = $start;
+    $eventsArray['end'] = $end;
+    $eventsArray['url'] = $url;
+    $eventsArray['backgroundColor'] = $backgroundColor;
+    $eventsArray['borderColor'] = $borderColor;
+	//the array_map allows special character to be print
+	//the array_push all events in the array $events
+    array_push($events, array_map('utf8_encode', $eventsArray));
+    // array_push($events, $eventsArray);
+}
+
+//encode
+$events = json_encode($events, JSON_PRETTY_PRINT);
+
+// die('Jason data');
+?>
+        events    : <?php echo $events; ?>,
         <?php //} ?>
       //   {
       //     title          : 'Lunch',
@@ -331,6 +328,11 @@ function myFunction() {
     })
   })
 </script>
+<?php 
+// print_r($events);
+// die("finish");
+
+?>
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> 
 <script>
