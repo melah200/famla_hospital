@@ -83,37 +83,44 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 <div class="box-header with-border">
 <i class="fa fa-user"></i> <h3 class="box-title">Patient Appointment</h3>
 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" style="height: 50px;"><i class="fa fa-plus-square"></i> Add New</button><br>
-<!--
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square"></i> Add New</button><br>
+<!--  Modal appear when the button add is pressed -->
 <div class="modal fade" id="myModal" role="dialog">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header bg-blue" style="height: 60px">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title"> Add Files</h4>
+      <h4 class="modal-title"> Add new Appointment</h4>
       </div>
   <div class="modal-body">
         <form method="POST" enctype="multipart/form-data">
            <div class="form-group">
-             <label for="exampleInputPassword1">Patient</label>
-             <select name="patient" class="form-control" id="exampleInputPassword1" placeholder="">
- 
-<?php foreach ($p_row1 as $s) {?>
-<option value="<?php echo $s['id'];?>"><?php echo $s['name'];?></option>
-                <?php } ?>
-              </select>
+             <label for="fullname">Name <span style="color:red">*</span></label>
+			 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Full Name" required>
             </div>
-
            <div class="form-group">
-               <label for="exampleInputPassword1">Title</label>
-              <input type="text" name="title" class="form-control" id="exampleInputPassword1" placeholder="">
+               <label for="title">Title</label>
+              <input type="text" name="title" class="form-control" id="title" placeholder="">
            </div>
-
-              <td><b>Image Upload</b></font>
-              <input type="file" name="file" id="fileToUpload"></td>
-
+		   
+		   <div class="form-group">
+			 <label for="doctor">Choose a Doctor </label>
+             <select name="doctor" class="form-control" id="doctor" placeholder="">
+				<?php foreach ($p_row1 as $s) {?>
+				<option value="<?php echo $s['id'];?>"><?php echo $s['name'];?></option>
+				<?php } ?>
+              </select>
+			</div>
+           <div class="form-group">
+               <label for="date">Date <span style="color:red">*</span></label>
+              <input type="Date" name="date" min="<?php echo Date('Y-m-d') ?>" class="form-control" id="date" placeholder="" required>
+           </div>
+           <div class="form-group">
+               <label for="time-app">Time <span style="color:red">*</span></label>
+              <input type="Time" name="time" value="7:30" min="7:30" max="17:30" step="1800" class="form-control" id="time-app" placeholder="" required>
+           </div>
             <div class="box-footer">
-              <button type="submit"   name="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" name="submit" class="btn btn-primary">Submit</button>
              </div>
 
           <div class="modal-footer">
@@ -124,7 +131,7 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
     </div>
 </div>
 </div>
--->
+<!-- End of Modal block -->
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <!--    <td>
@@ -187,15 +194,26 @@ $w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
 </div>
 </div>
 <!-- DATE -->
-<div style="display: flex">
+<div class="row">
+<!-- /.col -->
 
-    <div style="margin-right: 10px;">
-      <div id="nav"></div>
-    </div>
+<div class="col-md-12" style="display: flex">
+	
+	  <div style="margin-right:10px">
+		  <div id="nav"></div>
+	  </div>
+	
+  <div class="box box-primary">
+	<div class="box-body no-padding">
+	  <!-- THE CALENDAR -->
+	  <div id="calendar-appointment"></div>
+	</div>
+	<!-- /.box-body -->
+  </div>
+  <!-- /. box -->
+</div>
+<!-- /.col -->
 
-    <div style="flex-grow: 1;">
-      <div id="calendar"></div>
-    </div>
 </div>
 <!-- END DATE -->
 </section>
