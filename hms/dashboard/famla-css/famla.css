@@ -15,3 +15,8 @@
   border: 1px solid #ddd;
   margin-bottom: 12px;
 }
+
+/* calendar back color */
+.fc-unthemed td.fc-today {
+    background: #e3fcf9;
+}
