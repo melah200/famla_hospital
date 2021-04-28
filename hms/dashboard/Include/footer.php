@@ -40,6 +40,8 @@
 <script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- timepicker -->
+<script src="../bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
@@ -174,7 +176,7 @@ function myFunction() {
     var d    = date.getDate(),
         m    = date.getMonth(),
         y    = date.getFullYear()
-    $('#calendar').fullCalendar({
+    $('#calendar-appointment').fullCalendar({
       header    : {
         left  : 'prev,next today',
         center: 'title',
@@ -328,11 +330,7 @@ $events = json_encode($events, JSON_PRETTY_PRINT);
     })
   })
 </script>
-<?php 
-// print_r($events);
-// die("finish");
 
-?>
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> 
 <script>
@@ -345,8 +343,10 @@ $events = json_encode($events, JSON_PRETTY_PRINT);
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false
-    })
+    });
+	
   })
+
 </script>
 </body>
 </html>
