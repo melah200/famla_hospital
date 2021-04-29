@@ -25,37 +25,17 @@ return $temp;
 //session_start();
 if(isset($_POST['submit']))
 { 
-  $d1=date('Y-m-d');
-$patient=$_POST['patient'];
-
-$title=$_POST['title'];
-
-$target_dir="../Upload/File/";
-$name=$_FILES["file"]["name"];
-$type = $_FILES["file"]["type"];
-$size = $_FILES["file"]["size"];
-
-$temp = $_FILES["file"]["tmp_name"]; 
-$error = $_FILES["file"]["error"];//size
-if($error>0)
-{
-// die("Error uploading file! Code $error.");
-}
-else
-{ 
-if ($type=="images/" || $size > 5000000)
-{
-  // die("that format is not allowed or file size is too big!");
-}
-else
-{ //echo "string"; exit;
- move_uploaded_file($temp,"../Upload/File/".$name);//move upload file  
- // echo"Upload Complete";  
-}
-}
+// $patient=html($_POST['patient']);
+$doctor=html($_POST['doctor']);
+$app_date=html($_POST['date']);
+$starttime=html($_POST['time']);
+$timestr = strtotime("+30 minutes", strtotime($starttime));
+$endtime=date('G:i', $timestr);
+$remark=html($_POST['remark']);
+$app_status='upcoming';
 
 
-  $write =mysqli_query($db_connect, "INSERT INTO addfiles( `doc_date`,`patient`,`title`,`file`) VALUES (' $d1','$patient','$title','$name')") or die(mysqli_error($db_connect));
+  $write =mysqli_query($db_connect, "INSERT INTO addappointment( `patient`,`doctor`,`app_date`,`starttime`,`endtime`,`remark`,`sms`,`app_status`) VALUES ('10','$doctor','$app_date','$starttime','$endtime','$remark','0','$app_status')") or die(mysqli_error($db_connect));
   //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
   //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",150);</script>";
@@ -99,8 +79,8 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 			 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Full Name" required>
             </div>
            <div class="form-group">
-               <label for="title">Title</label>
-              <input type="text" name="title" class="form-control" id="title" placeholder="">
+               <label for="remark">Remark</label>
+              <input type="text" name="remark" class="form-control" id="remark" placeholder="">
            </div>
 		   
 		   <div class="form-group">
@@ -116,8 +96,8 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
               <input type="Date" name="date" min="<?php echo Date('Y-m-d') ?>" class="form-control" id="date" placeholder="" required>
            </div>
            <div class="form-group">
-               <label for="time-app">Time <span style="color:red">*</span></label>
-              <input type="time" name="time" list="calltimeslist" min="07:30" max="17:30" class="form-control" id="time-app" placeholder="" required>
+               <label for="time-app">Time (each 30min. from 7:30 to 17:30)<span style="color:red">*</span></label>
+              <input type="time" name="time" min="07:30" max="17:30" step="1800" class="form-control" id="time-app" placeholder="" required>
            </div>
             <div class="box-footer">
               <button type="submit" name="submit" class="btn btn-primary">Submit</button>
@@ -127,14 +107,6 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
           </form>
-		<!-- Data List -->
-		<datalist id="calltimeslist">
-		  <option value="16:00">
-		  <option value="16:30">
-		  <option value="17:00">
-		  <option value="17:30" readonly>
-		</datalist>
-		<!-- End List -->
       </div>
     </div>
 </div>
