@@ -106,7 +106,7 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 
 </div>
 
-<div style="height:300px;display:none" id="register_patient">
+<div style="display:none" id="register_patient">
   <div class="form-group">
 	<input type="text" id="myInput" class="form-control search-people" placeholder="Search...">
   </div>
@@ -381,7 +381,7 @@ $w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
 		{
 			$('.new').css('display', 'none');
 			$('.old').css('display', 'block');
-			$('select#patient').on('click',function(){
+			$('#patient').on('click',function(){
 				// alert("we are focusing select");
 				$('#register_patient').css('display', 'block');
 			});
