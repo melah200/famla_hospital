@@ -182,3 +182,11 @@ $sql="SELECT * FROM login WHERE username='$user_h'";
       </div>
     </nav>
   </header>
+<?php
+define('CHARSET', 'ISO-8859-1');
+define('REPLACE_FLAGS', ENT_COMPAT | ENT_XHTML);
+
+function html($string) {
+    return htmlspecialchars($string, REPLACE_FLAGS, CHARSET);
+}
+?>
