@@ -46,7 +46,7 @@ $error = $_FILES["profile_pic"]["error"];//size
     $gender=$_POST['gender'];
     $birthdate=$_POST['birthdate'];
     $bloodgroup=$_POST['bloodgroup'];
-    $status=$_POST['active'];
+    $status=$_POST['status'];
       
       $write =mysqli_query($db_connect, "INSERT INTO patientregister(`name`,`email`,`address`,`phone`,`gender`,`birthdate`,`bloodgroup`,`imageupload`,`status`) VALUES ('$name','$email','$address','$phone','$gender','$birthdate','$bloodgroup','$imgname',' $status')") or die(mysqli_error($db_connect));
       //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
@@ -125,8 +125,8 @@ $error = $_FILES["profile_pic"]["error"];//size
    <input type ="email" name="email" required="" class="form-control">
   </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    <span style="color:red;">*</span><b>Status</b><br>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="radio" name="active" value="1"><b> Active</b>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="radio" name="inactive" value="0"><b> Inactive</b>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="radio" name="status" value="1"><b> Active</b>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="radio" name="status" value="0"><b> Inactive</b>
  <br><br>
     <div class="box-footer">
            <button type="submit"  name="Save" class="btn btn-success bg-green" ><i class="fa fa-file-text"></i> Save</button>
