@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 11. Apr 2021 um 11:32
+-- Erstellungszeit: 29. Apr 2021 um 02:00
 -- Server-Version: 5.7.26
 -- PHP-Version: 7.2.18
 
@@ -36,20 +36,20 @@ CREATE TABLE IF NOT EXISTS `addappointment` (
   `app_date` varchar(100) NOT NULL,
   `starttime` varchar(100) DEFAULT NULL,
   `endtime` varchar(100) DEFAULT NULL,
-  `remark` varchar(20) NOT NULL,
+  `remark` varchar(255) NOT NULL,
   `sms` enum('0','1') NOT NULL,
+  `app_status` enum('upcoming','perceived','cancelled') NOT NULL DEFAULT 'upcoming',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
 
 --
 -- Daten für Tabelle `addappointment`
 --
 
-INSERT INTO `addappointment` (`id`, `patient`, `doctor`, `app_date`, `starttime`, `endtime`, `remark`, `sms`) VALUES
-(1, '1', '', '2018-05-16', '07:00', '08:00', 'srtggt', '1'),
-(2, '2', 'Amadou', '2021-04-18', '08:15', '09:15', 'trhu', '1'),
-(3, '3', 'donfack', '2021-04-12', '09:00', '10:00', 'dhanu', '1'),
-(5, '2', 'kamto', '2021-04-11', '20:00', '21:00', 'ok', '0');
+INSERT INTO `addappointment` (`id`, `patient`, `doctor`, `app_date`, `starttime`, `endtime`, `remark`, `sms`, `app_status`) VALUES
+(1, '4', 'Kanga', '2021-04-16', '07:00', '08:00', 'für eine Untersuchung', '1', 'perceived'),
+(2, '2', 'Amadou', '2021-04-18', '08:15', '09:15', 'Impfung', '1', 'cancelled'),
+(5, '3', 'kamto', '2021-04-11', '20:00', '21:00', 'OP', '0', 'upcoming');
 
 -- --------------------------------------------------------
 
@@ -94,15 +94,17 @@ CREATE TABLE IF NOT EXISTS `addfiles` (
   `title` varchar(30) NOT NULL,
   `file` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `addfiles`
 --
 
 INSERT INTO `addfiles` (`id`, `doc_date`, `patient`, `title`, `file`) VALUES
-(2, ' 2018-05-16', '2', 'Niku', 'Koala.jpg'),
-(3, ' 2018-05-16', '1', 'Stitle', 'Tulips.jpg');
+(3, ' 2018-05-16', '1', 'Stitle', 'Tulips.jpg'),
+(4, ' 2021-04-14', '2', '', 'nurse.png'),
+(5, ' 2021-04-28', '', '', ''),
+(6, ' 2021-04-28', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -348,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `patientregister` (
   `email` varchar(35) NOT NULL,
   `password` varchar(20) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `phone` varchar(11) NOT NULL,
+  `phone` varchar(16) NOT NULL,
   `gender` varchar(100) NOT NULL,
   `birthdate` date NOT NULL,
   `bloodgroup` varchar(5) NOT NULL,
