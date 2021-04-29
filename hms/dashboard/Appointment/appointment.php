@@ -47,7 +47,7 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 <div class="content-wrapper">
   <section class="content-header">
   <h1>
-  Patient Document
+  Patient Appointment
     <small></small>
   </h1>
   <ol class="breadcrumb">
@@ -75,9 +75,58 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
   <div class="modal-body">
         <form method="POST" enctype="multipart/form-data">
            <div class="form-group">
-             <label for="fullname">Name <span style="color:red">*</span></label>
-			 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Full Name" required>
-            </div>
+			   <span style="">Is the patient new?</span><b></b><br>
+			   <input type ="radio" class="input-form isnew" name="new_patient" value="1" checked><b> Yes</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			   <input type ="radio" class="input-form isnew" name="new_patient" value="0"><b> No</b>		   
+		   </div>
+<div class="new">
+   <div class="form-group">
+	 <label for="fullname">Name <span style="color:red">*</span></label>
+	 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Full Name" required>
+   </div>
+  <div class="form-group">
+    <b>Birthdate</b>
+	<input type ="date" name="birthdate" required="" class="form-control">
+  </div>
+  <div class="form-group" >
+    <span style="color:red;">*</span><b>Phone</b><br>
+    <input type ="text" name="phone" required="" class="form-control">
+  </div>
+  <div class="form-group" >
+	<b>Address</b>
+	<input type ="text" name="address" required="" class="form-control"><br>
+  </div>
+   <div class="form-group" >
+	   <span style="color:red;">*</span><b>Email(User Name)</b><br>
+	   <input type ="email" name="email" required="" class="form-control">
+   </div>
+</div>
+<div class="old">
+  <input type="text" name="patient" class="form-control" id="patient">
+
+</div>
+
+<div style="height:300px;display:none" id="register_patient">
+  <div class="form-group">
+	<input type="text" id="myInput" class="form-control search-people" placeholder="Search...">
+  </div>
+ <table id="example1" class="table table-bordered table-hover">
+<thead>
+ <tr>
+  <th>Patient id</th>
+  <th>Name</th>
+  <th>Birth</th>               
+</tr>
+</thead>
+<tbody id="myTable">
+<tr><td>1</td><td>Flo</td><td>12-05-2001</td></tr>
+<tr><td>2</td><td>Kan</td><td>15-08-2004</td></tr>
+<tr><td>3</td><td>Daniel</td><td>10-01-2000</td></tr>
+<tr><td>4</td><td>pierre</td><td>20-09-2005</td></tr>
+</tbody>
+</table>
+</div>	 
+
            <div class="form-group">
                <label for="remark">Remark</label>
               <input type="text" name="remark" class="form-control" id="remark" placeholder="">
@@ -112,6 +161,7 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 </div>
 </div>
 <!-- End of Modal block -->
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <!--    <td>
@@ -314,4 +364,31 @@ $w1 =mysqli_query($db_connect, $s1) or die(mysqli_error($db_connect));
 </script>
 
 <?php include "../Include/footer.php";?>
-
+<script>
+  $(document).ready(function(){
+	 $('.isnew').on('focus', function(){ 
+		// alert('Radio Button has been clicked'); 
+		// $('.modal').css('display', 'none');
+		// $('.modal').hide(1000);
+		// $('.modal').fadeToggle();
+		// alert($(this).val());
+		if($(this).val() === "1"){
+			$('.new').css('display', 'block');
+			$('.old').css('display', 'none');
+			$('#register_patient').css('display', 'none');
+		}
+		else
+		{
+			$('.new').css('display', 'none');
+			$('.old').css('display', 'block');
+			$('select#patient').on('click',function(){
+				// alert("we are focusing select");
+				$('#register_patient').css('display', 'block');
+			});
+		}
+		
+	 });
+	 
+  });
+  
+</script>
