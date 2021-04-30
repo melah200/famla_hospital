@@ -1,0 +1,70 @@
+
+User_register
+	- User_uid (User unique id) 
+	- Name
+	- Birth
+	- Gender
+	- Address
+	- Phone
+	- Email
+	- Function (Admin, Doctor, Employee)
+	- Photo (optional)
+	
+User_Login (Admin, Doctor, Employee  can Log In)
+	- User_uid (User unique id link to user unique id from User_register) 
+	- Username
+	- Passwort
+	- UserToken (Optional)
+	
+Doctors
+	- Doctor_uid (Doctor unique id link to user unique id from User_register) 
+	- Date
+	- StartTime
+	- EndTime
+	- Patient_uid (with patient) / Patient_Name
+	
+Employees
+	- Employee_uid (Employee unique id link to user unique id from User_register) 
+	
+
+Patient_register
+    - Patient_uid (patient unique id) 
+	- Name
+	- Birth
+	- Gender
+	- Address
+	- Phone
+	- Email
+	- Photo (optional)
+	
+Patient_records (patientenakte)
+    - Patient_uid (patient unique id) 
+	- Weight
+	- Height
+	- BloodType
+	- Medical History
+	- Allergies
+	- Vaccinations	
+	- Smoker
+	- Findings
+	- Diagnostic_Results
+	- physician_in_charge (verantwortlicher Arzt)
+	
+appointment
+	- Name
+	- Birth
+	- Gender (optional) can be used in the profil
+	- Reasons (optional)
+	- Date
+	- StartTime
+	- EndTime
+	- Address (Optional) can be used in the profil
+	- Phone
+	- Email
+
+Prescription
+	- Doctor_uid (Doctor unique id link to user unique id from User_register)
+	- Patient_uid (patient unique id)
+	- Prescription
+	- Date
+	- Time
