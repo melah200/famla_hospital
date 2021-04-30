@@ -53,14 +53,14 @@ Patient_records (patientenakte)
 appointment
 	- Name
 	- Birth
-	- Gender (optional) can be used in the profil
+	- Gender (optional) 
 	- Reasons (optional)
 	- Date
 	- StartTime
 	- EndTime
-	- Address (Optional) can be used in the profil
+	- Address (Optional)
 	- Phone
-	- Email
+	- Email	(optional)
 
 Prescription
 	- Doctor_uid (Doctor unique id link to user unique id from User_register)
