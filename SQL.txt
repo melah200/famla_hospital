@@ -51,6 +51,8 @@ Patient_records (patientenakte)
 	- physician_in_charge (verantwortlicher Arzt)
 	
 appointment
+	- appointment_id
+	- patient_id (only if the patient already exist)
 	- Name
 	- Birth
 	- Gender (optional) 
