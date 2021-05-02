@@ -1,0 +1,15 @@
+Alles was zum gesamte hauptMenu gehören soll:
+* dashboard : mit patient, appointement und "Akte"
+*Patient: mit nur PatientList, Add new Profil, payements. la partie History et document qui sont dans patient iront plutot dans le nouvelle 
+"Akte" du menu principal. ( dans document , on poura telecharger les bericht dautres medecins ou d autres centres et metre aussi les images radios..)
+*Appointement : bleibt unverändert
+* löschen von services aus der Hauptmenu
+*einfügen von "Akte" in der Hauptmenu
+*Prescribtion und Medicine gehören nicht mehr zum Hauptmenu. sie landen in die "Akte"
+*profile : bleibt unverändert
+
+
+
+
+
+-> num kommen wir zu alles was in der "akte ist":
