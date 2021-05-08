@@ -13,3 +13,22 @@ Alles was zum gesamte hauptMenu gehören soll:
 
 
 -> num kommen wir zu alles was in der "akte ist":
+apres avoir refait le menu , on fait la partie "akte qui est tres important".
+dans cette partie, on va chercher un patient qui est deja enregistrer. donc la premiere condition est que le patient soit enregister. 
+quand on trouve le patient , on doit pouvoir erzeugen un paienten akte pour lui .ca doit se faire de facon automatique.
+le akte contiendra dans l entete le nom du patient, son sexe, sa date de naissance( bref quelque donne administratif). ensuite on aura comme une structure de donnee
+. la structure de donnes ici contient les elements(tablaux) :
+-befunde ( on marque ce qui a ete trouve apres un diagnostic ou un examen)
+-diagnostic(
+-document(ici on peut telecharcher des images radio, des resultat de laboratoires...)
+-history(histoire du patient sejour, dans quel salle...)
+-maßnahmen( toute les procedures qui ont ete faites..)
+-medikationplan( la prise de medicament du patient..)
+-notfall daten( les donnes comme le groupe sanguin, allergies...)
+-untersuchung(les difernets untersuchungen..)
+
+NB: regarder la base de donnees famla(1).sql pour voir les differents attributs de ces tableaux.
+
+
+*apres avoir fini ceci et apres un text positif du system, on doit regarder la communication de la page web, avec le system interne.
+*puis on doit regrader les fonctions de anmeldung de differents untilisateur( docteur et autres).
