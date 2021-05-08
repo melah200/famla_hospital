@@ -87,7 +87,7 @@ include"../inc/connect.php ";
             <li><a href="../Medicine/medicinelist.php"><i class="fa fa-medkit"></i>  Medicine List</a></li>
             <li><a href="../Patient/casehistory.php"><i class="fa fa-book"></i> Case History</a></li>
             <!--<li><a class="popup" onclick="myFunction()"><i class="fa fa-wheelchair"></i> Patients<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a></li>-->
-            <li><a href="#"><i class="fa fa-wheelchair"></i> Patients</a></li>
+            <!--<li><a href="#"><i class="fa fa-wheelchair"></i> Patients</a></li>-->
             <li><a href="../Patient/document.php"><i class="fa fa-file-text-o"></i> Documents</a></li>
                      
 		  </ul>
