@@ -84,7 +84,7 @@ function mysql_fetch_all($query) {
 <div class="box-header with-border">
 <form method="POST" >
               <label >Start Date</label>
-                <input type="date" name="date" class="form-control" id="exampleInputPassword1" placeholder="" value="<?php echo $date  ?>" readonly><br>
+                <input type="date" name="date" class="form-control" id="exampleInputPassword1" placeholder="" value="<?php echo $date  ?>"><br>
                 <label >End Date</label>
 				<input type="date" name="enddate" class="form-control" placeholder="" value="<?php echo $date  ?>"><br>
                 <label >Patient</label><?php $row['patient']; ?>
