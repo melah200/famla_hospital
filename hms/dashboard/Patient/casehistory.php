@@ -118,8 +118,9 @@ function mysql_fetch_all($query) {
  <thead>
 <tr>
 <th>Period</th>
-<th>Patient</th>
-<th>Description</th>
+<th>Patients</th>
+<th>Descriptions</th>
+<th>Stations - Rooms</th>
 <th>Options</th>
 </tr>
 </thead>
@@ -139,6 +140,7 @@ foreach ($row1 as $row)
 <td><?php echo $row['date'];?></td>
 <td><?php echo $row1['name'];?></td>
 <td><?php echo $row['description'];?></td> 
+<td><?php echo "B1-100";?></td> 
 <td><a href="editmedicalhistory.php?id=<?php echo $row['id']; ?>"> <button type="button" class="btn btn-success"><i class="fa fa-edit"></i> Edit</button></a>
 <a class="btn-del" href="d1.php?id=<?php echo $row['id'];?>"><button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
 </a></td>
