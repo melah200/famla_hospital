@@ -69,7 +69,7 @@ function mysql_fetch_all($query) {
               </div>
               <div class="modal-body">
                <form method="POST" >
-                  <label >Date</label>
+                  <label >Period</label>
                   <input type="date" name="date" class="form-control" id="exampleInputPassword1" placeholder="" value="<?php echo date('Y-m-d');  ?>"><br>
                    <label >Patient</label><br>
                   <select name="patient" class="form-control select2"  placeholder="">
