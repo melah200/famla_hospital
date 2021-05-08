@@ -65,7 +65,7 @@ function mysql_fetch_all($query) {
             <div class="modal-content">
               <div class="modal-header bg-blue">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                 <h4 class="modal-title"><i class="fa fa-plus-circle"></i> Add Medical History</h4>
+                 <h4 class="modal-title"><i class="fa fa-plus-circle"></i> Add New History</h4>
               </div>
               <div class="modal-body">
                <form method="POST" >
