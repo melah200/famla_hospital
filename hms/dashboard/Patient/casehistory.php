@@ -72,7 +72,7 @@ function mysql_fetch_all($query) {
                   <label >Start Date</label>
                   <input type="date" name="date" class="form-control" id="exampleInputPassword1" placeholder="" value="<?php echo date('Y-m-d');  ?>"><br>
                   <label >End Date</label>
-				  <input type="date" name="date" class="form-control" placeholder="" value="<?php echo date('Y-m-d');  ?>"><br>
+				  <input type="date" name="enddate" class="form-control" placeholder="" value="<?php echo date('Y-m-d');  ?>"><br>
                    <label >Patient</label><br>
                   <select name="patient" class="form-control select2"  placeholder="">
                   <?php foreach ($p_row1 as $p) {?>
