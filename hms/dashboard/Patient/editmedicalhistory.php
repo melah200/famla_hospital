@@ -62,7 +62,7 @@ function mysql_fetch_all($query) {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       Edit Medical History 
+       Edit History 
         <small></small>
       </h1>
       <ol class="breadcrumb">
@@ -77,15 +77,16 @@ function mysql_fetch_all($query) {
 <div class="col-md-12">
 <div class="box box-primary">
 <div class="box-header with-border">
-<i class="fa fa-book"></i> <h3 class="box-title">Edit Medical History</h3>
+<i class="fa fa-book"></i> <h3 class="box-title">Edit History</h3>
 </div>
 </div>
 <div class="box box-primary">
 <div class="box-header with-border">
 <form method="POST" >
-              <label >Date</label>
-              
-                 <input type="date" name="date" class="form-control" id="exampleInputPassword1" placeholder="" value="<?php echo $date  ?>"><br>
+              <label >Start Date</label>
+                <input type="date" name="date" class="form-control" id="exampleInputPassword1" placeholder="" value="<?php echo $date  ?>" readonly><br>
+                <label >End Date</label>
+				<input type="date" name="enddate" class="form-control" placeholder="" value="<?php echo $date  ?>"><br>
                 <label >Patient</label><?php $row['patient']; ?>
                  <select name="patient" class="form-control" id="exampleInputPassword1" placeholder="">
                   
