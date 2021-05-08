@@ -42,6 +42,7 @@ include"../inc/connect.php ";
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
          </a>
         </li>
+		<!-- Patient tree -->
        <li class="treeview">
           <a href="#">
             <i class="fa fa-bed"></i> <span>Patient</span>
@@ -53,12 +54,9 @@ include"../inc/connect.php ";
             <li><a href="../Patient/patientlist.php"><i class="fa fa-list-alt"></i> Patient List</a></li>
             <li><a href="../Patient/newprofile.php"><i class="fa fa-plus"></i> Add New Profile</a></li>
             <li><a href="../Patient/payments.php"><i class="fa fa-dollar"></i> Payments</a></li>
-            <li><a href="../Patient/casehistory.php"><i class="fa fa-book"></i> Case History</a></li>
-            <!--<li><a class="popup" onclick="myFunction()"><i class="fa fa-wheelchair"></i> Patients<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a></li>-->
-            <li><a href="#"><i class="fa fa-wheelchair"></i> Patients</a></li>
-             <li><a href="../Patient/document.php"><i class="fa fa-file-text-o"></i> Documents</a></li>
-           </ul>
+		   </ul>
         </li>
+		<!-- Appointment tree -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i> <span>Appointment</span>
@@ -75,7 +73,29 @@ include"../inc/connect.php ";
             <li><a href="../Appointment/upcomming.php"><i class="fa fa-calendar-plus-o"></i> Upcomming Appointment</a></li>
            </ul>
         </li>
-         <li class="treeview">
+		<!-- Patient records tree -->
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-medkit"></i> <span>Patient records</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../Medicine/addmedicine.php"><i class="fa fa-plus-circle"></i> Add Patient record</a></li>
+            <li><a href="../Medicine/medicinecategory.php"><i class="fa fa-edit"></i>  Medicine Category</a></li>
+            <li><a href="../Medicine/medicinelist.php"><i class="fa fa-medkit"></i>  Medicine List</a></li>
+            <li><a href="../Patient/casehistory.php"><i class="fa fa-book"></i> Case History</a></li>
+            <!--<li><a class="popup" onclick="myFunction()"><i class="fa fa-wheelchair"></i> Patients<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a></li>-->
+            <li><a href="#"><i class="fa fa-wheelchair"></i> Patients</a></li>
+            <li><a href="../Patient/document.php"><i class="fa fa-file-text-o"></i> Documents</a></li>
+                     
+		  </ul>
+        </li>
+
+        <!-- Services tree -->
+		<!--
+		<li class="treeview">
           <a href="#">
             <i class="fa fa-briefcase"></i> <span>Services</span>
             <span class="pull-right-container">
@@ -87,7 +107,10 @@ include"../inc/connect.php ";
             <li><a href="../Services/services.php"><i class="fa fa-briefcase"></i> Sub Services</a></li>
           </ul>
         </li>
-        <li class="treeview">
+		-->
+        <!-- Prescription tree -->
+		<!--
+		<li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Prescription</span>
             <span class="pull-right-container">
@@ -99,7 +122,10 @@ include"../inc/connect.php ";
             <li><a href="../prescription/prescription.php"><i class="fa fa-edit"></i> Prescription</a></li>
           </ul>
         </li>
-         <li class="treeview">
+		-->
+        <!-- Medicine tree -->
+		<!--
+		<li class="treeview">
           <a href="#">
             <i class="fa fa-medkit"></i> <span>Medicine</span>
             <span class="pull-right-container">
@@ -112,12 +138,13 @@ include"../inc/connect.php ";
             <li><a href="../Medicine/medicinelist.php"><i class="fa fa-medkit"></i>  Medicine List</a></li>
           </ul>
         </li>
-           <li>
+		-->
+        <li>
           <a href="../Admin/index.php">
             <i class="fa fa-user"></i> <span>Profile</span>
          </a>
         </li>
-        </ul>
+      </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
