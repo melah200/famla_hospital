@@ -42,12 +42,12 @@ function mysql_fetch_all($query) {
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-       Case History 
+        History 
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Case History</li>
+        <li class="active"> History</li>
       </ol>
     </section>
       <!-- Main content -->
@@ -56,7 +56,7 @@ function mysql_fetch_all($query) {
       <div class="col-xs-12">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <i class="fa fa-book"></i> <h3 class="box-title">Case History</h3>
+        <i class="fa fa-book"></i> <h3 class="box-title"> History</h3>
       </div>
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -117,7 +117,7 @@ function mysql_fetch_all($query) {
 <table id="example1" class="table table-bordered table-striped">
  <thead>
 <tr>
-<th>Date</th>
+<th>Period</th>
 <th>Patient</th>
 <th>Description</th>
 <th>Options</th>
