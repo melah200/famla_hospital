@@ -92,6 +92,11 @@ include"../inc/connect.php ";
                      
 		  </ul>
         </li>
+        <li>
+          <a href="../Patientrecords/patientrecord.php">
+            <i class="fa fa-medkit"></i> <span>Patient records</span>
+         </a>
+        </li>
 
         <!-- Services tree -->
 		<!--
