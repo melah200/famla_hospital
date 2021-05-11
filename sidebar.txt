@@ -32,3 +32,6 @@ NB: regarder la base de donnees famla(1).sql pour voir les differents attributs 
 
 *apres avoir fini ceci et apres un text positif du system, on doit regarder la communication de la page web, avec le system interne.
 *puis on doit regrader les fonctions de anmeldung de differents untilisateur( docteur et autres).
+
+voici le lien de la photo du patienten akte
+ https://www.bertelsmann-stiftung.de/fileadmin/files/BSt/Publikationen/GrauePublikationen/VV_eEPA_Expertise_final.pdf
