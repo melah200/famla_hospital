@@ -20,3 +20,13 @@
 .fc-unthemed td.fc-today {
     background: #e3fcf9;
 }
+
+/* patient record */
+legend {
+	width: auto !important;
+	border: none;
+}
+fieldset{
+	border: 1px groove silver;
+	padding: 0px 10px;
+}

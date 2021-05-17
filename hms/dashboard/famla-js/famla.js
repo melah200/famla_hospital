@@ -23,14 +23,19 @@ $(document).ready(function() {
 		  }
 		});
 	});
-
+// for auto search
 	$("#myInput").on("keyup", function () {
 		var value = $(this).val().toLowerCase();
 		$("#myTable tr").filter(function () {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
-	
+//for patient records
+$('li.record a').on('click', function(e){
+  var el = $('li.record a');
+  var s = $('li').size();
+  alert(s);
+});
 
 });
 
