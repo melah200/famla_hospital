@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 19. Mai 2021 um 07:17
+-- Erstellungszeit: 19. Mai 2021 um 16:27
 -- Server-Version: 5.7.31
 -- PHP-Version: 7.3.21
 
@@ -96,10 +96,12 @@ INSERT INTO `appointmenttb` (`pid`, `ID`, `fname`, `lname`, `gender`, `email`, `
 
 DROP TABLE IF EXISTS `befunde`;
 CREATE TABLE IF NOT EXISTS `befunde` (
+  `idB` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `dateBefunde` date NOT NULL,
-  `befunde` varchar(50) NOT NULL,
-  `description` text NOT NULL
+  `befunde` text NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`idB`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -110,12 +112,14 @@ CREATE TABLE IF NOT EXISTS `befunde` (
 
 DROP TABLE IF EXISTS `diagnostic`;
 CREATE TABLE IF NOT EXISTS `diagnostic` (
+  `idD` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `dateDiagnoctic` date NOT NULL,
-  `typ` varchar(10) NOT NULL,
+  `typ` text NOT NULL,
   `text` varchar(50) NOT NULL,
   `codessys` varchar(20) NOT NULL,
-  `code` text NOT NULL
+  `code` text NOT NULL,
+  PRIMARY KEY (`idD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -155,12 +159,12 @@ INSERT INTO `doctb` (`username`, `password`, `email`, `spec`, `docFees`) VALUES
 
 DROP TABLE IF EXISTS `document`;
 CREATE TABLE IF NOT EXISTS `document` (
+  `idDo` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
-  `dateDocument` date NOT NULL,
-  `NamePatient` varchar(50) NOT NULL,
+  `dateDokument` date NOT NULL,
   `title` varchar(30) NOT NULL,
   `Description` text NOT NULL,
-  PRIMARY KEY (`dateDocument`)
+  PRIMARY KEY (`idDo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -205,11 +209,12 @@ INSERT INTO `employees` (`id`, `firstname`, `lastname`, `birthday`, `username`, 
 
 DROP TABLE IF EXISTS `history`;
 CREATE TABLE IF NOT EXISTS `history` (
+  `idH` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `zeitraume` date NOT NULL,
-  `NamePatient` varchar(50) NOT NULL,
   `Station_Raum` varchar(50) NOT NULL,
-  `description` varchar(300) NOT NULL
+  `description` text NOT NULL,
+  PRIMARY KEY (`idH`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -220,11 +225,13 @@ CREATE TABLE IF NOT EXISTS `history` (
 
 DROP TABLE IF EXISTS `impfung`;
 CREATE TABLE IF NOT EXISTS `impfung` (
+  `idI` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `dateImpfung` date NOT NULL,
-  `nameImpfung` varchar(30) NOT NULL,
-  `krankkeit` varchar(30) NOT NULL,
-  `dosis` varchar(30) NOT NULL
+  `nameImpfung` varchar(50) NOT NULL,
+  `krankkeit` text NOT NULL,
+  `dosis` varchar(100) NOT NULL,
+  PRIMARY KEY (`idI`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -235,9 +242,11 @@ CREATE TABLE IF NOT EXISTS `impfung` (
 
 DROP TABLE IF EXISTS `maßnahmen`;
 CREATE TABLE IF NOT EXISTS `maßnahmen` (
+  `idM` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `dateMaßnahme` date NOT NULL,
-  `maßnahme` varchar(50) NOT NULL
+  `maßnahme` text NOT NULL,
+  PRIMARY KEY (`idM`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -248,13 +257,14 @@ CREATE TABLE IF NOT EXISTS `maßnahmen` (
 
 DROP TABLE IF EXISTS `medikationplan`;
 CREATE TABLE IF NOT EXISTS `medikationplan` (
+  `idMP` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `dateMedicationplan` date NOT NULL,
-  `NamePatient` varchar(50) NOT NULL,
-  `medicament` varchar(20) NOT NULL,
-  `freq` varchar(10) NOT NULL,
+  `medicament` varchar(50) NOT NULL,
+  `freq` varchar(50) NOT NULL,
   `tagesprofil` text NOT NULL,
-  `Description` varchar(300) NOT NULL
+  `Description` text NOT NULL,
+  PRIMARY KEY (`idMP`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -265,9 +275,11 @@ CREATE TABLE IF NOT EXISTS `medikationplan` (
 
 DROP TABLE IF EXISTS `notfalldaten`;
 CREATE TABLE IF NOT EXISTS `notfalldaten` (
+  `idN` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
-  `Angabe` varchar(30) NOT NULL,
-  `ausprägung` varchar(30) NOT NULL
+  `Angabe` text NOT NULL,
+  `ausprägung` text NOT NULL,
+  PRIMARY KEY (`idN`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -369,11 +381,13 @@ INSERT INTO `prestb` (`doctor`, `pid`, `ID`, `fname`, `lname`, `appdate`, `appti
 
 DROP TABLE IF EXISTS `untersuchung`;
 CREATE TABLE IF NOT EXISTS `untersuchung` (
+  `idU` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `dateUntersuchung` date NOT NULL,
-  `untersuchung` varchar(100) NOT NULL,
-  `untersuchung_ergebnisse` varchar(100) NOT NULL,
-  `notizen` varchar(300) NOT NULL
+  `untersuchung` text NOT NULL,
+  `untersuchung_ergebnisse` text NOT NULL,
+  `notizen` text NOT NULL,
+  PRIMARY KEY (`idU`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
