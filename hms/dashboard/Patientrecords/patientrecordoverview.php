@@ -183,60 +183,82 @@ else
 
 	<ul class="nav nav-pills" style="font-size:16px">
 	  <li class="text-center record" style="border:1px solid #0b00ff30"><a href="patientrecordoverview.php?overview">Overview<p><i class="fa fa-list"></i></p></a></li>
-	  <li class="text-center record"><a value="D" href="#">Diagnostics<p><i class="fa fa-user-md"></i></p></a></li>
-	  <li class="text-center record"><a value="C" href="#">Clinical evidence<p><i class="fa fa-heartbeat"></i></p></a></li>
-	  <li class="text-center record"><a value="E" href="#">Examination<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('diagnostics')" href="#">Diagnostics<p><i class="fa fa-user-md"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('findings')" href="#">Findings<p><i class="fa fa-heartbeat"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('examinations')" href="#">Examinations<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('vaccinations')" href="#">Vaccinations<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('activities')" href="#">Activities<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('medication-plan')" href="#">Medication Plan<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('emergency-data')" href="#">Emergency Data<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('histories')" href="#">Histories<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('documents')" href="#">Documents<p><i class="fa fa-stethoscope"></i></p></a></li>
 
 	</ul>
 </div>
  
- 
+<script>
+	function show(id){
+		
+		var tab = document.getElementsByClassName("record-tab");
+		// var tmpId;
+		for(var i=0; i<tab.length; i++){
+			if(tab[i].id == id){
+				tab[i].style.display = "block";
+				tab[i].style.width = "100%";
+				
+			}else{
+				tab[i].style.display = "none";
+			}
+		}
+	}
+
+</script>
  <!--<div class="content-wrapper">-->
     <section class="content">
       <div class="row">
-       <div class="col-lg-3 col-xs-6">
+       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="diagnostics">
           <!-- small box -->
+		  <!-- Diagnostics -->
 	<fieldset>
 		<legend>Diagnostics</legend>
-		<table class="table">
+		<table class="table table-striped">
 		  <thead>
 			<tr>
-			  <th scope="col">#</th>
-			  <th scope="col">First</th>
-			  <th scope="col">Last</th>
-			  <th scope="col">Handle</th>
+			  <th scope="col">Date</th>
+			  <th scope="col">typ</th>
+			  <th scope="col">text</th>
+			  <th scope="col">codessys</th>
+			  <th scope="col">code</th>
 			</tr>
 		  </thead>
 		  <tbody>
+		  <?php   
+		  
+		  
+		  ?>
 			<tr>
-			  <th scope="row">1</th>
-			  <td>Mark</td>
+			  <!--<th scope="row">1</th>-->
+			  <td>20.05.2021</td>
 			  <td>Otto</td>
 			  <td>@mdo</td>
+			  <td>@mdo</td>
+			  <td>@mdo</td>
 			</tr>
-			<tr>
-			  <th scope="row">2</th>
-			  <td>Jacob</td>
-			  <td>Thornton</td>
-			  <td>@fat</td>
-			</tr>
-			<tr>
-			  <th scope="row">3</th>
-			  <td>Larry</td>
-			  <td>the Bird</td>
-			  <td>@twitter</td>
-			</tr>
+		    <?php
+			
+			?>
 		  </tbody>
 		</table>
 	</fieldset>
         </div>
 
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="findings">
           <!-- small box -->
+		   <!-- Findings -->
 	<fieldset>
-		<legend>Clinical evidence</legend>
-			<table class="table">
+		<legend>Findings</legend>
+			<table class="table table-striped">
 			  <thead>
 				<tr>
 				  <th scope="col">#</th>
@@ -270,11 +292,12 @@ else
 		</div>
         <!-- ./col -->
          <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="examinations">
           <!-- small box -->
+		   <!-- Examination -->
 	<fieldset>
-		<legend>Examination</legend>
-			<table class="table">
+		<legend>Examinations</legend>
+			<table class="table table-striped">
 			  <thead>
 				<tr>
 				  <th scope="col">#</th>
@@ -306,34 +329,227 @@ else
 			</table>
 	</fieldset>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="vaccinations">
           <!-- small box -->
+		  <!-- vaccinations -->
  <fieldset>
-  <legend>Personal</legend>
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"><br><br>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email"><br><br>
-  <label for="birthday">Birthday:</label>
-  <input type="date" id="birthday" name="birthday"><br><br>
+  <legend>Vaccinations</legend>
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th scope="col">#</th>
+				  <th scope="col">First</th>
+				  <th scope="col">Last</th>
+				  <th scope="col">Handle</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <th scope="row">1</th>
+				  <td>Mark</td>
+				  <td>Otto</td>
+				  <td>@mdo</td>
+				</tr>
+				<tr>
+				  <th scope="row">2</th>
+				  <td>Jacob</td>
+				  <td>Thornton</td>
+				  <td>@fat</td>
+				</tr>
+				<tr>
+				  <th scope="row">3</th>
+				  <td>Larry</td>
+				  <td>the Bird</td>
+				  <td>@twitter</td>
+				</tr>
+			  </tbody>
+			</table>
+ </fieldset>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="activities">
+          <!-- small box -->
+		  <!-- activities -->
+ <fieldset>
+  <legend>Activities</legend>
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th scope="col">#</th>
+				  <th scope="col">First</th>
+				  <th scope="col">Last</th>
+				  <th scope="col">Handle</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <th scope="row">1</th>
+				  <td>Mark</td>
+				  <td>Otto</td>
+				  <td>@mdo</td>
+				</tr>
+				<tr>
+				  <th scope="row">2</th>
+				  <td>Jacob</td>
+				  <td>Thornton</td>
+				  <td>@fat</td>
+				</tr>
+				<tr>
+				  <th scope="row">3</th>
+				  <td>Larry</td>
+				  <td>the Bird</td>
+				  <td>@twitter</td>
+				</tr>
+			  </tbody>
+			</table>
+ </fieldset>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="medication-plan">
+          <!-- small box -->
+		  <!-- medication plan -->
+ <fieldset>
+  <legend>Medication Plan</legend>
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th scope="col">#</th>
+				  <th scope="col">First</th>
+				  <th scope="col">Last</th>
+				  <th scope="col">Handle</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <th scope="row">1</th>
+				  <td>Mark</td>
+				  <td>Otto</td>
+				  <td>@mdo</td>
+				</tr>
+				<tr>
+				  <th scope="row">2</th>
+				  <td>Jacob</td>
+				  <td>Thornton</td>
+				  <td>@fat</td>
+				</tr>
+				<tr>
+				  <th scope="row">3</th>
+				  <td>Larry</td>
+				  <td>the Bird</td>
+				  <td>@twitter</td>
+				</tr>
+			  </tbody>
+			</table>
+ </fieldset>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="emergency-data">
+          <!-- small box -->
+		  <!-- emergency data -->
+ <fieldset>
+  <legend>Emergency Data</legend>
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th scope="col">#</th>
+				  <th scope="col">First</th>
+				  <th scope="col">Last</th>
+				  <th scope="col">Handle</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <th scope="row">1</th>
+				  <td>Mark</td>
+				  <td>Otto</td>
+				  <td>@mdo</td>
+				</tr>
+				<tr>
+				  <th scope="row">2</th>
+				  <td>Jacob</td>
+				  <td>Thornton</td>
+				  <td>@fat</td>
+				</tr>
+				<tr>
+				  <th scope="row">3</th>
+				  <td>Larry</td>
+				  <td>the Bird</td>
+				  <td>@twitter</td>
+				</tr>
+			  </tbody>
+			</table>
  </fieldset>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="histories">
           <!-- small box -->
+		  <!-- Histories -->
  <fieldset>
-  <legend>History</legend>
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"><br><br>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email"><br><br>
-  <label for="birthday">Birthday:</label>
-  <input type="date" id="birthday" name="birthday"><br><br>
+  <legend>Histories</legend>
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th scope="col">#</th>
+				  <th scope="col">First</th>
+				  <th scope="col">Last</th>
+				  <th scope="col">Handle</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <th scope="row">1</th>
+				  <td>Mark</td>
+				  <td>Otto</td>
+				  <td>@mdo</td>
+				</tr>
+				<tr>
+				  <th scope="row">2</th>
+				  <td>Jacob</td>
+				  <td>Thornton</td>
+				  <td>@fat</td>
+				</tr>
+				<tr>
+				  <th scope="row">3</th>
+				  <td>Larry</td>
+				  <td>the Bird</td>
+				  <td>@twitter</td>
+				</tr>
+			  </tbody>
+			</table>
+ </fieldset>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="documents">
+          <!-- small box -->
+		  <!-- Documents -->
+ <fieldset>
+  <legend>Documents</legend>
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th scope="col">#</th>
+				  <th scope="col">First</th>
+				  <th scope="col">Last</th>
+				  <th scope="col">Handle</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <th scope="row">1</th>
+				  <td>Mark</td>
+				  <td>Otto</td>
+				  <td>@mdo</td>
+				</tr>
+				<tr>
+				  <th scope="row">2</th>
+				  <td>Jacob</td>
+				  <td>Thornton</td>
+				  <td>@fat</td>
+				</tr>
+				<tr>
+				  <th scope="row">3</th>
+				  <td>Larry</td>
+				  <td>the Bird</td>
+				  <td>@twitter</td>
+				</tr>
+			  </tbody>
+			</table>
  </fieldset>
         </div>
       </div>
