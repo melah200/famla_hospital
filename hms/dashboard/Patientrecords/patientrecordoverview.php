@@ -2,13 +2,21 @@
 <?php include"../Include/sidebar.php";?>
 <?php
 include("../inc/connect.php") ;
+
+//chec if the page is loaded with the id
+if(!isset($_GET['id']))
+{
+	header("Location: patientrecord.php");
+}
 $query=mysqli_query($db_connect, "SELECT * FROM addfiles")or die (mysqli_error($db_connect));
 $numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
-//echo $row1; 
+//echo $row1;
+$temp='';
 $p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysqli_error($db_connect));
 $p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysql_fetch_all($p_query);
+
 
 function mysql_fetch_all($query)
 
@@ -183,26 +191,26 @@ else
 
 	<ul class="nav nav-pills" style="font-size:16px">
 	  <li class="text-center record" style="border:1px solid #0b00ff30"><a href="patientrecordoverview.php?overview">Overview<p><i class="fa fa-list"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('diagnostics')" href="#">Diagnostics<p><i class="fa fa-user-md"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('findings')" href="#">Findings<p><i class="fa fa-heartbeat"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('examinations')" href="#">Examinations<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('vaccinations')" href="#">Vaccinations<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('activities')" href="#">Activities<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('medication-plan')" href="#">Medication Plan<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('emergency-data')" href="#">Emergency Data<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('histories')" href="#">Histories<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('documents')" href="#">Documents<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('diagnostics', 'btn-ctrl-diagnostics')" href="#">Diagnostics<p><i class="fa fa-user-md"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('findings', 'btn-ctrl-findings')" href="#">Findings<p><i class="fa fa-heartbeat"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('examinations', 'btn-ctrl-examinations')" href="#">Examinations<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('vaccinations', 'btn-ctrl-vaccinations')" href="#">Vaccinations<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('activities', 'btn-ctrl-activities')" href="#">Activities<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('medication-plan', 'btn-ctrl-medication-plan')" href="#">Medication Plan<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('emergency-data', 'btn-ctrl-emergency-data')" href="#">Emergency Data<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('histories', 'btn-ctrl-histories')" href="#">Histories<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record"><a onclick="show('documents', 'btn-ctrl-documents')" href="#">Documents<p><i class="fa fa-folder"></i></p></a></li>
 
 	</ul>
 </div>
  
 <script>
-	function show(id){
+	function show(id, btn){
 		
 		var tab = document.getElementsByClassName("record-tab");
 		// var tmpId;
 		for(var i=0; i<tab.length; i++){
-			if(tab[i].id == id){
+			if(tab[i].id == id || tab[i].id == btn){
 				tab[i].style.display = "block";
 				tab[i].style.width = "100%";
 				
@@ -234,22 +242,34 @@ else
 		  <tbody>
 		  <?php   
 		  
-		  
+				$query=mysqli_query($db_connect, "SELECT * FROM diagnostic")or die (mysqli_error($db_connect));
+				//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
+				//echo $numrows; exit;
+				while($row=mysqli_fetch_assoc($query)){
+
 		  ?>
 			<tr>
 			  <!--<th scope="row">1</th>-->
-			  <td>20.05.2021</td>
-			  <td>Otto</td>
-			  <td>@mdo</td>
-			  <td>@mdo</td>
-			  <td>@mdo</td>
+			  <td><?php echo $row['dateDiagnoctic']; ?></td>
+			  <td><?php echo $row['typ']; ?></td>
+			  <td><?php echo $row['text']; ?></td>
+			  <td><?php echo $row['codessys']; ?></td>
+			  <td><?php echo $row['code']; ?></td>
 			</tr>
 		    <?php
-			
+				}
 			?>
 		  </tbody>
 		</table>
 	</fieldset>
+			<br>
+			<div class="record-tab text-center" id="btn-ctrl-diagnostics" style="display:none">
+			  <tr>
+			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			  </tr>
+			</div>
         </div>
 
         <!-- ./col -->
@@ -289,6 +309,14 @@ else
 			  </tbody>
 			</table>
     </fieldset>    
+			<br>
+			<div class="record-tab text-center" id="btn-ctrl-findings" style="display:none">
+			  <tr>
+			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			  </tr>
+			</div>		
 		</div>
         <!-- ./col -->
          <!-- ./col -->
@@ -328,230 +356,286 @@ else
 			  </tbody>
 			</table>
 	</fieldset>
-        </div>
+			<br>
+			<div class="record-tab text-center" id="btn-ctrl-examinations" style="display:none">
+			  <tr>
+			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			  </tr>
+			</div>	
+		</div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="vaccinations">
           <!-- small box -->
 		  <!-- vaccinations -->
- <fieldset>
-  <legend>Vaccinations</legend>
-			<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th scope="col">#</th>
-				  <th scope="col">First</th>
-				  <th scope="col">Last</th>
-				  <th scope="col">Handle</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr>
-				  <th scope="row">1</th>
-				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
-				</tr>
-				<tr>
-				  <th scope="row">2</th>
-				  <td>Jacob</td>
-				  <td>Thornton</td>
-				  <td>@fat</td>
-				</tr>
-				<tr>
-				  <th scope="row">3</th>
-				  <td>Larry</td>
-				  <td>the Bird</td>
-				  <td>@twitter</td>
-				</tr>
-			  </tbody>
-			</table>
- </fieldset>
-        </div>
+	<fieldset>
+	  <legend>Vaccinations</legend>
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th scope="col">#</th>
+					  <th scope="col">First</th>
+					  <th scope="col">Last</th>
+					  <th scope="col">Handle</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <th scope="row">1</th>
+					  <td>Mark</td>
+					  <td>Otto</td>
+					  <td>@mdo</td>
+					</tr>
+					<tr>
+					  <th scope="row">2</th>
+					  <td>Jacob</td>
+					  <td>Thornton</td>
+					  <td>@fat</td>
+					</tr>
+					<tr>
+					  <th scope="row">3</th>
+					  <td>Larry</td>
+					  <td>the Bird</td>
+					  <td>@twitter</td>
+					</tr>
+				  </tbody>
+				</table>
+	</fieldset>
+			<br>
+			<div class="record-tab text-center" id="btn-ctrl-vaccinations" style="display:none">
+			  <tr>
+			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			  </tr>
+			</div>        
+		</div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="activities">
           <!-- small box -->
 		  <!-- activities -->
- <fieldset>
-  <legend>Activities</legend>
-			<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th scope="col">#</th>
-				  <th scope="col">First</th>
-				  <th scope="col">Last</th>
-				  <th scope="col">Handle</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr>
-				  <th scope="row">1</th>
-				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
-				</tr>
-				<tr>
-				  <th scope="row">2</th>
-				  <td>Jacob</td>
-				  <td>Thornton</td>
-				  <td>@fat</td>
-				</tr>
-				<tr>
-				  <th scope="row">3</th>
-				  <td>Larry</td>
-				  <td>the Bird</td>
-				  <td>@twitter</td>
-				</tr>
-			  </tbody>
-			</table>
- </fieldset>
-        </div>
+	 <fieldset>
+	  <legend>Activities</legend>
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th scope="col">#</th>
+					  <th scope="col">First</th>
+					  <th scope="col">Last</th>
+					  <th scope="col">Handle</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <th scope="row">1</th>
+					  <td>Mark</td>
+					  <td>Otto</td>
+					  <td>@mdo</td>
+					</tr>
+					<tr>
+					  <th scope="row">2</th>
+					  <td>Jacob</td>
+					  <td>Thornton</td>
+					  <td>@fat</td>
+					</tr>
+					<tr>
+					  <th scope="row">3</th>
+					  <td>Larry</td>
+					  <td>the Bird</td>
+					  <td>@twitter</td>
+					</tr>
+				  </tbody>
+				</table>
+	 </fieldset>
+			<br>
+			<div class="record-tab text-center" id="btn-ctrl-activities" style="display:none">
+			  <tr>
+			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			  </tr>
+			</div>        
+		</div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="medication-plan">
           <!-- small box -->
 		  <!-- medication plan -->
- <fieldset>
-  <legend>Medication Plan</legend>
-			<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th scope="col">#</th>
-				  <th scope="col">First</th>
-				  <th scope="col">Last</th>
-				  <th scope="col">Handle</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr>
-				  <th scope="row">1</th>
-				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
-				</tr>
-				<tr>
-				  <th scope="row">2</th>
-				  <td>Jacob</td>
-				  <td>Thornton</td>
-				  <td>@fat</td>
-				</tr>
-				<tr>
-				  <th scope="row">3</th>
-				  <td>Larry</td>
-				  <td>the Bird</td>
-				  <td>@twitter</td>
-				</tr>
-			  </tbody>
-			</table>
- </fieldset>
+	 <fieldset>
+	  <legend>Medication Plan</legend>
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th scope="col">#</th>
+					  <th scope="col">First</th>
+					  <th scope="col">Last</th>
+					  <th scope="col">Handle</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <th scope="row">1</th>
+					  <td>Mark</td>
+					  <td>Otto</td>
+					  <td>@mdo</td>
+					</tr>
+					<tr>
+					  <th scope="row">2</th>
+					  <td>Jacob</td>
+					  <td>Thornton</td>
+					  <td>@fat</td>
+					</tr>
+					<tr>
+					  <th scope="row">3</th>
+					  <td>Larry</td>
+					  <td>the Bird</td>
+					  <td>@twitter</td>
+					</tr>
+				  </tbody>
+				</table>
+	 </fieldset>
+			<br>
+			<div class="record-tab text-center" id="btn-ctrl-medication-plan" style="display:none">
+			  <tr>
+			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			  </tr>
+			</div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="emergency-data">
           <!-- small box -->
 		  <!-- emergency data -->
- <fieldset>
-  <legend>Emergency Data</legend>
-			<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th scope="col">#</th>
-				  <th scope="col">First</th>
-				  <th scope="col">Last</th>
-				  <th scope="col">Handle</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr>
-				  <th scope="row">1</th>
-				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
-				</tr>
-				<tr>
-				  <th scope="row">2</th>
-				  <td>Jacob</td>
-				  <td>Thornton</td>
-				  <td>@fat</td>
-				</tr>
-				<tr>
-				  <th scope="row">3</th>
-				  <td>Larry</td>
-				  <td>the Bird</td>
-				  <td>@twitter</td>
-				</tr>
-			  </tbody>
-			</table>
- </fieldset>
-        </div>
+	 <fieldset>
+	  <legend>Emergency Data</legend>
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th scope="col">#</th>
+					  <th scope="col">First</th>
+					  <th scope="col">Last</th>
+					  <th scope="col">Handle</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <th scope="row">1</th>
+					  <td>Mark</td>
+					  <td>Otto</td>
+					  <td>@mdo</td>
+					</tr>
+					<tr>
+					  <th scope="row">2</th>
+					  <td>Jacob</td>
+					  <td>Thornton</td>
+					  <td>@fat</td>
+					</tr>
+					<tr>
+					  <th scope="row">3</th>
+					  <td>Larry</td>
+					  <td>the Bird</td>
+					  <td>@twitter</td>
+					</tr>
+				  </tbody>
+				</table>
+	 </fieldset>
+			<br>
+			<div class="record-tab text-center" id="btn-ctrl-emergency-data" style="display:none">
+			  <tr>
+			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			  </tr>
+			</div>        
+		</div>
         <!-- ./col -->
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="histories">
           <!-- small box -->
 		  <!-- Histories -->
- <fieldset>
-  <legend>Histories</legend>
-			<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th scope="col">#</th>
-				  <th scope="col">First</th>
-				  <th scope="col">Last</th>
-				  <th scope="col">Handle</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr>
-				  <th scope="row">1</th>
-				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
-				</tr>
-				<tr>
-				  <th scope="row">2</th>
-				  <td>Jacob</td>
-				  <td>Thornton</td>
-				  <td>@fat</td>
-				</tr>
-				<tr>
-				  <th scope="row">3</th>
-				  <td>Larry</td>
-				  <td>the Bird</td>
-				  <td>@twitter</td>
-				</tr>
-			  </tbody>
-			</table>
- </fieldset>
-        </div>
+	 <fieldset>
+	  <legend>Histories</legend>
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th scope="col">#</th>
+					  <th scope="col">First</th>
+					  <th scope="col">Last</th>
+					  <th scope="col">Handle</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <th scope="row">1</th>
+					  <td>Mark</td>
+					  <td>Otto</td>
+					  <td>@mdo</td>
+					</tr>
+					<tr>
+					  <th scope="row">2</th>
+					  <td>Jacob</td>
+					  <td>Thornton</td>
+					  <td>@fat</td>
+					</tr>
+					<tr>
+					  <th scope="row">3</th>
+					  <td>Larry</td>
+					  <td>the Bird</td>
+					  <td>@twitter</td>
+					</tr>
+				  </tbody>
+				</table>
+	 </fieldset>
+			<br>
+			<div class="record-tab text-center" id="btn-ctrl-histories" style="display:none">
+			  <tr>
+			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			  </tr>
+			</div>        
+		</div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 record-tab" id="documents">
           <!-- small box -->
 		  <!-- Documents -->
- <fieldset>
-  <legend>Documents</legend>
-			<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th scope="col">#</th>
-				  <th scope="col">First</th>
-				  <th scope="col">Last</th>
-				  <th scope="col">Handle</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr>
-				  <th scope="row">1</th>
-				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
-				</tr>
-				<tr>
-				  <th scope="row">2</th>
-				  <td>Jacob</td>
-				  <td>Thornton</td>
-				  <td>@fat</td>
-				</tr>
-				<tr>
-				  <th scope="row">3</th>
-				  <td>Larry</td>
-				  <td>the Bird</td>
-				  <td>@twitter</td>
-				</tr>
-			  </tbody>
-			</table>
- </fieldset>
-        </div>
+	 <fieldset>
+	  <legend>Documents</legend>
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th scope="col">#</th>
+					  <th scope="col">First</th>
+					  <th scope="col">Last</th>
+					  <th scope="col">Handle</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <th scope="row">1</th>
+					  <td>Mark</td>
+					  <td>Otto</td>
+					  <td>@mdo</td>
+					</tr>
+					<tr>
+					  <th scope="row">2</th>
+					  <td>Jacob</td>
+					  <td>Thornton</td>
+					  <td>@fat</td>
+					</tr>
+					<tr>
+					  <th scope="row">3</th>
+					  <td>Larry</td>
+					  <td>the Bird</td>
+					  <td>@twitter</td>
+					</tr>
+				  </tbody>
+				</table>
+	 </fieldset>
+			<br>
+			<div class="record-tab text-center" id="btn-ctrl-documents" style="display:none">
+			  <tr>
+			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			  </tr>
+			</div>        
+		</div>
       </div>
       
 	  
