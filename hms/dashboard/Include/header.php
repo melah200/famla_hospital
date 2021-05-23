@@ -1,4 +1,9 @@
 <?php 
+	//check if file is already in use
+	if(!isset($header_in_use)){
+		$header_in_use = "";
+?>
+<?php 
 if(!isset($_SESSION)){
   session_start();
 }
@@ -190,3 +195,4 @@ function html($string) {
     return htmlspecialchars($string, REPLACE_FLAGS, CHARSET);
 }
 ?>
+	<?php } ?>

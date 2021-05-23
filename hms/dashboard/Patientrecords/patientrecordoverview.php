@@ -1,18 +1,23 @@
+
 <?php include"../Include/header.php";?>
 <?php include"../Include/sidebar.php";?>
-<?php
+<?php 
 include("../inc/connect.php") ;
 
 //chec if the page is loaded with the id
 if(!isset($_GET['id']))
 {
-	header("Location: patientrecord.php");
+  header("Location: patientrecord.php");
 }
+$patientId = escape($_GET['id']);
+?>
+<?php
+
 $query=mysqli_query($db_connect, "SELECT * FROM addfiles")or die (mysqli_error($db_connect));
 $numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 $row1=mysql_fetch_all($query);
 //echo $row1;
-$temp='';
+
 $p_query=mysqli_query($db_connect, "SELECT * FROM patientregister")or die (mysqli_error($db_connect));
 $p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
 $p_row1=mysql_fetch_all($p_query);
@@ -157,12 +162,19 @@ else
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
 -->
+<?php 
+
+	$queryPInfo=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE id = {$patientId}")or die (mysqli_error($db_connect));
+	while($patient=mysqli_fetch_assoc($queryPInfo)){  
+
+?>
 <div class="box-header">
-	<p>Name		: Tsannang Armel</p>
-    <p>Birth	: 12.04.2000</p>
-    <p>Gender	: Male</p>
+	<p>Name		: &nbsp;&nbsp;&nbsp;<?php echo $patient['name']; ?></p>
+    <p>Birth	: &nbsp;&nbsp;&nbsp;<?php echo $patient['birthdate']; ?></p>
+    <p>Gender	: &nbsp;&nbsp;&nbsp;<?php echo $patient['gender']; ?></p>
 
 </div>
+	<?php } ?>
 <div class="box box-success box-body">
 		  <!--<input type="text" id="myInput" class="form-control search-in-list" placeholder="Search...">-->
    <!-- Split button -->
@@ -190,7 +202,7 @@ else
 	-->
 
 	<ul class="nav nav-pills" style="font-size:16px">
-	  <li class="text-center record" style="border:1px solid #0b00ff30"><a href="patientrecordoverview.php?overview">Overview<p><i class="fa fa-list"></i></p></a></li>
+	  <li class="text-center record" style="border:1px solid #0b00ff30"><a href="patientrecordoverview.php?id=<?php echo $patientId; ?>">Overview<p><i class="fa fa-list"></i></p></a></li>
 	  <li class="text-center record"><a onclick="show('diagnostics', 'btn-ctrl-diagnostics')" href="#">Diagnostics<p><i class="fa fa-user-md"></i></p></a></li>
 	  <li class="text-center record"><a onclick="show('findings', 'btn-ctrl-findings')" href="#">Findings<p><i class="fa fa-heartbeat"></i></p></a></li>
 	  <li class="text-center record"><a onclick="show('examinations', 'btn-ctrl-examinations')" href="#">Examinations<p><i class="fa fa-stethoscope"></i></p></a></li>
@@ -242,7 +254,7 @@ else
 		  <tbody>
 		  <?php   
 		  
-				$query=mysqli_query($db_connect, "SELECT * FROM diagnostic")or die (mysqli_error($db_connect));
+				$query=mysqli_query($db_connect, "SELECT * FROM diagnostic WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
 				//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 				//echo $numrows; exit;
 				while($row=mysqli_fetch_assoc($query)){

@@ -1,3 +1,9 @@
+<?php 
+	//check if file is already in use
+	if(!isset($sidebar_in_use)){
+		$sidebar_in_use = "";
+?>
+
 <?php
 include"../inc/connect.php ";
 //echo "string"; exit;
@@ -153,3 +159,4 @@ include"../inc/connect.php ";
     </section>
     <!-- /.sidebar -->
   </aside>
+	<?php } ?>
