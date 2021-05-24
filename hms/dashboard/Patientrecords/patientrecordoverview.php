@@ -203,24 +203,26 @@ else
 	-->
 
 	<ul class="nav nav-pills" style="font-size:16px">
-	  <li class="text-center record" style="border:1px solid #0b00ff30"><a href="patientrecordoverview.php?id=<?php echo $patientId; ?>">Overview<p><i class="fa fa-list"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('diagnostics', 'btn-ctrl-diagnostics')" href="#">Diagnostics<p><i class="fa fa-user-md"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('findings', 'btn-ctrl-findings')" href="#">Findings<p><i class="fa fa-heartbeat"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('examinations', 'btn-ctrl-examinations')" href="#">Examinations<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('vaccinations', 'btn-ctrl-vaccinations')" href="#">Vaccinations<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('activities', 'btn-ctrl-activities')" href="#">Activities<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('medication-plan', 'btn-ctrl-medication-plan')" href="#">Medication Plan<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('emergency-data', 'btn-ctrl-emergency-data')" href="#">Emergency Data<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('histories', 'btn-ctrl-histories')" href="#">Histories<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record"><a onclick="show('documents', 'btn-ctrl-documents')" href="#">Documents<p><i class="fa fa-folder"></i></p></a></li>
+	  <li class="text-center record " style="border:1px solid #0b00ff30"><a href="patientrecordoverview.php?id=<?php echo $patientId; ?>">Overview<p><i class="fa fa-list"></i></p></a></li>
+	  <li class="text-center record nav-item" id="diag"><a class="nav-link" onclick="show('diagnostics', 'btn-ctrl-diagnostics', 'diag')" href="#">Diagnostics<p><i class="fa fa-user-md"></i></p></a></li>
+	  <li class="text-center record nav-item" id="find"><a class="nav-link" onclick="show('findings', 'btn-ctrl-findings', 'find')" href="#">Findings<p><i class="fa fa-heartbeat"></i></p></a></li>
+	  <li class="text-center record nav-item" id="exam"><a class="nav-link" onclick="show('examinations', 'btn-ctrl-examinations', 'exam')" href="#">Examinations<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record nav-item" id="vacc"><a class="nav-link" onclick="show('vaccinations', 'btn-ctrl-vaccinations', 'vacc')" href="#">Vaccinations<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record nav-item" id="acti"><a class="nav-link" onclick="show('activities', 'btn-ctrl-activities', 'acti')" href="#">Activities<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record nav-item" id="medi"><a class="nav-link" onclick="show('medication-plan', 'btn-ctrl-medication-plan', 'medi')" href="#">Medication Plan<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record nav-item" id="emer"><a class="nav-link" onclick="show('emergency-data', 'btn-ctrl-emergency-data', 'emer')" href="#">Emergency Data<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record nav-item" id="hist"><a class="nav-link" onclick="show('histories', 'btn-ctrl-histories', 'hist')" href="#">Histories<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record nav-item" id="docx"><a class="nav-link" onclick="show('documents', 'btn-ctrl-documents', 'docx')" href="#">Documents<p><i class="fa fa-folder"></i></p></a></li>
 
 	</ul>
+	
 </div>
- 
+
 <script>
-	function show(id, btn){
+	function show(id, btn, linkId){
 		
 		var tab = document.getElementsByClassName("record-tab");
+		var li = document.getElementsByClassName("record");
 		// var tmpId;
 		for(var i=0; i<tab.length; i++){
 			if(tab[i].id == id || tab[i].id == btn){
@@ -229,6 +231,14 @@ else
 				
 			}else{
 				tab[i].style.display = "none";
+			}
+		}
+		for(var n=0; n<li.length; n++){
+			if(li[n].id == linkId){
+				// backcolor for the link clicked
+				// li[n].style.backgroundColor = 'red';
+			}else{
+				// li[n].style.backgroundColor = 'none';
 			}
 		}
 	}
@@ -527,7 +537,7 @@ else
 				  </thead>
 				  <tbody>
 				  <?php   
-						$query=mysqli_query($db_connect, "SELECT * FROM history WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						$query=mysqli_query($db_connect, "SELECT * FROM notfalldaten WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
 						while($EmergencyData=mysqli_fetch_assoc($query)){
 				  ?>				  
 					<tr>
@@ -580,7 +590,7 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-histories" style="display:none">
 			  <tr>
-			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="add_history.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
 			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>

@@ -1,3 +1,4 @@
+ <!DOCTYPE html>
 <?php
 //check if file is already in use
 // if(!isset($header_in_use)){
@@ -13,7 +14,7 @@ if(!isset($_SESSION)){
 	if(!isset($_SESSION['username'])) header("Location: ../../");  /* redirect to home page if the user is not logged */
 include_once("../inc/connect.php");
  ?>
- <!DOCTYPE html>
+
 <html>
 <head>
   <meta charset="utf-8">

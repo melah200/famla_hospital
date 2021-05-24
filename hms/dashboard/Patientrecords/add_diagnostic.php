@@ -1,10 +1,10 @@
 <?php if(!isset($_GET['id']))
 {
 	header("Location: patientrecord.php");
+	// exit();
 }
 ?>
-<?php include_once("../Include/header.php"); ?>
-<?php include_once("../Include/sidebar.php"); ?>
+
 <?php
 
 include("../inc/connect.php");
@@ -22,13 +22,16 @@ if(isset($_POST['submit'])){
   $queryAdd = "INSERT INTO diagnostic(pid, dateDiagnoctic, typ, text, codessys, code) ";
   $queryAdd.= "Values('$patientId', '$date', '$typ', '$text', '$codessys', '$code') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
-  header("Location: /patientrecordoverview.php?id=$patientId");
+  header("Location: patientrecordoverview.php?id=$patientId");
+  	// exit();
 
 }else if(isset($_POST['close'])){
-	header("Location: /patientrecordoverview.php?id=$patientId");
+	header("Location: patientrecordoverview.php?id=$patientId");
+		// exit();
 }
-
 ?>
+<?php include_once("../Include/header.php"); ?>
+<?php include_once("../Include/sidebar.php"); ?>
 
 <div class="content-wrapper">
     <section class="content-header">

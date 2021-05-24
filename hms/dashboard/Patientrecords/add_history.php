@@ -3,32 +3,31 @@
 	header("Location: patientrecord.php");
 }
 ?>
-<?php include_once("../Include/header.php"); ?>
-<?php include_once("../Include/sidebar.php"); ?>
+
 <?php
 
 include("../inc/connect.php");
 
-
-if(isset($_GET['id']))
 $patientId = escape($_GET['id']);
 
 if(isset($_POST['submit'])){
-  $date = escape($_POST['date']);
-  $typ = escape($_POST['typ']);
-  $text = escape($_POST['text']);
-  $codessys = escape($_POST['codessys']);
-  $code = escape($_POST['code']);
-  $queryAdd = "INSERT INTO diagnostic(pid, dateDiagnoctic, typ, text, codessys, code) ";
-  $queryAdd.= "Values('$patientId', '$date', '$typ', '$text', '$codessys', '$code') ";
+  $period = escape($_POST['period']);
+  $pName = escape($_POST['pName']);
+  $station_room = escape($_POST['station_room']);
+  $description = escape($_POST['description']);
+
+  $queryAdd = "INSERT INTO history(pid, zeitraume, NamePatient, Station_Raum, description) ";
+  $queryAdd.= "Values('$patientId', '$period', '$pName', '$station_room', '$description') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
-  header("Location: /patientrecordoverview.php?id=$patientId");
+  header("Location: patientrecordoverview.php?id=$patientId");
 
 }else if(isset($_POST['close'])){
-	header("Location: /patientrecordoverview.php?id=$patientId");
+	header("Location: patientrecordoverview.php?id=$patientId");
 }
 
 ?>
+<?php include_once("../Include/header.php"); ?>
+<?php include_once("../Include/sidebar.php"); ?>
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -51,79 +50,12 @@ if(isset($_POST['submit'])){
         <i class="fa fa-user"></i> <h3 class="box-title">History</h3>
       </div>
 	  
-      <div class="modal fade" id="myModal" role="dialog">
-       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Patient Register</h4>
-          </div>
-          <div class="modal-body">
-            <form method="POST" enctype="multipart/form-data">
-             <!--    <div class="form-group">
-                 <label for="exampleInputEmail1">Doctor</label>
-                 <input type="name" class="form-control" name="doctor" placeholder="">
-                </div> -->
-                <div class="form-group">
-                <label for="exampleInputEmail1">Full Name</label>
-                <input type="text" name="name" class="form-control" placeholder="" required="">
-               </div>
-               <div class="form-group">
-               <label for="exampleInputEmail1">Email</label>
-               <input type="Email" name="email" class="form-control" placeholder="" required="">
-              </div>
-             <!--   <div class="form-group">
-              <label for="exampleInputFile">Password</label>
-              <input type="Password" name="password" class="form-control" placeholder="">
-              </div> -->
-               <div class="form-group">
-               <label for="exampleInputPassword1">Address</label>
-              <input type="text" name="address"class="form-control" placeholder="" required="">
-               </div>
-               <div class="form-group">
-              <label for="exampleInputPassword1">Phone</label>
-              <input type="text" name="phone" class="form-control" placeholder="" required="">
-              </div>
-              <div class="form-group">
-              <label for="exampleInputPassword1">Gender</label>
-              <select name="gender" class="form-control" placeholder="" required="">
-              <option value="" disabled selected="selected"> Select Category</option>
-              <option value="Male">Male</option> <option value="Female">Female</option>
-              <option value="Other">Other</option>
-              </select>
-            </div>
-             <div class="form-group">
-            <label for="exampleInputPassword1">Birthdate</label>
-            <input type="date" name="birthdate" class="form-control" placeholder="" required="">
-           </div>
-           <div class="form-group">
-            <label for="exampleInputPassword1">Bloodgroup</label>
-          <select name="bloodgroup" class="form-control" id="c" placeholder="" required="">
-            <option value="" disabled selected="selected"> Select Category</option>
-            <option value="A+">A+</option> <option value="A-">A-</option>
-            <option value="B+">B+</option><option value="B-">B-</option> <option value="AB+">AB+</option> <option value="AB-">AB-</option> <option value="O+">O+</option><option value="O-">O-</option>
-          </select>
-          </div>
-          <td><b>Image Upload</b></font>
-          <input type="file" name="imageupload" id="fileToUpload" required=""></td>
-           <div class="box-footer">
-          <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-         </div>
-         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </form>
-      </div>
-    </div>
-      </div>
-      </div>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 <?php 
 
 	$queryPInfo=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE id = {$patientId}")or die (mysqli_error($db_connect));
+	$patientName = '';
 	while($patient=mysqli_fetch_assoc($queryPInfo)){  
-
+	$patientName = $patient['name'];
 ?>
 <div class="box-header">
 	<p>Name		: &nbsp;&nbsp;&nbsp;<?php echo $patient['name']; ?></p>
@@ -139,24 +71,20 @@ if(isset($_POST['submit'])){
 			<form method="POST" enctype="multipart/form-data">
 
 			   <div class="form-group">
-				   <label for="dateIn">Date</label>
-				  <input type="date" name="date" class="form-control" id="dateIn" placeholder="" required>
+				   <label for="period">Period</label>
+				  <input type="date" name="period" class="form-control" id="period" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="typ">Typ</label>
-				  <input type="text" name="typ" class="form-control" id="typ" placeholder="" required>
+				   <label for="pName">Patient Name</label>
+				  <input type="text" name="pName" class="form-control" id="pName" placeholder="" value="<?php echo $patientName; ?>" readonly>
 			   </div>
 			   <div class="form-group">
-				   <label for="text">Text</label>
-				  <input type="text" name="text" class="form-control" id="text" placeholder="" required>
+				   <label for="station_room">Station/Room</label>
+				  <input type="text" name="station_room" class="form-control" id="station_room" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="codessys">Codessys</label>
-				  <input type="text" name="codessys" class="form-control" id="codessys" placeholder="" required>
-			   </div>
-			   <div class="form-group">
-				   <label for="code">Code</label>
-				  <input type="text" name="code" class="form-control" id="code" placeholder="" required>
+				   <label for="description">Description</label>
+				  <input type="text" name="description" class="form-control" id="description" placeholder="" required>
 			   </div>
 
 				<div class="box-footer">
