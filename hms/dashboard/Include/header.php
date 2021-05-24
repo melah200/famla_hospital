@@ -1,14 +1,17 @@
-<?php 
-	//check if file is already in use
-	if(!isset($header_in_use)){
-		$header_in_use = "";
-?>
-<?php 
+<?php
+//check if file is already in use
+// if(!isset($header_in_use)){
+	// $header_in_use = "";
+//exit();
+
+// }
+ 
 if(!isset($_SESSION)){
   session_start();
 }
+
 	if(!isset($_SESSION['username'])) header("Location: ../../");  /* redirect to home page if the user is not logged */
-include"../inc/connect.php";
+include_once("../inc/connect.php");
  ?>
  <!DOCTYPE html>
 <html>
@@ -195,4 +198,3 @@ function html($string) {
     return htmlspecialchars($string, REPLACE_FLAGS, CHARSET);
 }
 ?>
-	<?php } ?>

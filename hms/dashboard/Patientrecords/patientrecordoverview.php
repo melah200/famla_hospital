@@ -1,14 +1,15 @@
-
-<?php include"../Include/header.php";?>
-<?php include"../Include/sidebar.php";?>
 <?php 
-include("../inc/connect.php") ;
-
 //chec if the page is loaded with the id
 if(!isset($_GET['id']))
 {
-  header("Location: patientrecord.php");
+	header("Location: patientrecord.php");
 }
+?>
+<?php include_once("../Include/header.php");?>
+<?php include_once("../Include/sidebar.php");?>
+<?php 
+include("../inc/connect.php") ;
+
 $patientId = escape($_GET['id']);
 ?>
 <?php
@@ -277,9 +278,9 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-diagnostics" style="display:none">
 			  <tr>
-			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
-			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>
         </div>
@@ -324,9 +325,9 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-findings" style="display:none">
 			  <tr>
-			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
-			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>		
 		</div>
@@ -371,9 +372,9 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-examinations" style="display:none">
 			  <tr>
-			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
-			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>	
 		</div>
@@ -416,9 +417,9 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-vaccinations" style="display:none">
 			  <tr>
-			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
-			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
 		</div>
@@ -461,9 +462,9 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-activities" style="display:none">
 			  <tr>
-			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
-			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
 		</div>
@@ -506,9 +507,9 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-medication-plan" style="display:none">
 			  <tr>
-			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
-			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>
         </div>
@@ -520,40 +521,29 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
-					  <th scope="col">#</th>
-					  <th scope="col">First</th>
-					  <th scope="col">Last</th>
-					  <th scope="col">Handle</th>
+					  <th scope="col">Statements</th>
+					  <th scope="col">Characteristics</th>
 					</tr>
 				  </thead>
 				  <tbody>
+				  <?php   
+						$query=mysqli_query($db_connect, "SELECT * FROM history WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						while($EmergencyData=mysqli_fetch_assoc($query)){
+				  ?>				  
 					<tr>
-					  <th scope="row">1</th>
-					  <td>Mark</td>
-					  <td>Otto</td>
-					  <td>@mdo</td>
+					  <td><?php echo $EmergencyData['Angabe']; ?></td>
+					  <td><?php echo $EmergencyData['ausprägung']; ?></td>
 					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>Jacob</td>
-					  <td>Thornton</td>
-					  <td>@fat</td>
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>Larry</td>
-					  <td>the Bird</td>
-					  <td>@twitter</td>
-					</tr>
+					<?php } ?>
 				  </tbody>
 				</table>
 	 </fieldset>
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-emergency-data" style="display:none">
 			  <tr>
-			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
-			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
 		</div>
@@ -566,40 +556,33 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
-					  <th scope="col">#</th>
-					  <th scope="col">First</th>
-					  <th scope="col">Last</th>
-					  <th scope="col">Handle</th>
+					  <th scope="col">Period</th>
+					  <th scope="col">Patient Name</th>
+					  <th scope="col">Station/Room</th>
+					  <th scope="col">Descriptions</th>
 					</tr>
 				  </thead>
 				  <tbody>
+				  <?php   
+						$query=mysqli_query($db_connect, "SELECT * FROM history WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						while($patientHistory=mysqli_fetch_assoc($query)){
+				  ?>
 					<tr>
-					  <th scope="row">1</th>
-					  <td>Mark</td>
-					  <td>Otto</td>
-					  <td>@mdo</td>
+					  <td><?php echo $patientHistory['zeitraume']; ?></td>
+					  <td><?php echo $patientHistory['NamePatient']; ?></td>
+					  <td><?php echo $patientHistory['Station_Raum']; ?></td>
+					  <td><?php echo $patientHistory['description']; ?></td>
 					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>Jacob</td>
-					  <td>Thornton</td>
-					  <td>@fat</td>
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>Larry</td>
-					  <td>the Bird</td>
-					  <td>@twitter</td>
-					</tr>
+					<?php } ?>
 				  </tbody>
 				</table>
 	 </fieldset>
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-histories" style="display:none">
 			  <tr>
-			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
-			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
 		</div>
@@ -642,9 +625,9 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-documents" style="display:none">
 			  <tr>
-			    <td><a href="add.php"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
-			    <td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
 		</div>

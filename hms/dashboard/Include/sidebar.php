@@ -5,7 +5,7 @@
 ?>
 
 <?php
-include"../inc/connect.php ";
+include_once("../inc/connect.php ");
 //echo "string"; exit;
 ?>
 <!-- Left side column. contains the logo and sidebar -->

@@ -1,9 +1,9 @@
 
-<?php include"../Include/header.php";?>
-<?php include"../Include/sidebar.php";?>
+<?php include_once("../Include/header.php");?>
+<?php include_once("../Include/sidebar.php");?>
 <?php
 
-include("../inc/connect.php") ;
+include("../inc/connect.php");
 $query=mysqli_query($db_connect, "SELECT `id`,`name`,`phone` FROM patientregister")or die (mysqli_error($db_connect));
 $numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 //echo $numrows; exit;
@@ -166,4 +166,4 @@ function mysql_fetch_all($query)
       </div>
     </section>
   </div>
- <?php include"../Include/footer.php";?>
+ <?php include_once("../Include/footer.php");?>
