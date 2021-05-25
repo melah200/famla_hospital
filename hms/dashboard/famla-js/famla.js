@@ -30,7 +30,38 @@ $(document).ready(function() {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
+	
+// Check box
+	$('#all').change(function(e) {
+	  if (e.currentTarget.checked) {
+		$('.rows').find('input[type="checkbox"]').prop('checked', true);
+		  // $('.rows').find('input[type="checkbox"]').prop('indeterminate', true);
+	  } else {
+		$('.rows').find('input[type="checkbox"]').prop('checked', false);
+	  }
 
+	  
+	});
+	
+	$('input.check').change(function(e) {
+		var cnt = 0;
+		var t = $('input.check');
 
+		$('input.check').each(function(index, el){
+			// alert(index);
+			if(el.checked == false){
+				$('#all').prop('indeterminate', true);
+				cnt++;
+			}
+		});
+		if(cnt == 0){
+		  $('#all').prop('indeterminate', false);
+		  $('#all').prop('checked', true);
+		}
+		if($('input.check').length == cnt){
+		  $('#all').prop('indeterminate', false);
+		  $('#all').prop('checked', false);
+		}
+	});
 });
 
