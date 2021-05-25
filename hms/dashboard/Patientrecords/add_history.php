@@ -16,8 +16,8 @@ if(isset($_POST['submit'])){
   $station_room = escape($_POST['station_room']);
   $description = escape($_POST['description']);
 
-  $queryAdd = "INSERT INTO history(pid, zeitraume, NamePatient, Station_Raum, description) ";
-  $queryAdd.= "Values('$patientId', '$period', '$pName', '$station_room', '$description') ";
+  $queryAdd = "INSERT INTO history(pid, zeitraume, Station_Raum, description) ";
+  $queryAdd.= "Values('$patientId', '$period', '$station_room', '$description') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
   header("Location: patientrecordoverview.php?id=$patientId");
 

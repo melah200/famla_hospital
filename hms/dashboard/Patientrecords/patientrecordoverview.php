@@ -207,11 +207,11 @@ else
 	  <li class="text-center record nav-item" id="diag"><a class="nav-link" onclick="show('diagnostics', 'btn-ctrl-diagnostics', 'diag')" href="#">Diagnostics<p><i class="fa fa-user-md"></i></p></a></li>
 	  <li class="text-center record nav-item" id="find"><a class="nav-link" onclick="show('findings', 'btn-ctrl-findings', 'find')" href="#">Findings<p><i class="fa fa-heartbeat"></i></p></a></li>
 	  <li class="text-center record nav-item" id="exam"><a class="nav-link" onclick="show('examinations', 'btn-ctrl-examinations', 'exam')" href="#">Examinations<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record nav-item" id="vacc"><a class="nav-link" onclick="show('vaccinations', 'btn-ctrl-vaccinations', 'vacc')" href="#">Vaccinations<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record nav-item" id="acti"><a class="nav-link" onclick="show('activities', 'btn-ctrl-activities', 'acti')" href="#">Activities<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record nav-item" id="medi"><a class="nav-link" onclick="show('medication-plan', 'btn-ctrl-medication-plan', 'medi')" href="#">Medication Plan<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record nav-item" id="emer"><a class="nav-link" onclick="show('emergency-data', 'btn-ctrl-emergency-data', 'emer')" href="#">Emergency Data<p><i class="fa fa-stethoscope"></i></p></a></li>
-	  <li class="text-center record nav-item" id="hist"><a class="nav-link" onclick="show('histories', 'btn-ctrl-histories', 'hist')" href="#">Histories<p><i class="fa fa-stethoscope"></i></p></a></li>
+	  <li class="text-center record nav-item" id="vacc"><a class="nav-link" onclick="show('vaccinations', 'btn-ctrl-vaccinations', 'vacc')" href="#">Vaccinations<p><i class="fa fa-heart-o"></i></p></a></li>
+	  <li class="text-center record nav-item" id="acti"><a class="nav-link" onclick="show('activities', 'btn-ctrl-activities', 'acti')" href="#">Activities<p><i class="fa fa-medkit"></i></p></a></li>
+	  <li class="text-center record nav-item" id="medi"><a class="nav-link" onclick="show('medication-plan', 'btn-ctrl-medication-plan', 'medi')" href="#">Medication Plan<p><i class="fa fa-plus-square"></i></p></a></li>
+	  <li class="text-center record nav-item" id="emer"><a class="nav-link" onclick="show('emergency-data', 'btn-ctrl-emergency-data', 'emer')" href="#">Emergency Data<p><i class="fa fa-ambulance"></i></p></a></li>
+	  <li class="text-center record nav-item" id="hist"><a class="nav-link" onclick="show('histories', 'btn-ctrl-histories', 'hist')" href="#">Histories<p><i class="fa fa-hospital-o"></i></p></a></li>
 	  <li class="text-center record nav-item" id="docx"><a class="nav-link" onclick="show('documents', 'btn-ctrl-documents', 'docx')" href="#">Documents<p><i class="fa fa-folder"></i></p></a></li>
 
 	</ul>
@@ -305,9 +305,9 @@ else
 			  <thead>
 				<tr>
 				  <th scope="col">#</th>
-				  <th scope="col">First</th>
-				  <th scope="col">Last</th>
-				  <th scope="col">Handle</th>
+				  <th scope="col">date</th>
+				  <th scope="col">finding</th>
+				  <th scope="col">description</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -352,9 +352,10 @@ else
 			  <thead>
 				<tr>
 				  <th scope="col">#</th>
-				  <th scope="col">First</th>
-				  <th scope="col">Last</th>
-				  <th scope="col">Handle</th>
+				  <th scope="col">date</th>
+				  <th scope="col">examinations</th>
+				  <th scope="col">result</th>
+				  <th scope="col">description</th>				
 				</tr>
 			  </thead>
 			  <tbody>
@@ -397,9 +398,10 @@ else
 				  <thead>
 					<tr>
 					  <th scope="col">#</th>
-					  <th scope="col">First</th>
-					  <th scope="col">Last</th>
-					  <th scope="col">Handle</th>
+					  <th scope="col">date</th>
+					  <th scope="col">name</th>
+					  <th scope="col">desease</th>
+					  <th scope="col">dosis</th>		
 					</tr>
 				  </thead>
 				  <tbody>
@@ -442,9 +444,8 @@ else
 				  <thead>
 					<tr>
 					  <th scope="col">#</th>
-					  <th scope="col">First</th>
-					  <th scope="col">Last</th>
-					  <th scope="col">Handle</th>
+					  <th scope="col">date</th>
+					  <th scope="col">activitie</th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -487,9 +488,11 @@ else
 				  <thead>
 					<tr>
 					  <th scope="col">#</th>
-					  <th scope="col">First</th>
-					  <th scope="col">Last</th>
-					  <th scope="col">Handle</th>
+					  <th scope="col">date</th>
+					  <th scope="col">medicament</th>
+					  <th scope="col">freq</th>
+					  <th scope="col">day profil</th>
+					  <th scope="col">description</th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -531,8 +534,9 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
-					  <th scope="col">Statements</th>
-					  <th scope="col">Characteristics</th>
+					  <th scope="col">#</th>
+					  <th scope="col">specification</th>
+					  <th scope="col">expression</th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -567,7 +571,6 @@ else
 				  <thead>
 					<tr>
 					  <th scope="col">Period</th>
-					  <th scope="col">Patient Name</th>
 					  <th scope="col">Station/Room</th>
 					  <th scope="col">Descriptions</th>
 					</tr>
@@ -579,7 +582,6 @@ else
 				  ?>
 					<tr>
 					  <td><?php echo $patientHistory['zeitraume']; ?></td>
-					  <td><?php echo $patientHistory['NamePatient']; ?></td>
 					  <td><?php echo $patientHistory['Station_Raum']; ?></td>
 					  <td><?php echo $patientHistory['description']; ?></td>
 					</tr>
@@ -605,9 +607,9 @@ else
 				  <thead>
 					<tr>
 					  <th scope="col">#</th>
-					  <th scope="col">First</th>
-					  <th scope="col">Last</th>
-					  <th scope="col">Handle</th>
+					  <th scope="col">date</th>
+					  <th scope="col">title</th>
+					  <th scope="col">description</th>
 					</tr>
 				  </thead>
 				  <tbody>
