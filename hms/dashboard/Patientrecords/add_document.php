@@ -145,21 +145,14 @@ if(isset($_POST['submit'])){
 				  <input type="date" name="date" class="form-control" id="dateIn" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="typ">Typ</label>
-				  <input type="text" name="typ" class="form-control" id="typ" placeholder="" required>
+				   <label for="typ">Title</label>
+				  <input type="text" name="title" class="form-control" id="typ" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="text">Text</label>
-				  <input type="text" name="text" class="form-control" id="text" placeholder="" required>
+				   <label for="text">Descriptiont</label>
+				  <input type="text" name="description" class="form-control" id="text" placeholder="" required>
 			   </div>
-			   <div class="form-group">
-				   <label for="codessys">Codessys</label>
-				  <input type="text" name="codessys" class="form-control" id="codessys" placeholder="" required>
-			   </div>
-			   <div class="form-group">
-				   <label for="code">Code</label>
-				  <input type="text" name="code" class="form-control" id="code" placeholder="" required>
-			   </div>
+			   
 
 				<div class="box-footer">
 				  <button type="submit" name="submit" class="btn btn-primary submit-doc">Submit</button>
