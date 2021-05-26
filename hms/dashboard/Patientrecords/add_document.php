@@ -146,7 +146,7 @@ if(isset($_POST['submit'])){
 			   </div>
 			   <div class="form-group">
 				   <label for="typ">Title</label>
-				  <input type="text" name="title" class="form-control" id="typ" placeholder="" required>
+				  <input type="Varchar" name="title" class="form-control" id="typ" placeholder="" required>
 			   </div>
 			   <div class="form-group">
 				   <label for="text">Descriptiont</label>
