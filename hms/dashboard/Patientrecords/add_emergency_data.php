@@ -14,11 +14,11 @@ if(isset($_GET['id']))
 $patientId = escape($_GET['id']);
 
 if(isset($_POST['submit'])){
-  $date = escape($_POST['date']);
-  $activitie = escape($_POST['activitie']);
+  $specification= escape($_POST['specification']);
+  $expression = escape($_POST['expression']);
   
-  $queryAdd = "INSERT INTO maßnahmen(pid, dateMaßnahme, maßnahme) ";
-  $queryAdd.= "Values('$patientId', '$date', '$activitie') ";
+  $queryAdd = "INSERT INTO notfalldaten(pid, Angabe, ausprägung) ";
+  $queryAdd.= "Values('$patientId', '$specification', '$expression') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
   header("Location: patientrecordoverview.php?id=$patientId");
   	// exit();
@@ -34,13 +34,13 @@ if(isset($_POST['submit'])){
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Patient Add new Activitie
+        Patient Add new Emergency_data
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Patient record</li>
-        <li class="active">Activitie</li>
+        <li class="active">Emergency_data</li>
       </ol>
     </section>
 
@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
 	<div class="col-xs-12">
     <div class="box box-primary">
       <div class="box-header with-border ">
-        <i class="fa fa-user"></i> <h3 class="box-title">Activitie</h3>
+        <i class="fa fa-user"></i> <h3 class="box-title">Emergency_data</h3>
       </div>
 	  
       <div class="modal fade" id="myModal" role="dialog">
@@ -140,12 +140,12 @@ if(isset($_POST['submit'])){
 			<form method="POST" enctype="multipart/form-data">
 
 			   <div class="form-group">
-				   <label for="dateIn">Date</label>
-				  <input type="date" name="date" class="form-control" id="date" placeholder="" required>
+				   <label for="dateIn">specification</label>
+				  <input type="text" name="specification" class="form-control" id="specification" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="typ">Activitie</label>
-				  <input type="text" name="activitie" class="form-control" id="activitie" placeholder="" required>
+				   <label for="typ">expression</label>
+				  <input type="text" name="expression" class="form-control" id="expression" placeholder="" required>
 			   </div>
 			   
 
