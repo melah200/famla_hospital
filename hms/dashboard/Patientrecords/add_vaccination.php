@@ -147,7 +147,7 @@ if(isset($_POST['submit'])){
 			   </div>
 			   <div class="form-group">
 				   <label for="typ">Name</label>
-				  <input type="text" name="name" class="form-control" id="name" placeholder="" required>
+				  <input type="Varchar" name="name" class="form-control" id="name" placeholder="" required>
 			   </div>
 			   <div class="form-group">
 				   <label for="text">Desease</label>
@@ -155,7 +155,7 @@ if(isset($_POST['submit'])){
 			   </div>
 			   <div class="form-group">
 				   <label for="codessys">Dosis</label>
-				  <input type="text" name="dosis" class="form-control" id="dosis" placeholder="" required>
+				  <input type="Varchar" name="dosis" class="form-control" id="dosis" placeholder="" required>
 			   </div>
 			   
 
