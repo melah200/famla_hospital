@@ -383,7 +383,7 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-examinations" style="display:none">
 			  <tr>
-			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="add_examination.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
 			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
@@ -429,7 +429,7 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-vaccinations" style="display:none">
 			  <tr>
-			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="add_vaccination.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
 			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
@@ -473,7 +473,7 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-activities" style="display:none">
 			  <tr>
-			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="add_activitie.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
 			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
@@ -520,7 +520,7 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-medication-plan" style="display:none">
 			  <tr>
-			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="add_medication.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
 			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
@@ -555,7 +555,7 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-emergency-data" style="display:none">
 			  <tr>
-			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="add_emergency.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
 			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
@@ -637,7 +637,7 @@ else
 			<br>
 			<div class="record-tab text-center" id="btn-ctrl-documents" style="display:none">
 			  <tr>
-			    <td><a href="add.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
+			    <td><a href="add_document.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
 			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
