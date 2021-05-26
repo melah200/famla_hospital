@@ -15,12 +15,10 @@ $patientId = escape($_GET['id']);
 
 if(isset($_POST['submit'])){
   $date = escape($_POST['date']);
-  $typ = escape($_POST['typ']);
-  $text = escape($_POST['text']);
-  $codessys = escape($_POST['codessys']);
-  $code = escape($_POST['code']);
-  $queryAdd = "INSERT INTO diagnostic(pid, dateDiagnoctic, typ, text, codessys, code) ";
-  $queryAdd.= "Values('$patientId', '$date', '$typ', '$text', '$codessys', '$code') ";
+  $activitie = escape($_POST['activitie']);
+  
+  $queryAdd = "INSERT INTO maßnahmen(pid, dateMaßnahme, maßnahme) ";
+  $queryAdd.= "Values('$patientId', '$date', '$activitie') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
   header("Location: patientrecordoverview.php?id=$patientId");
   	// exit();
@@ -36,13 +34,13 @@ if(isset($_POST['submit'])){
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Patient Add new Diagnostic
+        Patient Add new Activitie
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Patient record</li>
-        <li class="active">Diagnostic</li>
+        <li class="active">Activitie</li>
       </ol>
     </section>
 
@@ -51,7 +49,7 @@ if(isset($_POST['submit'])){
 	<div class="col-xs-12">
     <div class="box box-primary">
       <div class="box-header with-border ">
-        <i class="fa fa-user"></i> <h3 class="box-title">Diagnostic</h3>
+        <i class="fa fa-user"></i> <h3 class="box-title">Activitie</h3>
       </div>
 	  
       <div class="modal fade" id="myModal" role="dialog">
@@ -143,24 +141,13 @@ if(isset($_POST['submit'])){
 
 			   <div class="form-group">
 				   <label for="dateIn">Date</label>
-				  <input type="date" name="date" class="form-control" id="dateIn" placeholder="" required>
+				  <input type="date" name="date" class="form-control" id="date" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="typ">Typ</label>
-				  <input type="text" name="typ" class="form-control" id="typ" placeholder="" required>
+				   <label for="typ">Activitie</label>
+				  <input type="text" name="activitie" class="form-control" id="activitie" placeholder="" required>
 			   </div>
-			   <div class="form-group">
-				   <label for="text">Text</label>
-				  <input type="text" name="text" class="form-control" id="text" placeholder="" required>
-			   </div>
-			   <div class="form-group">
-				   <label for="codessys">Codessys</label>
-				  <input type="text" name="codessys" class="form-control" id="codessys" placeholder="" required>
-			   </div>
-			   <div class="form-group">
-				   <label for="code">Code</label>
-				  <input type="text" name="code" class="form-control" id="code" placeholder="" required>
-			   </div>
+			   
 
 				<div class="box-footer">
 				  <button type="submit" name="submit" class="btn btn-primary submit-doc">Submit</button>
