@@ -15,11 +15,12 @@ $patientId = escape($_GET['id']);
 
 if(isset($_POST['submit'])){
   $date = escape($_POST['date']);
-  $befunde = escape($_POST['befunde']);
+  $examination = escape($_POST['examination']);
+  $result = escape($_POST['result']);
   $description = escape($_POST['description']);
 
-  $queryAdd = "INSERT INTO befunde(pid, dateBefunde, befunde, description) ";
-  $queryAdd.= "Values('$patientId', '$date', '$befunde', '$description') ";
+  $queryAdd = "INSERT INTO untersuchung(pid, dateUntersuchung, untersuchung,untersuchung_ergebnisse, notizen) ";
+  $queryAdd.= "Values('$patientId', '$date', '$examination','$result', '$description') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
   header("Location: patientrecordoverview.php?id=$patientId");
   	// exit();
@@ -35,13 +36,13 @@ if(isset($_POST['submit'])){
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Patient Add new Finding
+        Patient Add new Examination
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Patient record</li>
-        <li class="active">Finding</li>
+        <li class="active">Examination</li>
       </ol>
     </section>
 
@@ -50,7 +51,7 @@ if(isset($_POST['submit'])){
 	<div class="col-xs-12">
     <div class="box box-primary">
       <div class="box-header with-border ">
-        <i class="fa fa-user"></i> <h3 class="box-title">Finding</h3>
+        <i class="fa fa-user"></i> <h3 class="box-title">Examination</h3>
       </div>
 	  
       <div class="modal fade" id="myModal" role="dialog">
@@ -142,15 +143,19 @@ if(isset($_POST['submit'])){
 
 			   <div class="form-group">
 				   <label for="dateIn">Date</label>
-				  <input type="date" name="date" class="form-control" id="dateIn" placeholder="" required>
+				  <input type="date" name="date" class="form-control" id="date" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="typ">Finding</label>
-				  <input type="text" name="typ" class="form-control" id="typ" placeholder="" required>
+				   <label for="typ">examination</label>
+				  <input type="text" name="examination" class="form-control" id="examination" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="text">Description</label>
-				  <input type="text" name="text" class="form-control" id="text" placeholder="" required>
+				   <label for="text">result</label>
+				  <input type="text" name="result" class="form-control" id="result" placeholder="" required>
+			   </div>
+			   <div class="form-group">
+				   <label for="text">description</label>
+				  <input type="text" name="description" class="form-control" id="description" placeholder="" required>
 			   </div>
 
 
