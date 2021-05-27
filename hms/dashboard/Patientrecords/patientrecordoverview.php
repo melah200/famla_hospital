@@ -304,31 +304,26 @@ else
 			<table class="table table-striped">
 			  <thead>
 				<tr>
-				  <th scope="col">#</th>
 				  <th scope="col">date</th>
 				  <th scope="col">finding</th>
 				  <th scope="col">description</th>
 				</tr>
 			  </thead>
 			  <tbody>
+			  <?php   
+			  
+					$query=mysqli_query($db_connect, "SELECT * FROM befunde WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+					//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
+					//echo $numrows; exit;
+					while($row=mysqli_fetch_assoc($query)){
+
+			  ?>
 				<tr>
-				  <th scope="row">1</th>
-				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
+				  <td><?php echo $row['dateBefunde']; ?></td>
+				  <td><?php echo $row['befunde']; ?></td>
+				  <td><?php echo $row['description']; ?></td>
 				</tr>
-				<tr>
-				  <th scope="row">2</th>
-				  <td>Jacob</td>
-				  <td>Thornton</td>
-				  <td>@fat</td>
-				</tr>
-				<tr>
-				  <th scope="row">3</th>
-				  <td>Larry</td>
-				  <td>the Bird</td>
-				  <td>@twitter</td>
-				</tr>
+					<?php } ?>
 			  </tbody>
 			</table>
     </fieldset>    
@@ -397,32 +392,28 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
-					  <th scope="col">#</th>
 					  <th scope="col">date</th>
-					  <th scope="col">name</th>
+					  <th scope="col">name of vaccine</th>
 					  <th scope="col">desease</th>
 					  <th scope="col">dosis</th>		
 					</tr>
 				  </thead>
 				  <tbody>
+				  <?php   
+				  
+						$query=mysqli_query($db_connect, "SELECT * FROM impfung WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
+						//echo $numrows; exit;
+						while($row=mysqli_fetch_assoc($query)){
+
+				  ?>
 					<tr>
-					  <th scope="row">1</th>
-					  <td>Mark</td>
-					  <td>Otto</td>
-					  <td>@mdo</td>
+					  <td><?php echo $row['dateImpfung']; ?></td>
+					  <td><?php echo $row['nameImpfung']; ?></td>
+					  <td><?php echo $row['krankkeit']; ?></td>
+					  <td><?php echo $row['dosis']; ?></td>
 					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>Jacob</td>
-					  <td>Thornton</td>
-					  <td>@fat</td>
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>Larry</td>
-					  <td>the Bird</td>
-					  <td>@twitter</td>
-					</tr>
+						<?php } ?>
 				  </tbody>
 				</table>
 	</fieldset>
@@ -445,7 +436,7 @@ else
 					<tr>
 					  <th scope="col">#</th>
 					  <th scope="col">date</th>
-					  <th scope="col">activitie</th>
+					  <th scope="col">activities</th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -487,7 +478,6 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
-					  <th scope="col">#</th>
 					  <th scope="col">date</th>
 					  <th scope="col">medicament</th>
 					  <th scope="col">freq</th>
@@ -496,24 +486,22 @@ else
 					</tr>
 				  </thead>
 				  <tbody>
+				  <?php   
+				  
+						$query=mysqli_query($db_connect, "SELECT * FROM medikationplan WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
+						//echo $numrows; exit;
+						while($row=mysqli_fetch_assoc($query)){
+
+				  ?>
 					<tr>
-					  <th scope="row">1</th>
-					  <td>Mark</td>
-					  <td>Otto</td>
-					  <td>@mdo</td>
+					  <td><?php echo $row['dateMedicationplan']; ?></td>
+					  <td><?php echo $row['medicament']; ?></td>
+					  <td><?php echo $row['freq']; ?></td>
+					  <td><?php echo $row['tagesprofil']; ?></td>
+					  <td><?php echo $row['Description']; ?></td>
 					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>Jacob</td>
-					  <td>Thornton</td>
-					  <td>@fat</td>
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>Larry</td>
-					  <td>the Bird</td>
-					  <td>@twitter</td>
-					</tr>
+						<?php } ?>
 				  </tbody>
 				</table>
 	 </fieldset>
@@ -534,7 +522,6 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
-					  <th scope="col">#</th>
 					  <th scope="col">specification</th>
 					  <th scope="col">expression</th>
 					</tr>
@@ -606,31 +593,22 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
-					  <th scope="col">#</th>
 					  <th scope="col">date</th>
 					  <th scope="col">title</th>
 					  <th scope="col">description</th>
 					</tr>
 				  </thead>
 				  <tbody>
+				  <?php   
+						$query=mysqli_query($db_connect, "SELECT * FROM document WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						while($patientdoc=mysqli_fetch_assoc($query)){
+				  ?>
 					<tr>
-					  <th scope="row">1</th>
-					  <td>Mark</td>
-					  <td>Otto</td>
-					  <td>@mdo</td>
+					  <td><?php echo $patientdoc['dateDokument']; ?></td>
+					  <td><?php echo $patientdoc['title']; ?></td>
+					  <td><?php echo $patientdoc['Description']; ?></td>
 					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>Jacob</td>
-					  <td>Thornton</td>
-					  <td>@fat</td>
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>Larry</td>
-					  <td>the Bird</td>
-					  <td>@twitter</td>
-					</tr>
+					<?php } ?>
 				  </tbody>
 				</table>
 	 </fieldset>
