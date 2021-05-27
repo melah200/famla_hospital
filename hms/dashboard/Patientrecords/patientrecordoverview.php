@@ -410,7 +410,7 @@ else
 					<tr>
 					  <td><?php echo $row['dateImpfung']; ?></td>
 					  <td><?php echo $row['nameImpfung']; ?></td>
-					  <td><?php echo $row['krankkeit']; ?></td>
+					  <td><?php echo $row['krankheit']; ?></td>
 					  <td><?php echo $row['dosis']; ?></td>
 					</tr>
 						<?php } ?>

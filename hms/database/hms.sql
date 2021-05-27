@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 27. Mai 2021 um 17:37
--- Server-Version: 5.7.31
--- PHP-Version: 7.3.21
+-- Erstellungszeit: 27. Mai 2021 um 20:22
+-- Server-Version: 5.7.26
+-- PHP-Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -322,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `impfung` (
   `pid` int(11) NOT NULL,
   `dateImpfung` date NOT NULL,
   `nameImpfung` varchar(50) NOT NULL,
-  `krankkeit` text NOT NULL,
+  `krankheit` text NOT NULL,
   `dosis` varchar(100) NOT NULL,
   PRIMARY KEY (`idI`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
