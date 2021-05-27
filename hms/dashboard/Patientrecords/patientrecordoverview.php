@@ -533,7 +533,7 @@ else
 				  ?>				  
 					<tr>
 					  <td><?php echo $EmergencyData['Angabe']; ?></td>
-					  <td><?php echo $EmergencyData['ausprägung']; ?></td>
+					  <td><?php echo $EmergencyData['auspraegung']; ?></td>
 					</tr>
 					<?php } ?>
 				  </tbody>

@@ -146,7 +146,7 @@ if(isset($_POST['submit'])){
 				  <input type="date" name="date" class="form-control" id="date" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="typ">Name</label>
+				   <label for="typ">Name of vaccine</label>
 				  <input type="Varchar" name="name" class="form-control" id="name" placeholder="" required>
 			   </div>
 			   <div class="form-group">

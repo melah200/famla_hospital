@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
   $specification= escape($_POST['specification']);
   $expression = escape($_POST['expression']);
   
-  $queryAdd = "INSERT INTO notfalldaten(pid, Angabe, ausprägung) ";
+  $queryAdd = "INSERT INTO notfalldaten(pid, Angabe, auspraegung) ";
   $queryAdd.= "Values('$patientId', '$specification', '$expression') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
   header("Location: patientrecordoverview.php?id=$patientId");
