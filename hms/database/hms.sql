@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 27. Mai 2021 um 20:22
+-- Erstellungszeit: 27. Mai 2021 um 20:31
 -- Server-Version: 5.7.26
 -- PHP-Version: 5.6.40
 
@@ -326,7 +326,14 @@ CREATE TABLE IF NOT EXISTS `impfung` (
   `krankheit` text NOT NULL,
   `dosis` varchar(100) NOT NULL,
   PRIMARY KEY (`idI`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `impfung`
+--
+
+INSERT INTO `impfung` (`idI`, `pid`, `dateImpfung`, `nameImpfung`, `krankheit`, `dosis`) VALUES
+(1, 2, '2021-05-20', 'corona', 'xxxxx', 'xxxx');
 
 -- --------------------------------------------------------
 
@@ -443,7 +450,14 @@ CREATE TABLE IF NOT EXISTS `medikationplan` (
   `tagesprofil` text NOT NULL,
   `Description` text NOT NULL,
   PRIMARY KEY (`idMP`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `medikationplan`
+--
+
+INSERT INTO `medikationplan` (`idMP`, `pid`, `dateMedicationplan`, `medicament`, `freq`, `tagesprofil`, `Description`) VALUES
+(1, 2, '2021-05-28', '', 'xxx', 'xxx', 'xxx');
 
 -- --------------------------------------------------------
 
@@ -456,7 +470,7 @@ CREATE TABLE IF NOT EXISTS `notfalldaten` (
   `idN` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `Angabe` text NOT NULL,
-  `ausprägung` text NOT NULL,
+  `auspraegung` text NOT NULL,
   PRIMARY KEY (`idN`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
