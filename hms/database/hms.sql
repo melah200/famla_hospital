@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 29. Apr 2021 um 02:00
--- Server-Version: 5.7.26
--- PHP-Version: 7.2.18
+-- Erstellungszeit: 27. Mai 2021 um 17:37
+-- Server-Version: 5.7.31
+-- PHP-Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -40,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `addappointment` (
   `sms` enum('0','1') NOT NULL,
   `app_status` enum('upcoming','perceived','cancelled') NOT NULL DEFAULT 'upcoming',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
 
 --
 -- Daten für Tabelle `addappointment`
@@ -119,14 +118,15 @@ CREATE TABLE IF NOT EXISTS `addmedicalhistory` (
   `patient` varchar(30) NOT NULL,
   `description` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
 
 --
 -- Daten für Tabelle `addmedicalhistory`
 --
 
 INSERT INTO `addmedicalhistory` (`id`, `date`, `patient`, `description`) VALUES
-(1, '2018-04-17', ' 1', '<p>daddfds</p>');
+(1, '2018-04-17', ' 1', '<p>daddfds</p>'),
+(2, '2021-05-08', '2', '<p>apendix</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -222,6 +222,114 @@ INSERT INTO `addpayment` (`id`, `invoice`, `patient`, `refdbydoctor`, `categorys
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `befunde`
+--
+
+DROP TABLE IF EXISTS `befunde`;
+CREATE TABLE IF NOT EXISTS `befunde` (
+  `idB` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateBefunde` date NOT NULL,
+  `befunde` text NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`idB`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `befunde`
+--
+
+INSERT INTO `befunde` (`idB`, `pid`, `dateBefunde`, `befunde`, `description`) VALUES
+(1, 2, '2021-05-18', 'ghghghghghghg', 'jhjhjhjhjhjhjh'),
+(3, 2, '2021-04-28', '', ''),
+(4, 2, '2021-04-29', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `diagnostic`
+--
+
+DROP TABLE IF EXISTS `diagnostic`;
+CREATE TABLE IF NOT EXISTS `diagnostic` (
+  `idD` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateDiagnoctic` date NOT NULL,
+  `typ` text NOT NULL,
+  `text` varchar(50) NOT NULL,
+  `codessys` varchar(20) NOT NULL,
+  `code` text NOT NULL,
+  PRIMARY KEY (`idD`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `diagnostic`
+--
+
+INSERT INTO `diagnostic` (`idD`, `pid`, `dateDiagnoctic`, `typ`, `text`, `codessys`, `code`) VALUES
+(1, 2, '2021-05-11', 'Diagnose', 'cancer de poumon', 'ABCD', 'ABDC'),
+(2, 2, '2021-04-27', 'OP', 'cancer', '123', '329874');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `document`
+--
+
+DROP TABLE IF EXISTS `document`;
+CREATE TABLE IF NOT EXISTS `document` (
+  `idDo` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateDokument` date NOT NULL,
+  `title` varchar(30) NOT NULL,
+  `Description` text NOT NULL,
+  PRIMARY KEY (`idDo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `history`
+--
+
+DROP TABLE IF EXISTS `history`;
+CREATE TABLE IF NOT EXISTS `history` (
+  `idH` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `zeitraume` date NOT NULL,
+  `Station_Raum` varchar(50) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`idH`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `history`
+--
+
+INSERT INTO `history` (`idH`, `pid`, `zeitraume`, `Station_Raum`, `description`) VALUES
+(1, 2, '2021-05-18', 'A/201', 'enter'),
+(2, 2, '2021-05-15', 'C/135', 'sortir');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `impfung`
+--
+
+DROP TABLE IF EXISTS `impfung`;
+CREATE TABLE IF NOT EXISTS `impfung` (
+  `idI` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateImpfung` date NOT NULL,
+  `nameImpfung` varchar(50) NOT NULL,
+  `krankkeit` text NOT NULL,
+  `dosis` varchar(100) NOT NULL,
+  PRIMARY KEY (`idI`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `login`
 --
 
@@ -278,6 +386,21 @@ INSERT INTO `mainservices` (`id`, `mainservicename`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `maßnahmen`
+--
+
+DROP TABLE IF EXISTS `maßnahmen`;
+CREATE TABLE IF NOT EXISTS `maßnahmen` (
+  `idM` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateMaßnahme` date NOT NULL,
+  `maßnahme` text NOT NULL,
+  PRIMARY KEY (`idM`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `medicinecategory`
 --
 
@@ -302,6 +425,39 @@ INSERT INTO `medicinecategory` (`id`, `category`, `description`) VALUES
 (16, 'test', 'ESGAZ'),
 (17, 'AAAA', 'sfsdef'),
 (18, 'test category', 'tghhfgdhfdrft');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `medikationplan`
+--
+
+DROP TABLE IF EXISTS `medikationplan`;
+CREATE TABLE IF NOT EXISTS `medikationplan` (
+  `idMP` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateMedicationplan` date NOT NULL,
+  `medicament` varchar(50) NOT NULL,
+  `freq` varchar(50) NOT NULL,
+  `tagesprofil` text NOT NULL,
+  `Description` text NOT NULL,
+  PRIMARY KEY (`idMP`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `notfalldaten`
+--
+
+DROP TABLE IF EXISTS `notfalldaten`;
+CREATE TABLE IF NOT EXISTS `notfalldaten` (
+  `idN` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `Angabe` text NOT NULL,
+  `ausprägung` text NOT NULL,
+  PRIMARY KEY (`idN`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -425,6 +581,23 @@ INSERT INTO `subservices` (`service_id`, `sid`, `subservicename`, `Fee`) VALUES
 (6, 5, 'USG-sub', 2000),
 (7, 7, 'sub-service', 1500),
 (9, 9, 'test sub service', 8000);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `untersuchung`
+--
+
+DROP TABLE IF EXISTS `untersuchung`;
+CREATE TABLE IF NOT EXISTS `untersuchung` (
+  `idU` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateUntersuchung` date NOT NULL,
+  `untersuchung` text NOT NULL,
+  `untersuchung_ergebnisse` text NOT NULL,
+  `notizen` text NOT NULL,
+  PRIMARY KEY (`idU`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
