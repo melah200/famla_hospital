@@ -21,6 +21,7 @@ if(isset($_POST['submit'])){
   $queryAdd = "INSERT INTO document(pid, dateDokument, title, Description) ";
   $queryAdd.= "Values('$patientId', '$date', '$title', '$description') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
+  upload_documents();
   header("Location: patientrecordoverview.php?id=$patientId");
   	// exit();
 
@@ -31,6 +32,44 @@ if(isset($_POST['submit'])){
 ?>
 <?php include_once("../Include/header.php"); ?>
 <?php include_once("../Include/sidebar.php"); ?>
+
+<?php
+//session_start();
+function upload_documents()
+{ 
+	$time=time();
+
+	$target_dir="./upload_documents/";
+	$name=$_FILES["uploaddoc"]["name"];
+	$type = $_FILES["uploaddoc"]["type"];
+	$size = $_FILES["uploaddoc"]["size"];
+
+	$temp = $_FILES["uploaddoc"]["tmp_name"]; 
+	$error = $_FILES["uploaddoc"]["error"];//size
+	if($error>0)
+	{
+	// die("Error uploading file! Code $error.");
+	}
+	else
+	{ 
+		if ($type=="images/" || $size > 5000000)
+		{
+		  // die("that format is not allowed or file size is too big!");
+		}
+		else
+		{ //echo "string"; exit;
+		 move_uploaded_file($temp,$target_dir.$time.'_'.$name);//move upload file  
+		 // echo"Upload Complete";  
+		}
+	}
+	//print_r($_FILES); exit();
+
+	  // $write =mysqli_query($db_connect, "INSERT INTO addfiles( `doc_date`,`patient`,`title`,`file`) VALUES (' $d1','$patient','$title','$name')") or die(mysqli_error($db_connect));
+
+}
+
+
+?>
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -152,7 +191,8 @@ if(isset($_POST['submit'])){
 				   <label for="text">Descriptiont</label>
 				  <input type="text" name="description" class="form-control" id="text" placeholder="" required>
 			   </div>
-			   
+			  <td><b>Upload Documents</b></font>
+			  <input type="file" name="uploaddoc" id="fileToUpload" required=""></td><br>			   
 
 				<div class="box-footer">
 				  <button type="submit" name="submit" class="btn btn-primary submit-doc">Submit</button>
