@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 02. Jun 2021 um 15:31
+-- Erstellungszeit: 02. Jun 2021 um 16:04
 -- Server-Version: 5.7.31
 -- PHP-Version: 7.3.21
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `hms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `activity`
+--
+
+DROP TABLE IF EXISTS `activity`;
+CREATE TABLE IF NOT EXISTS `activity` (
+  `idA` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateMassnahme` date NOT NULL,
+  `massnahme` text NOT NULL,
+  PRIMARY KEY (`idA`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -303,7 +318,14 @@ CREATE TABLE IF NOT EXISTS `examination` (
   `untersuchung_ergebnisse` text NOT NULL,
   `notizen` text NOT NULL,
   PRIMARY KEY (`idE`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `examination`
+--
+
+INSERT INTO `examination` (`idE`, `pid`, `dateUntersuchung`, `untersuchung`, `untersuchung_ergebnisse`, `notizen`) VALUES
+(1, 2, '2021-06-01', 'untersuchung', 'ok', 'nichts');
 
 -- --------------------------------------------------------
 
@@ -408,21 +430,6 @@ INSERT INTO `mainservices` (`id`, `mainservicename`) VALUES
 (12, 'famla'),
 (13, 'famla12'),
 (14, 'famla123');
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `maßnahmen`
---
-
-DROP TABLE IF EXISTS `maßnahmen`;
-CREATE TABLE IF NOT EXISTS `maßnahmen` (
-  `idM` int(11) NOT NULL AUTO_INCREMENT,
-  `pid` int(11) NOT NULL,
-  `dateMaßnahme` date NOT NULL,
-  `maßnahme` text NOT NULL,
-  PRIMARY KEY (`idM`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
