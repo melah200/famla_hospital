@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 27. Mai 2021 um 20:31
--- Server-Version: 5.7.26
--- PHP-Version: 5.6.40
+-- Erstellungszeit: 02. Jun 2021 um 15:31
+-- Server-Version: 5.7.31
+-- PHP-Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -234,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `befunde` (
   `befunde` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`idB`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `befunde`
@@ -243,7 +242,8 @@ CREATE TABLE IF NOT EXISTS `befunde` (
 INSERT INTO `befunde` (`idB`, `pid`, `dateBefunde`, `befunde`, `description`) VALUES
 (1, 2, '2021-05-18', 'ghghghghghghg', 'jhjhjhjhjhjhjh'),
 (3, 2, '2021-04-28', '', ''),
-(4, 2, '2021-04-29', '', '');
+(4, 2, '2021-04-29', '', ''),
+(5, 2, '2021-06-01', '', '');
 
 -- --------------------------------------------------------
 
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `diagnostic` (
   `codessys` varchar(20) NOT NULL,
   `code` text NOT NULL,
   PRIMARY KEY (`idD`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `diagnostic`
@@ -269,7 +269,8 @@ CREATE TABLE IF NOT EXISTS `diagnostic` (
 
 INSERT INTO `diagnostic` (`idD`, `pid`, `dateDiagnoctic`, `typ`, `text`, `codessys`, `code`) VALUES
 (1, 2, '2021-05-11', 'Diagnose', 'cancer de poumon', 'ABCD', 'ABDC'),
-(2, 2, '2021-04-27', 'OP', 'cancer', '123', '329874');
+(2, 2, '2021-04-27', 'OP', 'cancer', '123', '329874'),
+(3, 2, '2021-06-02', 'icd10', 'lungen entzÃ¼gdung', 'ANN', 'B');
 
 -- --------------------------------------------------------
 
@@ -285,6 +286,23 @@ CREATE TABLE IF NOT EXISTS `document` (
   `title` varchar(30) NOT NULL,
   `Description` text NOT NULL,
   PRIMARY KEY (`idDo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `examination`
+--
+
+DROP TABLE IF EXISTS `examination`;
+CREATE TABLE IF NOT EXISTS `examination` (
+  `idE` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateUntersuchung` date NOT NULL,
+  `untersuchung` text NOT NULL,
+  `untersuchung_ergebnisse` text NOT NULL,
+  `notizen` text NOT NULL,
+  PRIMARY KEY (`idE`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -596,23 +614,6 @@ INSERT INTO `subservices` (`service_id`, `sid`, `subservicename`, `Fee`) VALUES
 (6, 5, 'USG-sub', 2000),
 (7, 7, 'sub-service', 1500),
 (9, 9, 'test sub service', 8000);
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `untersuchung`
---
-
-DROP TABLE IF EXISTS `untersuchung`;
-CREATE TABLE IF NOT EXISTS `untersuchung` (
-  `idU` int(11) NOT NULL AUTO_INCREMENT,
-  `pid` int(11) NOT NULL,
-  `dateUntersuchung` date NOT NULL,
-  `untersuchung` text NOT NULL,
-  `untersuchung_ergebnisse` text NOT NULL,
-  `notizen` text NOT NULL,
-  PRIMARY KEY (`idU`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
