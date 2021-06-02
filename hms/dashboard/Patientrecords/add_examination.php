@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
   $result = escape($_POST['result']);
   $description = escape($_POST['description']);
 
-  $queryAdd = "INSERT INTO untersuchung(pid, dateUntersuchung, untersuchung,untersuchung_ergebnisse, notizen) ";
+  $queryAdd = "INSERT INTO examination(pid, dateUntersuchung, untersuchung,untersuchung_ergebnisse, notizen) ";
   $queryAdd.= "Values('$patientId', '$date', '$examination','$result', '$description') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
   header("Location: patientrecordoverview.php?id=$patientId");

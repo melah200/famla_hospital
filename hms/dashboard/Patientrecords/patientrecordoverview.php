@@ -177,30 +177,6 @@ else
 </div>
 	<?php } ?>
 <div class="box box-success box-body">
-		  <!--<input type="text" id="myInput" class="form-control search-in-list" placeholder="Search...">-->
-   <!-- Split button -->
-   <!--
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-primary">Overview</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-primary">Diagnotics</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-primary">Right</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-primary">Right</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-primary">Right</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-primary">Right</button>
-  </div>
-</div>
-	-->
 
 	<ul class="nav nav-pills" style="font-size:16px">
 	  <li class="text-center record " style="border:1px solid #0b00ff30"><a href="patientrecordoverview.php?id=<?php echo $patientId; ?>">Overview<p><i class="fa fa-list"></i></p></a></li>
@@ -252,9 +228,10 @@ else
 		  <!-- Diagnostics -->
 	<fieldset>
 		<legend>Diagnostics</legend>
-		<table class="table table-striped">
+		<table class="famla-search-entry table table-striped">
 		  <thead>
 			<tr>
+			  <th scope="row">#</th>
 			  <th scope="col">Date</th>
 			  <th scope="col">typ</th>
 			  <th scope="col">text</th>
@@ -268,11 +245,13 @@ else
 				$query=mysqli_query($db_connect, "SELECT * FROM diagnostic WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
 				//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 				//echo $numrows; exit;
+				$counterDiagnostic = 0;
 				while($row=mysqli_fetch_assoc($query)){
-
+					$counterDiagnostic++;
 		  ?>
 			<tr>
 			  <!--<th scope="row">1</th>-->
+			  <td scope="row"><?php echo $counterDiagnostic; ?></td>
 			  <td><?php echo $row['dateDiagnoctic']; ?></td>
 			  <td><?php echo $row['typ']; ?></td>
 			  <td><?php echo $row['text']; ?></td>
@@ -301,9 +280,10 @@ else
 		   <!-- Findings -->
 	<fieldset>
 		<legend>Findings</legend>
-			<table class="table table-striped">
+			<table class="famla-search-entry table table-striped">
 			  <thead>
 				<tr>
+				  <th scope="row">#</th>
 				  <th scope="col">date</th>
 				  <th scope="col">finding</th>
 				  <th scope="col">description</th>
@@ -315,10 +295,12 @@ else
 					$query=mysqli_query($db_connect, "SELECT * FROM befunde WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
 					//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 					//echo $numrows; exit;
+					$counterFinding = 0;
 					while($row=mysqli_fetch_assoc($query)){
-
+						$counterFinding++;
 			  ?>
 				<tr>
+				  <td scope="row"><?php echo $counterFinding; ?></td>
 				  <td><?php echo $row['dateBefunde']; ?></td>
 				  <td><?php echo $row['befunde']; ?></td>
 				  <td><?php echo $row['description']; ?></td>
@@ -346,7 +328,7 @@ else
 			<table class="table table-striped">
 			  <thead>
 				<tr>
-				  <th scope="col">#</th>
+				  <th scope="row">#</th>
 				  <th scope="col">date</th>
 				  <th scope="col">examinations</th>
 				  <th scope="col">result</th>
@@ -354,24 +336,24 @@ else
 				</tr>
 			  </thead>
 			  <tbody>
+			  <?php   
+			  
+					$queryExam=mysqli_query($db_connect, "SELECT * FROM examination WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+					//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
+					//echo $numrows; exit;
+					$counterExamination = 0;
+					while($row=mysqli_fetch_assoc($queryExam)){
+						$counterExamination++;
+			  ?>		  			
 				<tr>
-				  <th scope="row">1</th>
-				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
+				  <td scope="row"><?php echo $counterExamination; ?></td>
+				  <td><?php echo $row['dateUntersuchung']; ?></td>
+				  <td><?php echo $row['untersuchung']; ?></td>
+				  <td><?php echo $row['untersuchung_ergebnisse']; ?></td>
+				  <td><?php echo $row['notizen']; ?></td>
 				</tr>
-				<tr>
-				  <th scope="row">2</th>
-				  <td>Jacob</td>
-				  <td>Thornton</td>
-				  <td>@fat</td>
-				</tr>
-				<tr>
-				  <th scope="row">3</th>
-				  <td>Larry</td>
-				  <td>the Bird</td>
-				  <td>@twitter</td>
-				</tr>
+				<?php 
+					} ?>
 			  </tbody>
 			</table>
 	</fieldset>
@@ -392,6 +374,7 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
+					  <th scope="row">#</th>
 					  <th scope="col">date</th>
 					  <th scope="col">name of vaccine</th>
 					  <th scope="col">desease</th>
@@ -404,10 +387,12 @@ else
 						$query=mysqli_query($db_connect, "SELECT * FROM impfung WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
 						//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 						//echo $numrows; exit;
+						$counterVac = 0;
 						while($row=mysqli_fetch_assoc($query)){
-
+							$counterVac++
 				  ?>
 					<tr>
+					  <td scope="row"><?php echo $counterVac; ?></td>
 					  <td><?php echo $row['dateImpfung']; ?></td>
 					  <td><?php echo $row['nameImpfung']; ?></td>
 					  <td><?php echo $row['krankheit']; ?></td>
@@ -440,24 +425,23 @@ else
 					</tr>
 				  </thead>
 				  <tbody>
+				  <?php   
+				  
+					$queryAct=mysqli_query($db_connect, "SELECT * FROM activity WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
+						//echo $numrows; exit;
+						$counterActivity = 0;
+						while($row=mysqli_fetch_assoc($queryAct)){
+							$counterActivity++;
+				  ?>
 					<tr>
-					  <th scope="row">1</th>
-					  <td>Mark</td>
-					  <td>Otto</td>
-					  
+					  <th scope="row"><?php echo $counterActivity; ?></th>
+					  <td><?php echo $row['dateMassnahme']; ?></td>
+					  <td><?php echo $row['massnahme']; ?></td>					  
 					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>Jacob</td>
-					  <td>Thornton</td>
-					  
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>Larry</td>
-					  <td>the Bird</td>
-					  
-					</tr>
+					<?php 
+						}
+					?>
 				  </tbody>
 				</table>
 	 </fieldset>
@@ -478,6 +462,7 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
+					  <th scope="row">#</th>
 					  <th scope="col">date</th>
 					  <th scope="col">medicament</th>
 					  <th scope="col">freq</th>
@@ -491,10 +476,12 @@ else
 						$query=mysqli_query($db_connect, "SELECT * FROM medikationplan WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
 						//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 						//echo $numrows; exit;
+						$counterMedication = 0;
 						while($row=mysqli_fetch_assoc($query)){
-
+							$counterMedication++;
 				  ?>
 					<tr>
+					  <td scope="row"><?php echo $counterMedication; ?></td>
 					  <td><?php echo $row['dateMedicationplan']; ?></td>
 					  <td><?php echo $row['medicament']; ?></td>
 					  <td><?php echo $row['freq']; ?></td>
@@ -522,6 +509,7 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
+					  <th scope="row">#</th>
 					  <th scope="col">specification</th>
 					  <th scope="col">expression</th>
 					</tr>
@@ -529,9 +517,12 @@ else
 				  <tbody>
 				  <?php   
 						$query=mysqli_query($db_connect, "SELECT * FROM notfalldaten WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						$counterEmergencyData = 0;
 						while($EmergencyData=mysqli_fetch_assoc($query)){
+							$counterEmergencyData++;
 				  ?>				  
 					<tr>
+					  <td scope="row"><?php echo $counterEmergencyData; ?></td>
 					  <td><?php echo $EmergencyData['Angabe']; ?></td>
 					  <td><?php echo $EmergencyData['auspraegung']; ?></td>
 					</tr>
@@ -557,6 +548,7 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
+					  <th scope="row">#</th>
 					  <th scope="col">Period</th>
 					  <th scope="col">Station/Room</th>
 					  <th scope="col">Descriptions</th>
@@ -565,9 +557,12 @@ else
 				  <tbody>
 				  <?php   
 						$query=mysqli_query($db_connect, "SELECT * FROM history WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						$counterHistory = 0;
 						while($patientHistory=mysqli_fetch_assoc($query)){
+							$counterHistory++;
 				  ?>
 					<tr>
+					  <td scope="row"><?php echo $counterHistory; ?></td>
 					  <td><?php echo $patientHistory['zeitraume']; ?></td>
 					  <td><?php echo $patientHistory['Station_Raum']; ?></td>
 					  <td><?php echo $patientHistory['description']; ?></td>
@@ -593,6 +588,7 @@ else
 				<table class="table table-striped">
 				  <thead>
 					<tr>
+					  <th scope="row">#</th>
 					  <th scope="col">date</th>
 					  <th scope="col">title</th>
 					  <th scope="col">description</th>
@@ -601,9 +597,12 @@ else
 				  <tbody>
 				  <?php   
 						$query=mysqli_query($db_connect, "SELECT * FROM document WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						$counterDocument = 0;
 						while($patientdoc=mysqli_fetch_assoc($query)){
+							$counterDocument++;
 				  ?>
 					<tr>
+					  <td scope="row"><?php echo $counterDocument; ?></td>
 					  <td><?php echo $patientdoc['dateDokument']; ?></td>
 					  <td><?php echo $patientdoc['title']; ?></td>
 					  <td><?php echo $patientdoc['Description']; ?></td>

@@ -346,6 +346,14 @@ $events = json_encode($events, JSON_PRETTY_PRINT);
     });
 	
   })
+  
+  // Table with class .famla-search-entry add the search input in the table  and paggination
+    $(function () {
+		$('.famla-search-entry').DataTable().each(function(index, obj){
+			obj.DataTable();
+		});
+		
+	})
 
 </script>
 </body>
