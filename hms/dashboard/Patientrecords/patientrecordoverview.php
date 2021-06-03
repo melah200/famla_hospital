@@ -325,7 +325,7 @@ else
 		   <!-- Examination -->
 	<fieldset>
 		<legend>Examinations</legend>
-			<table class="table table-striped">
+			<table class="famla-search-entry table table-striped">
 			  <thead>
 				<tr>
 				  <th scope="row">#</th>
@@ -371,7 +371,7 @@ else
 		  <!-- vaccinations -->
 	<fieldset>
 	  <legend>Vaccinations</legend>
-				<table class="table table-striped">
+				<table class="famla-search-entry table table-striped">
 				  <thead>
 					<tr>
 					  <th scope="row">#</th>
@@ -416,7 +416,7 @@ else
 		  <!-- activities -->
 	 <fieldset>
 	  <legend>Activities</legend>
-				<table class="table table-striped">
+				<table class="famla-search-entry table table-striped">
 				  <thead>
 					<tr>
 					  <th scope="col">#</th>
@@ -459,7 +459,7 @@ else
 		  <!-- medication plan -->
 	 <fieldset>
 	  <legend>Medication Plan</legend>
-				<table class="table table-striped">
+				<table class="famla-search-entry table table-striped">
 				  <thead>
 					<tr>
 					  <th scope="row">#</th>
@@ -506,7 +506,7 @@ else
 		  <!-- emergency data -->
 	 <fieldset>
 	  <legend>Emergency Data</legend>
-				<table class="table table-striped">
+				<table class="famla-search-entry table table-striped">
 				  <thead>
 					<tr>
 					  <th scope="row">#</th>
@@ -545,7 +545,7 @@ else
 		  <!-- Histories -->
 	 <fieldset>
 	  <legend>Histories</legend>
-				<table class="table table-striped">
+				<table class="famla-search-entry table table-striped">
 				  <thead>
 					<tr>
 					  <th scope="row">#</th>
@@ -585,7 +585,7 @@ else
 		  <!-- Documents -->
 	 <fieldset>
 	  <legend>Documents</legend>
-				<table class="table table-striped">
+				<table class="famla-search-entry table table-striped">
 				  <thead>
 					<tr>
 					  <th scope="row">#</th>
