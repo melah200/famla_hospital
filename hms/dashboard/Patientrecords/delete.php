@@ -1,4 +1,8 @@
-<?php 
+<?php
+if(isset($_GET['delete'])){
+	print_r($_GET);
+	die('delete is pressed');
+}
 //chec if the page is loaded with the id
 if(!isset($_GET['id']))
 {
@@ -21,11 +25,81 @@ $patientId = escape($_GET['id']);
 
 if(isset($_GET['recordtyp'])){
   $table = escape($_GET['recordtyp']);
+   
+  if(isset($_GET['all'])){
+	deleteAllRecord($table, $patientId);
+  }else if(isset($_GET['entry'])){
+	  $entry = escape($_GET['entry']);
+	switch($table){
+		case "diagnostic":
+		{
+			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idD = {$entry}";
+			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			break;
+		}
+		case "finding":
+		{
+			$queryDelDiag = "DELETE FROM befunde WHERE pid = {$patientId} AND idB = {$entry}";
+			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			break;
+		}
+		case "examination":
+		{
+			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idE = {$entry}";
+			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			break;
+		}
+		case "vaccination":
+		{
+			$queryDelDiag = "DELETE FROM impfung WHERE pid = {$patientId} AND idI = {$entry}";
+			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			break;
+		}
+		case "activity":
+		{
+			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idA = {$entry}";
+			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			break;
+		}
+		case "medicationplan":
+		{
+			$queryDelDiag = "DELETE FROM medikationplan WHERE pid = {$patientId} AND idMP = {$entry}";
+			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			break;
+		}
+		case "emergencydata":
+		{
+			$queryDelDiag = "DELETE FROM notfalldaten WHERE pid = {$patientId} AND idN = {$entry}";
+			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			break;
+		}
+		case "history":
+		{
+			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idH = {$entry}";
+			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			break;
+		}
+		case "document":
+		{
+			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idDo = {$entry}";
+			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			break;
+		}
+		default:
+		    break;
+	}
+	   
+  }
 
-  $queryDel = "DELETE FROM $table WHERE pid = {$patientId}";
+  // $queryDel = "DELETE FROM $table WHERE pid = {$patientId}";
 
   // $queryAddResult=mysqli_query($db_connect, $queryDel)or die (mysqli_error($db_connect));
 
+}
+function deleteAllRecord($table, $pId){
+	Global $db_connect;
+	$queryDelAll = "DELETE FROM $table WHERE pid = {$pId}";
+	$queryDelResult=mysqli_query($db_connect, $queryDelAll)or die (mysqli_error($db_connect));
 }
 
   // header("Location: patientrecordoverview.php?id=$patientId");
@@ -94,9 +168,7 @@ else
 
 <div class="box box-primary">
 <div class="box-header with-border">
-<i class="fa fa-user"></i> <h3 class="box-title">Patient Records &nbsp;&nbsp;<td>
-<button type="button" onclick="window.print();" class="btn btn-default">Print</button>
-</td></h3>
+<i class="fa fa-user"></i> <h3 class="box-title">Patient Records &nbsp;&nbsp;</h3>
 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <?php 
@@ -147,57 +219,110 @@ else
  <!--<div class="content-wrapper">-->
     <section class="content">
       <div class="row">
+	  <?php if(isset($_GET['recordtyp']) && $_GET['recordtyp']=="diagnostic"){ ?>
+	   <!-- Section diagnostic to delete -->
        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 record-tab" id="diagnostics">
           <!-- small box -->
-	<form method="POST">	  
+			<form>	  
 		  <!-- Diagnostics -->
-	<fieldset>
-		<legend>Diagnostics</legend>
-		<table class="table table-striped">
-		  <thead>
-			<tr>
-			  <th scope="col">Date</th>
-			  <th scope="col">typ</th>
-			  <th scope="col">text</th>
-			  <th scope="col">codessys</th>
-			  <th scope="col">code</th>
-			  <th scope="col"><input type="checkbox" class="form-check-input" id="all" /><label for="all">&nbsp;Select all</label></th>
-			</tr>
-		  </thead>
-		  <tbody>
-		  <?php   
-		  
-				$query=mysqli_query($db_connect, "SELECT * FROM diagnostic WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
-				//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
-				//echo $numrows; exit;
-				while($row=mysqli_fetch_assoc($query)){
-
-		  ?>
-			<tr>
-			  <!--<th scope="row">1</th>-->
-			  <td><?php echo $row['dateDiagnoctic']; ?></td>
-			  <td><?php echo $row['typ']; ?></td>
-			  <td><?php echo $row['text']; ?></td>
-			  <td><?php echo $row['codessys']; ?></td>
-			  <td><?php echo $row['code']; ?></td>
-			  <td class="rows"><input type="checkbox" class="form-check-input check" /></td>
-			</tr>
-		    <?php
-				}
-			?>
-		  </tbody>
-		</table>
-	</fieldset>
-			<br>
-			<div class="record-tab text-center" id="btn-ctrl-diagnostics" style="">
-			  <tr>
-			    <td><a name="cancel" href="patientrecordoverview.php?id=<?php echo $patientId; ?>"><span class="btn btn-warning"><i class="fa fa-times"></i> Cancel</span></a></td>
-			    <td><a name="delete" class="btn-del" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=diagnostic"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
-			  </tr>
-			</div>
-	</form>
+				<fieldset>
+					<legend>Diagnostics</legend>
+					<table class="famla-search-entry table table-striped">
+					  <thead>
+						<tr>
+						  <th scope="col">Date</th>
+						  <th scope="col">typ</th>
+						  <th scope="col">text</th>
+						  <th scope="col">codessys</th>
+						  <th scope="col">code</th>
+						  <th scope="col">Delete</th>
+						</tr>
+					  </thead>
+					  <tbody>
+					  <?php   					  
+						$query=mysqli_query($db_connect, "SELECT * FROM diagnostic WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
+						//echo $numrows; exit;
+						while($row=mysqli_fetch_assoc($query)){
+					  ?>
+						<tr>
+						  <!--<th scope="row">1</th>-->
+						  <td><?php echo $row['dateDiagnoctic']; ?></td>
+						  <td><?php echo $row['typ']; ?></td>
+						  <td><?php echo $row['text']; ?></td>
+						  <td><?php echo $row['codessys']; ?></td>
+						  <td><?php echo $row['code']; ?></td>
+						  <td class="rows"><a name="delete" class="btn-del" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=diagnostic&entry=<?php echo $row['idD']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+						<!--  <td class="rows"><input type="checkbox" class="form-check-input check" name="entry2delete[]"/></td>
+						-->
+						</tr>
+						<?php
+							}
+						?>
+					  </tbody>
+					</table>
+				</fieldset>
+				<br>
+				<div class="record-tab text-center" id="btn-ctrl-diagnostics" style="">
+				  <tr>			  
+					<td><a name="cancel" href="patientrecordoverview.php?id=<?php echo $patientId; ?>"><span class="btn btn-warning"><i class="fa fa-times"></i> Cancel</span></a></td>
+					<td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=diagnostic&all=true"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete All </span></a></td>
+				  </tr>
+				</div>
+			</form>
         </div>
-        <!-- ./col -->
+		<!-- ./diagnostic -->
+	  <?php } ?>
+	  <?php if(isset($_GET['recordtyp']) && $_GET['recordtyp']=="finding"){ ?>
+	   <!-- Section finding to delete -->
+       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 record-tab" id="findings">
+          <!-- small box -->
+			<form>	  
+		  <!-- Findings -->
+				<fieldset>
+					<legend>Findings</legend>
+					<table class="famla-search-entry table table-striped">
+					  <thead>
+						<tr>
+						  <th scope="col">date</th>
+						  <th scope="col">finding</th>
+						  <th scope="col">description</th>
+						  <th scope="col">Delete</th>
+						</tr>
+					  </thead>
+					  <tbody>
+					  <?php   					  
+						$query=mysqli_query($db_connect, "SELECT * FROM befunde WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
+						//echo $numrows; exit;
+						while($row=mysqli_fetch_assoc($query)){
+					  ?>
+						<tr>
+						  <!--<th scope="row">1</th>-->
+						  <td><?php echo $row['dateBefunde']; ?></td>
+						  <td><?php echo $row['befunde']; ?></td>
+						  <td><?php echo $row['description']; ?></td>
+						  <td class="rows"><a name="delete" class="btn-del" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=finding&entry=<?php echo $row['idB']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+						<!--  <td class="rows"><input type="checkbox" class="form-check-input check" name="entry2delete[]"/></td>
+						-->
+						</tr>
+						<?php
+							}
+						?>
+					  </tbody>
+					</table>
+				</fieldset>
+				<br>
+				<div class="record-tab text-center" id="btn-ctrl-findings" style="">
+				  <tr>			  
+					<td><a name="cancel" href="patientrecordoverview.php?id=<?php echo $patientId; ?>"><span class="btn btn-warning"><i class="fa fa-times"></i> Cancel</span></a></td>
+					<td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=finding&all=true"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete All </span></a></td>
+				  </tr>
+				</div>
+			</form>
+        </div>
+		<!-- ./diagnostic -->
+	  <?php } ?>	  
       </div>
       
 	  
