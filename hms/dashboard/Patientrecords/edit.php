@@ -17,9 +17,9 @@ if(isset($_POST['submit'])){
   $date = escape($_POST['date']);
   $activitie = escape($_POST['activitie']);
   
-  $queryAdd = "INSERT INTO activity(pid, dateMassnahme, massnahme) ";
-  $queryAdd.= "Values('$patientId', '$date', '$activitie') ";
-  $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
+  $queryUpdate = "UPDATE activity set dateMaßnahme='$date', maßnahme='$activitie' WHERE idA='' AND pid='$patientId') ";
+  
+  $queryAddResult=mysqli_query($db_connect, $queryUpdate)or die (mysqli_error($db_connect));
   header("Location: patientrecordoverview.php?id=$patientId");
   	// exit();
 
@@ -133,7 +133,54 @@ if(isset($_POST['submit'])){
 
 </div>
 <?php } ?>
-	
+	  <?php if(isset($_GET['recordtyp']) && $_GET['recordtyp']=="activity"){ ?>
+	   <!-- Section Activities to edit -->
+       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 record-tab" id="activities">
+          <!-- small box -->
+			<form>	  
+		  <!-- Activities -->
+				<fieldset>
+					<legend>Activities</legend>
+					<table class="famla-search-entry table table-striped">
+					  <thead>
+						<tr>
+						  <th scope="col">date</th>
+						  <th scope="col">Activities</th>
+						  <th scope="col">Edit</th>
+						</tr>
+					  </thead>
+					  <tbody>
+					  <?php   					  
+						$query=mysqli_query($db_connect, "SELECT * FROM activity WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
+						//echo $numrows; exit;
+						while($row=mysqli_fetch_assoc($query)){
+					  ?>
+						<tr>
+						  <!--<th scope="row">1</th>-->
+						  <td><?php echo $row['dateMassnahme']; ?></td>
+						  <td><?php echo $row['massnahme']; ?></td>	
+						  <td class="rows"><a name="edit" href="edit.php?id=<?php echo $patientId; ?>&recordtyp=activity&entry=<?php echo $row['idA']; ?>"><span class="btn btn-success"><i class="fa fa-edit"></i> Edit </span></a></td>
+						<!--  <td class="rows"><input type="checkbox" class="form-check-input check" name="entry2delete[]"/></td>
+						-->
+						</tr>
+						<?php
+							}
+						?>
+					  </tbody>
+					</table>
+				</fieldset>
+				<br>
+				<div class="record-tab text-center" id="btn-ctrl-activities" style="">
+				  <tr>			  
+					<td><a name="cancel" href="patientrecordoverview.php?id=<?php echo $patientId; ?>"><span class="btn btn-warning"><i class="fa fa-times"></i> Cancel</span></a></td>
+					<!--<td><a class="btn-del" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=activity&all=true"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete All </span></a></td>-->
+				  </tr>
+				</div>
+			</form>
+        </div>
+		<!-- ./activities -->
+	  <?php } else { ?>	
 <div class="box-body">
 	<div class="box box-success box-body">
 	  <div class="modal-body">
@@ -150,7 +197,7 @@ if(isset($_POST['submit'])){
 			   
 
 				<div class="box-footer">
-				  <button type="submit" name="submit" class="btn btn-primary submit-doc">Submit</button>
+				  <button type="submit" name="submit" class="btn btn-primary submit-doc">Update</button>
 				</div>
 			  <div class="modal-footer">
 				<!--<button type="button" name="close" class="btn btn-default">Close</button>-->
@@ -161,7 +208,8 @@ if(isset($_POST['submit'])){
 </div>
         
         </div>
-      </div>       
+      <?php } ?>
+	  </div>       
       </div>
     </section>
   </div>
