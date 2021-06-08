@@ -81,7 +81,7 @@ include"../inc/connect.php ";
                 ?>
               <h3><?php echo $row[0];?></h3>
 
-              <p>Medicine</p>
+              <p>Patient Records</p>
             </div>
             <div class="icon">
               <i class="fa fa-medkit"></i>
@@ -90,7 +90,7 @@ include"../inc/connect.php ";
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -109,7 +109,7 @@ include"../inc/connect.php ";
             </div>
             <a href="../prescription/prescription.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-        </div>
+        </div> 
         <!-- ./col -->
        
       </div>
