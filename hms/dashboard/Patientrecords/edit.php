@@ -13,11 +13,13 @@ include("../inc/connect.php");
 if(isset($_GET['id']))
 $patientId = escape($_GET['id']);
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']) && isset($_GET['entry'])){
   $date = escape($_POST['date']);
+  $activityId = escape($_GET['entry']);
+  
   $activitie = escape($_POST['activitie']);
   
-  $queryUpdate = "UPDATE activity set dateMaßnahme='$date', maßnahme='$activitie' WHERE idA='' AND pid='$patientId') ";
+  $queryUpdate = "UPDATE activity set dateMassnahme='$date', massnahme='$activitie' WHERE idA='$activityId' AND pid='$patientId'";
   
   $queryAddResult=mysqli_query($db_connect, $queryUpdate)or die (mysqli_error($db_connect));
   header("Location: patientrecordoverview.php?id=$patientId");
@@ -133,7 +135,7 @@ if(isset($_POST['submit'])){
 
 </div>
 <?php } ?>
-	  <?php if(isset($_GET['recordtyp']) && $_GET['recordtyp']=="activity"){ ?>
+	  <?php if(isset($_GET['recordtyp']) && $_GET['recordtyp']=="activity" && !isset($_GET['entry'])){ ?>
 	   <!-- Section Activities to edit -->
        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 record-tab" id="activities">
           <!-- small box -->
@@ -180,7 +182,19 @@ if(isset($_POST['submit'])){
 			</form>
         </div>
 		<!-- ./activities -->
-	  <?php } else { ?>	
+	  <?php } else { 
+		$activity='';
+		$editAct="";
+		if(isset($_GET['entry'])){
+		   $activity=escape($_GET['entry']);
+			$queryAct = "SELECT * FROM activity WHERE idA = {$activity}";
+			$queryActResult=mysqli_query($db_connect, $queryAct)or die (mysqli_error($db_connect));
+			while($row=mysqli_fetch_assoc($queryActResult)){ 
+				$editAct = $row;
+			}
+		}
+	  
+	  ?>	
 <div class="box-body">
 	<div class="box box-success box-body">
 	  <div class="modal-body">
@@ -188,11 +202,11 @@ if(isset($_POST['submit'])){
 
 			   <div class="form-group">
 				   <label for="dateIn">Date</label>
-				  <input type="date" name="date" class="form-control" id="date" placeholder="" required>
+				  <input type="date" name="date" class="form-control" id="date" placeholder="" value="<?php if($editAct != "") echo $editAct['dateMassnahme']; ?>" required>
 			   </div>
 			   <div class="form-group">
 				   <label for="typ">Activitie</label>
-				  <input type="text" name="activitie" class="form-control" id="activitie" placeholder="" required>
+				  <input type="text" name="activitie" class="form-control" id="activitie" placeholder="" value="<?php if($editAct != "") echo $editAct['massnahme']; ?>" required>
 			   </div>
 			   
 
