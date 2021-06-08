@@ -268,7 +268,7 @@ else
 			<div class="record-tab text-center" id="btn-ctrl-diagnostics" style="display:none">
 			  <tr>
 			    <td><a href="add_diagnostic.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a href="edit_diagnostic.php?id=<?php echo $patientId; ?>&recordtyp=diagnostic"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a href="delete.php?id=<?php echo $patientId; ?>&recordtyp=diagnostic"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>
@@ -313,7 +313,7 @@ else
 			<div class="record-tab text-center" id="btn-ctrl-findings" style="display:none">
 			  <tr>
 			    <td><a href="add_finding.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a href="edit_finding.php?id=<?php echo $patientId; ?>&recordtyp=finding"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=finding"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>		
@@ -361,7 +361,7 @@ else
 			<div class="record-tab text-center" id="btn-ctrl-examinations" style="display:none">
 			  <tr>
 			    <td><a href="add_examination.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a href="edit_examiation.php?id=<?php echo $patientId; ?>&recordtyp=examination"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=examination"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>	
@@ -406,7 +406,7 @@ else
 			<div class="record-tab text-center" id="btn-ctrl-vaccinations" style="display:none">
 			  <tr>
 			    <td><a href="add_vaccination.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a href="edit_vaccination.php?id=<?php echo $patientId; ?>&recordtyp=vaccination"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=vaccination"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
@@ -449,7 +449,7 @@ else
 			<div class="record-tab text-center" id="btn-ctrl-activities" style="display:none">
 			  <tr>
 			    <td><a href="add_activitie.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $patientId; ?>&recordtyp=activity"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a href="edit_activity.php?id=<?php echo $patientId; ?>&recordtyp=activity"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=activity"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
@@ -496,7 +496,7 @@ else
 			<div class="record-tab text-center" id="btn-ctrl-medication-plan" style="display:none">
 			  <tr>
 			    <td><a href="add_medication_plan.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a href="edit_medicationplan.php?id=<?php echo $patientId; ?>&recordtyp=medicationplan"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=medicationplan"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>
@@ -534,7 +534,7 @@ else
 			<div class="record-tab text-center" id="btn-ctrl-emergency-data" style="display:none">
 			  <tr>
 			    <td><a href="add_emergency.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a href="edit_emergencydata.php?id=<?php echo $patientId; ?>&recordtyp=emergencydata"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=emergencydata"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
@@ -575,7 +575,7 @@ else
 			<div class="record-tab text-center" id="btn-ctrl-histories" style="display:none">
 			  <tr>
 			    <td><a href="add_history.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a href="edit_history.php?id=<?php echo $patientId; ?>&recordtyp=history"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=history"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
@@ -615,7 +615,7 @@ else
 			<div class="record-tab text-center" id="btn-ctrl-documents" style="display:none">
 			  <tr>
 			    <td><a href="add_document.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
-			    <td><a href="edit.php?id=<?php echo $patientId; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+			    <td><a href="edit_document.php?id=<?php echo $patientId; ?>&recordtyp=document"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=document"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 			  </tr>
 			</div>        
