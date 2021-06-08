@@ -552,6 +552,7 @@ CREATE TABLE IF NOT EXISTS `patientregister` (
   `bloodgroup` varchar(5) NOT NULL,
   `imageupload` varchar(20) NOT NULL,
   `status` enum('1','0') NOT NULL DEFAULT '1',
+  `hasrecord` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
