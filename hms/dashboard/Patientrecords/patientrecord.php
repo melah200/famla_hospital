@@ -4,7 +4,7 @@
 <?php
 
 include("../inc/connect.php");
-$query=mysqli_query($db_connect, "SELECT `id`,`name`,`phone` FROM patientregister")or die (mysqli_error($db_connect));
+$query=mysqli_query($db_connect, "SELECT `id`,`name`,`phone`,`hasrecord` FROM patientregister")or die (mysqli_error($db_connect));
 $numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 //echo $numrows; exit;
 $row1=mysql_fetch_all($query);  
@@ -149,12 +149,18 @@ function mysql_fetch_all($query)
 <td><!--a href="editpatient1.php?id=<?php echo $row['id']; ?>"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a>-->
 
  <!--<a href="info.php?id=<?php echo $row['id']; ?>"><span class="btn btn-primary bg-orange"><i class="fa fa-info"></i> Info</span></a>&nbsp;&nbsp;-->
-
-  <a href="patientrecordoverview.php?id=<?php echo $row['id']; ?>"> <span class="btn  btn-primary"><i class="fa fa-history"></i> View Record</span></a>&nbsp;&nbsp;
+ <?php if($row['hasrecord'] == 1) { ?>
+  <a href="patientrecordoverview.php?id=<?php echo $row['id']; ?>"> <span class="btn  btn-success"><i class="fa fa-history"></i> View Record</span></a>&nbsp;&nbsp;
 
   <!--<a href="payments.php"><span class="btn btn-primary"><i class="fa fa-money"></i> Payment</span></a>&nbsp;&nbsp;-->
 
   <a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+ <?php }else{ ?>
+ <a href="newrecord.php?id=<?php echo $row['id']; ?>&addrecord"> <span class="btn  btn-primary"><i class="fa fa-plus-square"></i> Add new record</span></a>&nbsp;&nbsp;
+ 
+ 
+ <?php  } ?>
+
 </tr>
 <?php }  ?>
   </tbody>
