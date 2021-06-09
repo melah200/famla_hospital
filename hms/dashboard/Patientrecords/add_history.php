@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Patient Add new History
+        Add new patient history
         <small></small>
       </h1>
       <ol class="breadcrumb">

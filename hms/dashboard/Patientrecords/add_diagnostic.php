@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Patient Add new Diagnostic
+        Add new patient diagnostic
         <small></small>
       </h1>
       <ol class="breadcrumb">
