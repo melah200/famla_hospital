@@ -4,6 +4,11 @@
 <?php
 
 include("../inc/connect.php");
+include("function_record.php");
+if(isset($_GET['id']) && isset($_GET['deleteAllrecord'])){
+	$pid = escape($_GET['id']);
+	removePatientRecord($pid);
+}
 $query=mysqli_query($db_connect, "SELECT `id`,`name`,`phone`,`hasrecord` FROM patientregister")or die (mysqli_error($db_connect));
 $numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 //echo $numrows; exit;
@@ -37,7 +42,7 @@ function mysql_fetch_all($query)
         <i class="fa fa-user"></i> <h3 class="box-title">Patient Database</h3>
       </div>
          <div class="box-header">
- <button onclick="window.location.href='newprofile'" type="button" class="btn btn-success bg-blue" ><i class="fa fa-plus-square"></i> Add New</button>
+ <!--<button onclick="window.location.href='newprofile'" type="button" class="btn btn-success bg-blue" ><i class="fa fa-plus-square"></i> Add New</button>-->
 </div>
       <div class="modal fade" id="myModal" role="dialog">
        <div class="modal-dialog">
@@ -121,9 +126,11 @@ function mysql_fetch_all($query)
 <td>
 <a class="popup" onclick="myFunction()"><button type="submit" class="btn btn-default">PDF</button><span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a>
 </td>&nbsp;&nbsp; -->
+<!--
 <td>
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
+-->
 <div class="box-body">
 <input type="text" id="myInput" class="form-control search-people" placeholder="Search...">
 <table id="example1" class="table table-bordered table-hover">
@@ -154,7 +161,7 @@ function mysql_fetch_all($query)
 
   <!--<a href="payments.php"><span class="btn btn-primary"><i class="fa fa-money"></i> Payment</span></a>&nbsp;&nbsp;-->
 
-  <a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
+  <a class="btn-del" href="patientrecord.php?id=<?php echo $row['id']; ?>&deleteAllrecord"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
  <?php }else{ ?>
  <a href="newrecord.php?id=<?php echo $row['id']; ?>&addrecord"> <span class="btn  btn-primary"><i class="fa fa-plus-square"></i> Add new record</span></a>&nbsp;&nbsp;
  
