@@ -80,6 +80,7 @@ include_once("../inc/connect.php ");
            </ul>
         </li>
 		<!-- Patient records tree -->
+		<?php  if(false) { ?>
 		<li class="treeview">
           <a href="#">
             <i class="fa fa-medkit"></i> <span>Patient records</span>
@@ -98,6 +99,7 @@ include_once("../inc/connect.php ");
                      
 		  </ul>
         </li>
+		<?php } ?>
         <li>
           <a href="../Patientrecords/patientrecord.php">
             <i class="fa fa-medkit"></i> <span>Patient records</span>
