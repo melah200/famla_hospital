@@ -150,7 +150,7 @@ function mysql_fetch_all($query)
 
  <a href="info.php?id=<?php echo $row['id']; ?>"><span class="btn btn-primary bg-orange"><i class="fa fa-info"></i> Info</span></a>&nbsp;&nbsp;
 
-  <a href="casehistory.php"> <span class="btn  btn-primary disabled"><i class="fa fa-history"></i> History</span></a>&nbsp;&nbsp;
+ <!-- <a href="casehistory.php"> <span class="btn  btn-primary disabled"><i class="fa fa-history"></i> History</span></a>&nbsp;&nbsp;-->
 
   <a href="payments.php"><span class="btn btn-primary"><i class="fa fa-money"></i> Payment</span></a>&nbsp;&nbsp;
 
