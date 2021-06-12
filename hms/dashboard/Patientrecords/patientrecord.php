@@ -7,7 +7,7 @@ include("../inc/connect.php");
 include("function_record.php");
 if(isset($_GET['id']) && isset($_GET['deleteAllrecord'])){
 	$pid = escape($_GET['id']);
-	removePatientRecord($pid);
+	deleteAllEntryOfAllRecords($pid);
 }
 $query=mysqli_query($db_connect, "SELECT `id`,`name`,`phone`,`hasrecord` FROM patientregister")or die (mysqli_error($db_connect));
 $numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));

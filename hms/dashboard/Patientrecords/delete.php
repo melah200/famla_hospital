@@ -11,13 +11,14 @@ if(!isset($_GET['id']))
 ?>
 
 <?php 
-include("../inc/connect.php") ;
+include("../inc/connect.php");
+include("function_record.php");
 
 $patientId = escape($_GET['id']);
 ?>
 <?php
 
-include("../inc/connect.php");
+// include("../inc/connect.php");
 
 
 if(isset($_GET['id']))
@@ -27,68 +28,10 @@ if(isset($_GET['recordtyp'])){
   $table = escape($_GET['recordtyp']);
    
   if(isset($_GET['all'])){
-	deleteAllRecord($table, $patientId);
+	deleteAllEntryOfOneRecord($table, $patientId);
   }else if(isset($_GET['entry'])){
 	  $entry = escape($_GET['entry']);
-	switch($table){
-		case "diagnostic":
-		{
-			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idD = {$entry}";
-			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			break;
-		}
-		case "finding":
-		{
-			$queryDelDiag = "DELETE FROM befunde WHERE pid = {$patientId} AND idB = {$entry}";
-			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			break;
-		}
-		case "examination":
-		{
-			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idE = {$entry}";
-			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			break;
-		}
-		case "vaccination":
-		{
-			$queryDelDiag = "DELETE FROM impfung WHERE pid = {$patientId} AND idI = {$entry}";
-			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			break;
-		}
-		case "activity":
-		{
-			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idA = {$entry}";
-			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			break;
-		}
-		case "medicationplan":
-		{
-			$queryDelDiag = "DELETE FROM medikationplan WHERE pid = {$patientId} AND idMP = {$entry}";
-			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			break;
-		}
-		case "emergencydata":
-		{
-			$queryDelDiag = "DELETE FROM notfalldaten WHERE pid = {$patientId} AND idN = {$entry}";
-			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			break;
-		}
-		case "history":
-		{
-			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idH = {$entry}";
-			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			break;
-		}
-		case "document":
-		{
-			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idDo = {$entry}";
-			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			break;
-		}
-		default:
-		    break;
-	}
-	   
+	  deleteOneRecordEntry($table, $patientId, $entry);  
   }
 
   // $queryDel = "DELETE FROM $table WHERE pid = {$patientId}";
