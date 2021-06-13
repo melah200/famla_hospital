@@ -146,11 +146,11 @@ if(isset($_POST['submit'])){
 			   </div>
 			   <div class="form-group">
 				   <label for="typ">Finding</label>
-				  <input type="text" name="typ" class="form-control" id="typ" placeholder="" required>
+				  <input type="text" name="befunde" class="form-control" id="typ" placeholder="" required>
 			   </div>
 			   <div class="form-group">
 				   <label for="text">Description</label>
-				  <input type="text" name="text" class="form-control" id="text" placeholder="" required>
+				  <input type="text" name="description" class="form-control" id="text" placeholder="" required>
 			   </div>
 
 
