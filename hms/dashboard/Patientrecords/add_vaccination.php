@@ -150,7 +150,7 @@ if(isset($_POST['submit'])){
 				  <input type="Varchar" name="name" class="form-control" id="name" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="text">Desease</label>
+				   <label for="text">Disease</label>
 				  <input type="text" name="desease" class="form-control" id="desease" placeholder="" required>
 			   </div>
 			   <div class="form-group">
