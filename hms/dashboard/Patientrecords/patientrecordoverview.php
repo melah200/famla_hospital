@@ -367,7 +367,7 @@ else
 			  <tr>
 			    <td><a href="add_examination.php?id=<?php echo $patientId; ?>"><span class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</span></a></td>
 			    <?php if($counterExamination > 0) { ?>
-				<td><a href="edit_examiation.php?id=<?php echo $patientId; ?>&recordtyp=examination"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
+				<td><a href="edit_examination.php?id=<?php echo $patientId; ?>&recordtyp=examination"><span class="btn btn-success bg-green"><i class="fa fa-edit"></i> Edit </span></a></td>
 			    <td><a class="" href="delete.php?id=<?php echo $patientId; ?>&recordtyp=examination"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </span></a></td>
 				<?php } ?>
 			  </tr>
