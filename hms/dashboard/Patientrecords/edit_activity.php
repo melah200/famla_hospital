@@ -13,7 +13,7 @@ include("../inc/connect.php");
 if(isset($_GET['id']))
 $patientId = escape($_GET['id']);
 
-if(isset($_POST['submit']) && isset($_GET['entry'])){
+if(isset($_POST['update']) && isset($_GET['entry'])){
   $date = escape($_POST['date']);
   $activityId = escape($_GET['entry']);
   
@@ -36,7 +36,7 @@ if(isset($_POST['submit']) && isset($_GET['entry'])){
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Add new patient activity
+        Edit patient activity
         <small></small>
       </h1>
       <ol class="breadcrumb">
@@ -146,7 +146,7 @@ if(isset($_POST['submit']) && isset($_GET['entry'])){
 			   
 
 				<div class="box-footer">
-				  <button type="submit" name="submit" class="btn btn-primary submit-doc">Update</button>
+				  <button type="submit" name="update" class="btn btn-primary submit-doc">Update</button>
 				</div>
 			  <div class="modal-footer">
 				<!--<button type="button" name="close" class="btn btn-default">Close</button>-->
