@@ -202,4 +202,50 @@ function removedOneDoc($pid, $DocId){
 	}
 }
 
+function getDocFileFromDB($pid, $DocId){
+	global $db_connect;
+	$queryDoc = "SELECT fileUpdated FROM document WHERE pid='$pid' AND WHERE fileUpdated='$DocId'";
+	$query = mysqli_query($db_connect, $queryDoc);
+	$filename = '';
+	while($row=mysqli_fetch_assoc($query)){
+		//delete document here
+		$filename = $row['fileUpdated'];
+		break;
+	}
+	return $filename;
+}
+function updateDocuments($new, $old){
+	global $db_connect;
+	
+	$time = time();
+	$target_dir="./upload_documents/";
+	$name=basename($new["name"]);
+	$filename = $target_dir.$time.'_'.$name;
+	$type = $new["type"];
+	$size = $new["size"];
+
+	$temp = $new["tmp_name"]; 
+	$error = $new["error"];//size
+    $status = '';	
+	if($error>0)
+	{
+	  $status = "Error occurred during the upload";
+	}
+	else
+	{ 
+		if ($type=="images/" || $size > 5000000)
+		{
+		  $status = "Error. The size is too big";
+		}
+		else
+		{ 
+		  unlink('./upload_documents/'.$old);
+		  move_uploaded_file($temp, $filename);//move upload file  
+		 // echo"Upload Complete";  
+		}
+	}
+	return $status;
+}
+
+
 ?>

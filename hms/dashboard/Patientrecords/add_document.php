@@ -74,6 +74,41 @@ function upload_documents($name)
 	  // $write =mysqli_query($db_connect, "INSERT INTO addfiles( `doc_date`,`patient`,`title`,`file`) VALUES (' $d1','$patient','$title','$name')") or die(mysqli_error($db_connect));
   return $status;
 }
+function update_documents($new, $old)
+{ 
+	$status="OK";
+
+	$target_dir="./upload_documents/";
+	$filename = $target_dir.$name;
+	$type = $_FILES["uploaddoc"]["type"];
+	$size = $_FILES["uploaddoc"]["size"];
+
+	$temp = $_FILES["uploaddoc"]["tmp_name"]; 
+	$error = $_FILES["uploaddoc"]["error"];//size
+	if($error>0)
+	{
+	// die("Error uploading file! Code $error.");
+	  $status = "Error occurred during the upload";
+	}
+	else
+	{ 
+		if ($type=="images/" || $size > 5000000)
+		{
+		  // die("that format is not allowed or file size is too big!");
+		  $status = "Error. The size is exceeded";
+		}
+		else
+		{ //echo "string"; exit;
+		  
+		  move_uploaded_file($temp, $filename);//move upload file  
+		 // echo"Upload Complete";  
+		}
+	}
+	//print_r($_FILES); exit();
+
+	  // $write =mysqli_query($db_connect, "INSERT INTO addfiles( `doc_date`,`patient`,`title`,`file`) VALUES (' $d1','$patient','$title','$name')") or die(mysqli_error($db_connect));
+  return $status;
+}
 
 
 ?>

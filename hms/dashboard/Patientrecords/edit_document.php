@@ -15,13 +15,17 @@ $patientId = escape($_GET['id']);
 
 if(isset($_POST['update']) && isset($_GET['entry'])){
   $date = escape($_POST['date']);
-  $station_room = escape($_POST['station_room']);
+  $title = escape($_POST['title']);
   $description = escape($_POST['description']);
-  $historyId = escape($_GET['entry']);
+  $documentId = escape($_GET['entry']);
   
-  $queryUpdate = "UPDATE history set zeitraume='$date', Station_Raum='$station_room', ";
-  $queryUpdate .= "description='$description' WHERE idH='$historyId' AND pid='$patientId'";
+  $new = $_FILES["uploaddoc"];
+  $old_filename = getDocFileFromDB($patientId, $documentId);
+  
+  $queryUpdate = "UPDATE history set dateDokument='$date', title='$title', ";
+  $queryUpdate .= "Description='$description' WHERE idDo='$documentId' AND pid='$patientId'";
   $queryResult=mysqli_query($db_connect, $queryUpdate)or die (mysqli_error($db_connect));
+  updateDocuments($new, $old_filename);
   header("Location: patientrecordoverview.php?id=$patientId");
   	// exit();
 
@@ -36,13 +40,13 @@ if(isset($_POST['update']) && isset($_GET['entry'])){
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Edit patient history
+        Edit patient document
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Patient record</li>
-        <li class="active">Histories</li>
+        <li class="active">Documents</li>
       </ol>
     </section>
 
@@ -51,7 +55,7 @@ if(isset($_POST['update']) && isset($_GET['entry'])){
 	<div class="col-xs-12">
     <div class="box box-primary">
       <div class="box-header with-border ">
-        <i class="fa fa-user"></i> <h3 class="box-title">Histories</h3>
+        <i class="fa fa-user"></i> <h3 class="box-title">Documents</h3>
       </div>
 	  
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -72,36 +76,36 @@ if(isset($_POST['update']) && isset($_GET['entry'])){
 	<div class="box box-success box-body">
 	  <div class="modal-body">
 <?php } ?>
-	  <?php if(isset($_GET['recordtyp']) && $_GET['recordtyp']=="history" && !isset($_GET['entry'])){ ?>
-	   <!-- Section history to edit -->
+	  <?php if(isset($_GET['recordtyp']) && $_GET['recordtyp']=="document" && !isset($_GET['entry'])){ ?>
+	   <!-- Section document to edit -->
        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 record-tab" id="history">
           <!-- small box -->
 			<form>	  
-		  <!-- Histories -->
+		  <!-- Document -->
 				<fieldset>
-					<legend>Histories</legend>
+					<legend>Documents</legend>
 					<table class="famla-search-entry table table-striped">
 					  <thead>
 						<tr>
-						  <th scope="col">Period</th>
-						  <th scope="col">Station/Room</th>
+						  <th scope="col">Date</th>
+						  <th scope="col">Title</th>
 						  <th scope="col">Description</th>
 						  <th scope="col">Edit</th>
 						</tr>
 					  </thead>
 					  <tbody>
 					  <?php   					  
-						$query=mysqli_query($db_connect, "SELECT * FROM history WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
+						$query=mysqli_query($db_connect, "SELECT * FROM document WHERE pid = {$patientId}")or die (mysqli_error($db_connect));
 						//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 						//echo $numrows; exit;
 						while($row=mysqli_fetch_assoc($query)){
 					  ?>
 						<tr>
 						  <!--<th scope="row">1</th>-->
-						  <td><?php echo $row['zeitraume']; ?></td>
-						  <td><?php echo $row['Station_Raum']; ?></td>	
-						  <td><?php echo $row['description']; ?></td>				
-						  <td class="rows"><a name="edit" href="edit_history.php?id=<?php echo $patientId; ?>&recordtyp=history&entry=<?php echo $row['idH']; ?>"><span class="btn btn-success"><i class="fa fa-edit"></i> Edit </span></a></td>
+						  <td><?php echo $row['dateDokument']; ?></td>
+						  <td><?php echo $row['title']; ?></td>	
+						  <td><?php echo $row['Description']; ?></td>				
+						  <td class="rows"><a name="edit" href="edit_document.php?id=<?php echo $patientId; ?>&recordtyp=document&entry=<?php echo $row['idDo']; ?>"><span class="btn btn-success"><i class="fa fa-edit"></i> Edit </span></a></td>
 						<!--  <td class="rows"><input type="checkbox" class="form-check-input check" name="entry2delete[]"/></td>
 						-->
 						</tr>
@@ -122,11 +126,11 @@ if(isset($_POST['update']) && isset($_GET['entry'])){
         </div>
 		<!-- ./activities -->
 	  <?php } else { 
-		$history='';
+		$docId='';
 		$edit="";
 		if(isset($_GET['entry'])){
-		   $history=escape($_GET['entry']);
-			$query = "SELECT * FROM history WHERE idH = {$history}";
+		   $docId=escape($_GET['entry']);
+			$query = "SELECT * FROM document WHERE idDo = {$docId}";
 			$queryResult=mysqli_query($db_connect, $query)or die (mysqli_error($db_connect));
 			while($row=mysqli_fetch_assoc($queryResult)){ 
 				$edit = $row;
@@ -137,17 +141,20 @@ if(isset($_POST['update']) && isset($_GET['entry'])){
 			<form method="POST" enctype="multipart/form-data">
 
 			   <div class="form-group">
-				   <label for="date">Period</label>
-				  <input type="date" name="date" class="form-control" id="date" placeholder="" value="<?php if($edit != "") echo $edit['zeitraume']; ?>" required>
+				   <label for="date">Date</label>
+				  <input type="date" name="date" class="form-control" id="date" placeholder="" value="<?php if($edit != "") echo $edit['dateDokument']; ?>" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="station_room">Station/Room</label>
-				  <input type="text" name="station_room" class="form-control" id="station_room" placeholder="" value="<?php if($edit != "") echo $edit['Station_Raum']; ?>" required>
+				   <label for="title">Title</label>
+				  <input type="text" name="title" class="form-control" id="title" placeholder="" value="<?php if($edit != "") echo $edit['title']; ?>" required>
 			   </div>
 			   <div class="form-group">
 				   <label for="description">Description</label>
-				  <input type="text" name="description" class="form-control" id="description" placeholder="" value="<?php if($edit != "") echo $edit['description']; ?>" required>
+				  <input type="text" name="description" class="form-control" id="description" placeholder="" value="<?php if($edit != "") echo $edit['Description']; ?>" required>
 			   </div>
+			   
+			  <td><b>Upload Documents</b></font>
+			  <input type="file" name="uploaddoc" id="fileToUpload" required=""></td><br>			   
 
 				<div class="box-footer">
 				  <button type="submit" name="update" class="btn btn-primary submit-doc">Update</button>
