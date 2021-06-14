@@ -300,6 +300,7 @@ CREATE TABLE IF NOT EXISTS `document` (
   `dateDokument` date NOT NULL,
   `title` varchar(30) NOT NULL,
   `Description` text NOT NULL,
+  `fileUploaded` text NOT NULL,
   PRIMARY KEY (`idDo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
