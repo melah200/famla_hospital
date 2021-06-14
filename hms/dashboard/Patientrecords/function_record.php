@@ -184,32 +184,31 @@ function countRecordEntry($table, $patientId){
 
 function removedAllDoc($pid){
 	global $db_connect;
-	$queryDoc = "SELECT fileUpdated FROM document WHERE pid='$pid'";
+	$queryDoc = "SELECT fileUploaded FROM document WHERE pid='$pid'";
 	$query = mysqli_query($db_connect, $queryDoc);
 	while($row=mysqli_fetch_assoc($query)){
 		//delete document here
-		unlink('./upload_documents/'.$row['fileUpdated']);
+		unlink('./upload_documents/'.$row['fileUploaded']);
 	}
 }
 
 function removedOneDoc($pid, $DocId){
 	global $db_connect;
-	$queryDoc = "SELECT fileUpdated FROM document WHERE pid='$pid' AND WHERE fileUpdated='$DocId'";
+	$queryDoc = "SELECT fileUploaded FROM document WHERE pid='$pid' AND idDo='$DocId'";
 	$query = mysqli_query($db_connect, $queryDoc);
 	while($row=mysqli_fetch_assoc($query)){
 		//delete document here
-		unlink('./upload_documents/'.$row['fileUpdated']);
+		unlink('./upload_documents/'.$row['fileUploaded']);
 	}
 }
 
 function getDocFileFromDB($pid, $DocId){
 	global $db_connect;
-	$queryDoc = "SELECT fileUpdated FROM document WHERE pid='$pid' AND WHERE fileUpdated='$DocId'";
+	$queryDoc = "SELECT fileUploaded FROM document WHERE pid='$pid' AND idDo='$DocId'";
 	$query = mysqli_query($db_connect, $queryDoc);
 	$filename = '';
 	while($row=mysqli_fetch_assoc($query)){
-		//delete document here
-		$filename = $row['fileUpdated'];
+		$filename = $row['fileUploaded'];
 		break;
 	}
 	return $filename;

@@ -8,6 +8,7 @@
 <?php
 
 include("../inc/connect.php");
+include("function_record.php");
 
 
 if(isset($_GET['id']))
@@ -22,7 +23,7 @@ if(isset($_POST['update']) && isset($_GET['entry'])){
   $new = $_FILES["uploaddoc"];
   $old_filename = getDocFileFromDB($patientId, $documentId);
   
-  $queryUpdate = "UPDATE history set dateDokument='$date', title='$title', ";
+  $queryUpdate = "UPDATE document set dateDokument='$date', title='$title', ";
   $queryUpdate .= "Description='$description' WHERE idDo='$documentId' AND pid='$patientId'";
   $queryResult=mysqli_query($db_connect, $queryUpdate)or die (mysqli_error($db_connect));
   updateDocuments($new, $old_filename);

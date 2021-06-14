@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
   $filename = $time.'_'.$name;
   
   $queryAdd = "INSERT INTO document(pid, dateDokument, title, Description, fileUploaded) ";
-  $queryAdd.= "Values('$patientId', '$date', '$title', '$description', $filename) ";
+  $queryAdd.= "Values('$patientId', '$date', '$title', '$description', '$filename') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
   $uploadStatus = upload_documents($filename);
   header("Location: patientrecordoverview.php?id=$patientId");
