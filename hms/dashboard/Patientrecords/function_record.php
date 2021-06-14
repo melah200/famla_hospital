@@ -55,6 +55,7 @@ function deleteOneRecordEntry($table, $patientId, $entry)
 		{
 			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idDo = {$entry}";
 			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			removedOneDoc($patientId, $entry);
 			break;
 		}
 		default:
@@ -118,6 +119,7 @@ function deleteAllEntryOfOneRecord($table, $patientId)
 		{
 			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId}";
 			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+			removedAllDoc($patientId);
 			break;
 		}
 		default:
@@ -156,6 +158,7 @@ function deleteAllEntryOfAllRecords($patientId)
 
 	$queryDelDiag = "DELETE FROM document WHERE pid = {$patientId}";
 	$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
+	removedAllDoc($patientId);
 	
 	UpdateHasRecordFlag($patientId, 0);
 }
@@ -177,6 +180,26 @@ function countRecordEntry($table, $patientId){
 		$countEntry++;
 	}
 	return $countEntry;
+}
+
+function removedAllDoc($pid){
+	global $db_connect;
+	$queryDoc = "SELECT fileUpdated FROM document WHERE pid='$pid'";
+	$query = mysqli_query($db_connect, $queryDoc);
+	while($row=mysqli_fetch_assoc($query)){
+		//delete document here
+		unlink('./upload_documents/'.$row['fileUpdated']);
+	}
+}
+
+function removedOneDoc($pid, $DocId){
+	global $db_connect;
+	$queryDoc = "SELECT fileUpdated FROM document WHERE pid='$pid' AND WHERE fileUpdated='$DocId'";
+	$query = mysqli_query($db_connect, $queryDoc);
+	while($row=mysqli_fetch_assoc($query)){
+		//delete document here
+		unlink('./upload_documents/'.$row['fileUpdated']);
+	}
 }
 
 ?>
