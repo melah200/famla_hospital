@@ -18,10 +18,14 @@ if(isset($_POST['submit'])){
   $title = escape($_POST['title']);
   $description = escape($_POST['description']);
   
-  $queryAdd = "INSERT INTO document(pid, dateDokument, title, Description) ";
-  $queryAdd.= "Values('$patientId', '$date', '$title', '$description') ";
+  $time=time();
+  $name=basename($_FILES["uploaddoc"]["name"]);
+  $filename = $time.'_'.$name;
+  
+  $queryAdd = "INSERT INTO document(pid, dateDokument, title, Description, fileUploaded) ";
+  $queryAdd.= "Values('$patientId', '$date', '$title', '$description', $filename) ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
-  upload_documents();
+  $uploadStatus = upload_documents($filename);
   header("Location: patientrecordoverview.php?id=$patientId");
   	// exit();
 
@@ -35,12 +39,12 @@ if(isset($_POST['submit'])){
 
 <?php
 //session_start();
-function upload_documents()
+function upload_documents($name)
 { 
-	$time=time();
+	$status="OK";
 
 	$target_dir="./upload_documents/";
-	$name=$_FILES["uploaddoc"]["name"];
+	$filename = $target_dir.$name;
 	$type = $_FILES["uploaddoc"]["type"];
 	$size = $_FILES["uploaddoc"]["size"];
 
@@ -49,23 +53,26 @@ function upload_documents()
 	if($error>0)
 	{
 	// die("Error uploading file! Code $error.");
+	  $status = "Error occurred during the upload";
 	}
 	else
 	{ 
 		if ($type=="images/" || $size > 5000000)
 		{
 		  // die("that format is not allowed or file size is too big!");
+		  $status = "Error. The size is exceeded";
 		}
 		else
 		{ //echo "string"; exit;
-		 move_uploaded_file($temp,$target_dir.$time.'_'.$name);//move upload file  
+		  
+		  move_uploaded_file($temp, $filename);//move upload file  
 		 // echo"Upload Complete";  
 		}
 	}
 	//print_r($_FILES); exit();
 
 	  // $write =mysqli_query($db_connect, "INSERT INTO addfiles( `doc_date`,`patient`,`title`,`file`) VALUES (' $d1','$patient','$title','$name')") or die(mysqli_error($db_connect));
-
+  return $status;
 }
 
 
