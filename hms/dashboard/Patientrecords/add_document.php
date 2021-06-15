@@ -230,7 +230,7 @@ function update_documents($new, $old)
 				  <input type="Varchar" name="title" class="form-control" id="typ" placeholder="" required>
 			   </div>
 			   <div class="form-group">
-				   <label for="text">Descriptiont</label>
+				   <label for="text">Description</label>
 				  <input type="text" name="description" class="form-control" id="text" placeholder="" required>
 			   </div>
 			  <td><b>Upload Documents</b></font>
