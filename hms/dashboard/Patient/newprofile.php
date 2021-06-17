@@ -4,7 +4,7 @@ include("../inc/connect.php") ;
 //session_start();
 if(isset($_POST['Save']))
 { 
-    $id=$_POST['id'];
+   // $id=$_POST['id'];
 //print_r($_FILES["profile_pic"]["name"]); exit;
  if($_FILES["profile_pic"]["name"]!='')
   {
@@ -35,7 +35,7 @@ $error = $_FILES["profile_pic"]["error"];//size
     } 
     else
     {
-      
+      $imgname = "";
     }
  //$profilepic=$_FILES["profilepic"]["name"];
    
@@ -47,13 +47,15 @@ $error = $_FILES["profile_pic"]["error"];//size
     $birthdate=$_POST['birthdate'];
     $bloodgroup=$_POST['bloodgroup'];
     $status=$_POST['status'];
+	$doctor = "";
+	$password = "";
       
-      $write =mysqli_query($db_connect, "INSERT INTO patientregister(`name`,`email`,`address`,`phone`,`gender`,`birthdate`,`bloodgroup`,`imageupload`,`status`) VALUES ('$name','$email','$address','$phone','$gender','$birthdate','$bloodgroup','$imgname',' $status')") or die(mysqli_error($db_connect));
+      $write =mysqli_query($db_connect, "INSERT INTO patientregister(`doctor`,`name`,`email`,`password`,`address`,`phone`,`gender`,`birthdate`,`bloodgroup`,`imageupload`,`status`) VALUES ('$doctor','$name','$email','$password','$address','$phone','$gender','$birthdate','$bloodgroup','$imgname',' $status')") or die(mysqli_error($db_connect));
       //$query=mysqli_query($db_connect, "SELECT * FROM user ")or die (mysqli_error($db_connect));
       //$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
-           $last_id = mysql_insert_id();
-      $deposit =mysqli_query($db_connect, "INSERT INTO `addpayment`(`patient`,`invoice`) VALUES ('$last_id','')") or die(mysqli_error($db_connect));
-     echo " <script>setTimeout(\"location.href='../Patient/patient.php';\",150);</script>";
+        //   $last_id = mysql_insert_id();
+      //$deposit =mysqli_query($db_connect, "INSERT INTO `addpayment`(`patient`,`invoice`) VALUES ('$last_id','')") or die(mysqli_error($db_connect));
+     echo " <script>setTimeout(\"location.href='../Patient/patientlist.php';\",150);</script>";
     }
     
 
