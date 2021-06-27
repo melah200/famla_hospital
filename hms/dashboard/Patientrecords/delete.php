@@ -29,6 +29,8 @@ if(isset($_GET['recordtyp'])){
    
   if(isset($_GET['all'])){
 	deleteAllEntryOfOneRecord($table, $patientId);
+	// echo "ok";
+	// exit();
   }else if(isset($_GET['entry'])){
 	  $entry = escape($_GET['entry']);
 	  deleteOneRecordEntry($table, $patientId, $entry);  

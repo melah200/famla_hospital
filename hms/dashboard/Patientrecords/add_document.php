@@ -20,7 +20,8 @@ if(isset($_POST['submit'])){
   
   $time=time();
   $name=basename($_FILES["uploaddoc"]["name"]);
-  $filename = $time.'_'.$name;
+  $p=pathinfo($_FILES["uploaddoc"]["name"]);
+  $filename = $patientId.'_'.$time.'.'.$p['extension'];
   
   $queryAdd = "INSERT INTO document(pid, dateDokument, title, Description, fileUploaded) ";
   $queryAdd.= "Values('$patientId', '$date', '$title', '$description', '$filename') ";

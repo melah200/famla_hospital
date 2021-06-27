@@ -609,6 +609,7 @@ else
 					  <th scope="col">date</th>
 					  <th scope="col">title</th>
 					  <th scope="col">description</th>
+					  <th scope="col">Options</th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -623,6 +624,7 @@ else
 					  <td><?php echo $patientdoc['dateDokument']; ?></td>
 					  <td><?php echo $patientdoc['title']; ?></td>
 					  <td><?php echo $patientdoc['Description']; ?></td>
+					  <td><a class="" href="view.php?f=<?php echo $patientdoc['fileUploaded']; ?>"><span class="btn btn-primary"> View file </span></a></td>
 					</tr>
 					<?php } ?>
 				  </tbody>

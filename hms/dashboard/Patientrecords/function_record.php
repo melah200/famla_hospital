@@ -53,9 +53,9 @@ function deleteOneRecordEntry($table, $patientId, $entry)
 		}
 		case "document":
 		{
+			removedOneDoc($patientId, $entry);
 			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId} AND idDo = {$entry}";
 			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			removedOneDoc($patientId, $entry);
 			break;
 		}
 		default:
@@ -117,9 +117,12 @@ function deleteAllEntryOfOneRecord($table, $patientId)
 		}
 		case "document":
 		{
+			removedAllDoc($patientId);
 			$queryDelDiag = "DELETE FROM $table WHERE pid = {$patientId}";
 			$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-			removedAllDoc($patientId);
+			
+			// echo "document is reached";
+			// exit();
 			break;
 		}
 		default:
@@ -156,9 +159,9 @@ function deleteAllEntryOfAllRecords($patientId)
 	$queryDelDiag = "DELETE FROM history WHERE pid = {$patientId}";
 	$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
 
+	removedAllDoc($patientId);
 	$queryDelDiag = "DELETE FROM document WHERE pid = {$patientId}";
 	$query=mysqli_query($db_connect, $queryDelDiag)or die (mysqli_error($db_connect));
-	removedAllDoc($patientId);
 	
 	UpdateHasRecordFlag($patientId, 0);
 }
@@ -184,21 +187,30 @@ function countRecordEntry($table, $patientId){
 
 function removedAllDoc($pid){
 	global $db_connect;
-	$queryDoc = "SELECT fileUploaded FROM document WHERE pid='$pid'";
+	$queryDoc = "SELECT * FROM document WHERE pid='$pid'";
 	$query = mysqli_query($db_connect, $queryDoc);
+	// print_r($query);
+	// exit();
 	while($row=mysqli_fetch_assoc($query)){
 		//delete document here
 		unlink('./upload_documents/'.$row['fileUploaded']);
+		// echo $row['fileUploaded'].' is deleted';
+		// exit();
 	}
 }
 
 function removedOneDoc($pid, $DocId){
 	global $db_connect;
-	$queryDoc = "SELECT fileUploaded FROM document WHERE pid='$pid' AND idDo='$DocId'";
+	$queryDoc = "SELECT * FROM document WHERE pid='$pid' AND idDo='$DocId'";
 	$query = mysqli_query($db_connect, $queryDoc);
+	// print_r($query);
+	// exit();
 	while($row=mysqli_fetch_assoc($query)){
 		//delete document here
 		unlink('./upload_documents/'.$row['fileUploaded']);
+		// echo $row['fileUploaded'].' is deleted';
+		// exit();
+		
 	}
 }
 
