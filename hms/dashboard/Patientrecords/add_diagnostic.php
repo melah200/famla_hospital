@@ -19,8 +19,8 @@ if(isset($_POST['submit'])){
   $text = escape($_POST['text']);
   $codessys = escape($_POST['codessys']);
   $code = escape($_POST['code']);
-  $queryAdd = "INSERT INTO diagnostic(pid, dateDiagnoctic, typ, text, codessys, code) ";
-  $queryAdd.= "Values('$patientId', '$date', '$typ', '$text', '$codessys', '$code') ";
+  $queryAdd = "INSERT INTO diagnostic(pid, dateDiagnoctic, typ,text, codessys, code) ";
+  $queryAdd.= "Values('$patientId', '$date', '$typ', '$text','$codessys', '$code') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
   header("Location: patientrecordoverview.php?id=$patientId");
   	// exit();
@@ -152,7 +152,7 @@ if(isset($_POST['submit'])){
 			   <div class="form-group">
 				   <label for="text">Text</label>
 				  <input type="text" name="text" class="form-control" id="text" placeholder="" required>
-			   </div>
+			   </div> 
 			   <div class="form-group">
 				   <label for="codessys">Codessys</label>
 				  <input type="text" name="codessys" class="form-control" id="codessys" placeholder="" required>
