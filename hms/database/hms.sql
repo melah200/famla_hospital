@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 02. Jun 2021 um 16:04
--- Server-Version: 5.7.31
--- PHP-Version: 7.3.21
+-- Erstellungszeit: 28. Jun 2021 um 19:09
+-- Server-Version: 10.4.10-MariaDB
+-- PHP-Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -45,25 +46,36 @@ CREATE TABLE IF NOT EXISTS `activity` (
 DROP TABLE IF EXISTS `addappointment`;
 CREATE TABLE IF NOT EXISTS `addappointment` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
-  `patient` varchar(25) NOT NULL,
+  `patient` varchar(25) DEFAULT NULL,
+  `name` varchar(80) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `doctor` varchar(25) NOT NULL,
-  `app_date` varchar(100) NOT NULL,
+  `app_date` varchar(50) NOT NULL,
   `starttime` varchar(100) DEFAULT NULL,
   `endtime` varchar(100) DEFAULT NULL,
-  `remark` varchar(255) NOT NULL,
-  `sms` enum('0','1') NOT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `sms` enum('0','1') NOT NULL DEFAULT '0',
   `app_status` enum('upcoming','perceived','cancelled') NOT NULL DEFAULT 'upcoming',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
 
 --
 -- Daten für Tabelle `addappointment`
 --
 
-INSERT INTO `addappointment` (`id`, `patient`, `doctor`, `app_date`, `starttime`, `endtime`, `remark`, `sms`, `app_status`) VALUES
-(1, '4', 'Kanga', '2021-04-16', '07:00', '08:00', 'für eine Untersuchung', '1', 'perceived'),
-(2, '2', 'Amadou', '2021-04-18', '08:15', '09:15', 'Impfung', '1', 'cancelled'),
-(5, '3', 'kamto', '2021-04-11', '20:00', '21:00', 'OP', '0', 'upcoming');
+INSERT INTO `addappointment` (`id`, `patient`, `name`, `phone`, `email`, `doctor`, `app_date`, `starttime`, `endtime`, `remark`, `sms`, `app_status`) VALUES
+(1, '4', NULL, NULL, NULL, 'Kanga', '2021-04-16 00:00:00', '07:00', '08:00', 'für eine Untersuchung', '1', 'perceived'),
+(2, '2', NULL, NULL, NULL, 'Amadou', '2021-04-18 00:00:00', '08:15', '09:15', 'Impfung', '1', 'cancelled'),
+(5, '3', NULL, NULL, NULL, 'kamto', '2021-04-11 00:00:00', '20:00', '21:00', 'OP', '0', 'upcoming'),
+(6, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', 'depart', NULL, NULL, '', '0', 'upcoming'),
+(7, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'OK', '0', 'upcoming'),
+(8, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'OK', '0', 'upcoming'),
+(9, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', 'depart', NULL, NULL, 'OK', '0', 'upcoming'),
+(10, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'ook', '0', 'upcoming'),
+(11, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'ook', '0', 'upcoming'),
+(12, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'ook', '0', 'upcoming'),
+(13, NULL, 'Armelo123', 12345678, 'melah200@yahoo.fr', 'Doctor 3', '12.07.2021', NULL, NULL, 'Finish', '0', 'upcoming');
 
 -- --------------------------------------------------------
 
@@ -250,16 +262,6 @@ CREATE TABLE IF NOT EXISTS `befunde` (
   PRIMARY KEY (`idB`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
---
--- Daten für Tabelle `befunde`
---
-
-INSERT INTO `befunde` (`idB`, `pid`, `dateBefunde`, `befunde`, `description`) VALUES
-(1, 2, '2021-05-18', 'ghghghghghghg', 'jhjhjhjhjhjhjh'),
-(3, 2, '2021-04-28', '', ''),
-(4, 2, '2021-04-29', '', ''),
-(5, 2, '2021-06-01', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -278,15 +280,6 @@ CREATE TABLE IF NOT EXISTS `diagnostic` (
   PRIMARY KEY (`idD`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
---
--- Daten für Tabelle `diagnostic`
---
-
-INSERT INTO `diagnostic` (`idD`, `pid`, `dateDiagnoctic`, `typ`, `text`, `codessys`, `code`) VALUES
-(1, 2, '2021-05-11', 'Diagnose', 'cancer de poumon', 'ABCD', 'ABDC'),
-(2, 2, '2021-04-27', 'OP', 'cancer', '123', '329874'),
-(3, 2, '2021-06-02', 'icd10', 'lungen entzÃ¼gdung', 'ANN', 'B');
-
 -- --------------------------------------------------------
 
 --
@@ -302,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `document` (
   `Description` text NOT NULL,
   `fileUploaded` text NOT NULL,
   PRIMARY KEY (`idDo`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -321,13 +314,6 @@ CREATE TABLE IF NOT EXISTS `examination` (
   PRIMARY KEY (`idE`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---
--- Daten für Tabelle `examination`
---
-
-INSERT INTO `examination` (`idE`, `pid`, `dateUntersuchung`, `untersuchung`, `untersuchung_ergebnisse`, `notizen`) VALUES
-(1, 2, '2021-06-01', 'untersuchung', 'ok', 'nichts');
-
 -- --------------------------------------------------------
 
 --
@@ -343,14 +329,6 @@ CREATE TABLE IF NOT EXISTS `history` (
   `description` text NOT NULL,
   PRIMARY KEY (`idH`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `history`
---
-
-INSERT INTO `history` (`idH`, `pid`, `zeitraume`, `Station_Raum`, `description`) VALUES
-(1, 2, '2021-05-18', 'A/201', 'enter'),
-(2, 2, '2021-05-15', 'C/135', 'sortir');
 
 -- --------------------------------------------------------
 
@@ -368,13 +346,6 @@ CREATE TABLE IF NOT EXISTS `impfung` (
   `dosis` varchar(100) NOT NULL,
   PRIMARY KEY (`idI`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `impfung`
---
-
-INSERT INTO `impfung` (`idI`, `pid`, `dateImpfung`, `nameImpfung`, `krankheit`, `dosis`) VALUES
-(1, 2, '2021-05-20', 'corona', 'xxxxx', 'xxxx');
 
 -- --------------------------------------------------------
 
@@ -435,6 +406,21 @@ INSERT INTO `mainservices` (`id`, `mainservicename`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `maßnahmen`
+--
+
+DROP TABLE IF EXISTS `maßnahmen`;
+CREATE TABLE IF NOT EXISTS `maßnahmen` (
+  `idM` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateMaßnahme` date NOT NULL,
+  `maßnahme` text NOT NULL,
+  PRIMARY KEY (`idM`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `medicinecategory`
 --
 
@@ -477,13 +463,6 @@ CREATE TABLE IF NOT EXISTS `medikationplan` (
   `Description` text NOT NULL,
   PRIMARY KEY (`idMP`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `medikationplan`
---
-
-INSERT INTO `medikationplan` (`idMP`, `pid`, `dateMedicationplan`, `medicament`, `freq`, `tagesprofil`, `Description`) VALUES
-(1, 2, '2021-05-28', '', 'xxx', 'xxx', 'xxx');
 
 -- --------------------------------------------------------
 
@@ -561,10 +540,10 @@ CREATE TABLE IF NOT EXISTS `patientregister` (
 -- Daten für Tabelle `patientregister`
 --
 
-INSERT INTO `patientregister` (`id`, `doctor`, `name`, `email`, `password`, `address`, `phone`, `gender`, `birthdate`, `bloodgroup`, `imageupload`, `status`) VALUES
-(2, '', ' Nikita', 'niku@gmail.com', '', 'Vani', '8482838002', 'Female', '2018-05-08', 'B+', 'Tulips.jpg', '1'),
-(3, '', ' Dhanu', 'dhanu@gmail.com', '', 'Nashik', '8482838002', 'Female', '2018-05-01', 'B+', 'Chrysanthemum.jpg', '1'),
-(4, '', ' Yogita', 'yogita@gmail.com', '', 'Shivaji Nagar', '8482838002', 'Female', '2018-05-05', 'A+', 'Hydrangeas.jpg', '1');
+INSERT INTO `patientregister` (`id`, `doctor`, `name`, `email`, `password`, `address`, `phone`, `gender`, `birthdate`, `bloodgroup`, `imageupload`, `status`, `hasrecord`) VALUES
+(2, '', ' Nikita', 'niku@gmail.com', '', 'Vani', '8482838002', 'Female', '2018-05-08', 'B+', 'Tulips.jpg', '1', '0'),
+(3, '', ' Dhanu', 'dhanu@gmail.com', '', 'Nashik', '8482838002', 'Female', '2018-05-01', 'B+', 'Chrysanthemum.jpg', '1', '0'),
+(4, '', ' Yogita', 'yogita@gmail.com', '', 'Shivaji Nagar', '8482838002', 'Female', '2018-05-05', 'A+', 'Hydrangeas.jpg', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -623,6 +602,23 @@ INSERT INTO `subservices` (`service_id`, `sid`, `subservicename`, `Fee`) VALUES
 (6, 5, 'USG-sub', 2000),
 (7, 7, 'sub-service', 1500),
 (9, 9, 'test sub service', 8000);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `untersuchung`
+--
+
+DROP TABLE IF EXISTS `untersuchung`;
+CREATE TABLE IF NOT EXISTS `untersuchung` (
+  `idU` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `dateUntersuchung` date NOT NULL,
+  `untersuchung` text NOT NULL,
+  `untersuchung_ergebnisse` text NOT NULL,
+  `notizen` text NOT NULL,
+  PRIMARY KEY (`idU`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
