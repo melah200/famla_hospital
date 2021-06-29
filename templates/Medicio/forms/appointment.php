@@ -2,7 +2,7 @@
   // print_r($_POST);
   // exit();
 
-  if(!isset($_POST['name'])){
+  if(!isset($_POST['namex'])){
 	 header("Location: ../");  
   }
   // print_r($_POST);
@@ -32,21 +32,4 @@ $remark = escape($_POST['message']);
   // exit();
   header("Location: ../");
   
-  
- /* 
-Vollständige Texte	
-id
-doctor
-name
-email
-password
-address
-phone
-gender
-birthdate
-bloodgroup
-imageupload
-status
-hasrecord
-*/
 ?>
