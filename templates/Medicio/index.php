@@ -24,6 +24,7 @@
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -54,13 +55,13 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="Hospital Famla"></a>
+      <a href="index.php" class="logo mr-auto"><img src="assets/img/logo.png" alt="Hospital Famla"></a>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <h1 class="logo mr-auto"><a href="index.html">Medicio</a></h1> -->
+      <!-- <h1 class="logo mr-auto"><a href="index.php">Medicio</a></h1> -->
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="index.php">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#departments">Departments</a></li>
@@ -392,15 +393,20 @@ you will need to fill in the boxes below. for more information, please summarize
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="tel" class="form-control" name="phone" id="phone" size="20" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 form-group">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="date" name="date" min="<?php echo Date('Y-m-d'); ?>" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
+            <div class="col-md-4 form-group">
+              <input type="time" name="time" class="form-control datepicker" id="time" min="07:30" max="17:30" step="1800" placeholder="Appointment time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+						
             <div class="col-md-4 form-group">
               <select name="department" id="department" class="form-control">
                 <option value="">Select Department</option>
@@ -410,6 +416,8 @@ you will need to fill in the boxes below. for more information, please summarize
               </select>
               <div class="validate"></div>
             </div>
+			
+			<!--
             <div class="col-md-4 form-group">
               <select name="doctor" id="doctor" class="form-control">
                 <option value="">Select Doctor</option>
@@ -419,6 +427,7 @@ you will need to fill in the boxes below. for more information, please summarize
               </select>
               <div class="validate"></div>
             </div>
+			-->
           </div>
 
           <div class="form-group">
@@ -1067,6 +1076,8 @@ you can also contact us, either by calling us or by sending us an email</p>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/venobox/venobox.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets\bootstrap-timepicker\js\bootstrap-timepicker.js"></script>
+  <script src="assets\bootstrap-datepicker\js\bootstrap-datepicker.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

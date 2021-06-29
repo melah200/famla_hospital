@@ -18,12 +18,15 @@ $name = escape($_POST['name']);
 $email = escape($_POST['email']);
 $phone = escape($_POST['phone']);
 $date = escape($_POST['date']);
-$doctor = escape($_POST['doctor']);
+$starttime = escape($_POST['time']);
+$endtime = date( "H:i:s", strtotime( $starttime.' +30 min' ) );
+
+$doctor = "Doctor name";  //escape($_POST['doctor']);
 $remark = escape($_POST['message']);
 
   
-  $queryAdd = "INSERT INTO addappointment(name, phone, email, app_date, doctor, remark) ";
-  $queryAdd.= "Values('$name', '$phone', '$email', '$date', '$doctor', '$remark') ";
+  $queryAdd = "INSERT INTO addappointment(name, phone, email, doctor, app_date, starttime, endtime, remark) ";
+  $queryAdd.= "Values('$name', '$phone', '$email', '$doctor', '$date', '$starttime', '$endtime', '$remark') ";
   $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
   // print_r($queryAddResult);
   // exit();
