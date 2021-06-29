@@ -142,7 +142,8 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 			</div>
            <div class="form-group">
                <label for="date">Date <span style="color:red">*</span></label>
-              <input type="Date" name="date" min="<?php echo Date('Y-m-d') ?>" class="form-control" id="date" placeholder="" required>
+			   
+              <input type="Date" name="date" min="<?php echo Date('Y-m-d'); ?>" class="form-control" id="date" placeholder="" required>
            </div>
            <div class="form-group">
                <label for="time-app">Time (each 30min. from 7:30 to 17:30)<span style="color:red">*</span></label>

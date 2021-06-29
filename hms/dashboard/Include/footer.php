@@ -198,11 +198,14 @@ function myFunction() {
   $events=array();
   while($row1=mysqli_fetch_assoc($w1))  //or die (mysqli_error($db_connect));
   {
-
-  $sql1=" SELECT name FROM patientregister WHERE id='".$row1['patient']."'";
-  $write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
- //print_r($sql); exit;
-    $row2=mysqli_fetch_array($write1)or die (mysqli_error($db_connect));
+	  if($row1['patient'] != NULL){
+		  $sql1=" SELECT name FROM patientregister WHERE id='".$row1['patient']."'";
+		  $write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
+		  //print_r($sql); exit;
+		  $row2=mysqli_fetch_array($write1)or die (mysqli_error($db_connect));
+		}else{
+			$row2 = $row1;
+		}
 	$EventColor = "#ffffff";
 	if($row1["app_status"] == "upcoming"){
 		$EventColor = "#f39c12";
@@ -211,6 +214,7 @@ function myFunction() {
 	}else if($row1["app_status"] == "cancelled"){
 		$EventColor = "red";
 	}
+	
 	$id = $row1['patient'];
 	$title = 'Patient Name :  '.$row2['name']." \nDoctor :  ".$row1['doctor']." \nRemark :  ".$row1['remark'];
     $start = $row1['app_date'].'T'.$row1['starttime'];
@@ -218,7 +222,8 @@ function myFunction() {
     $url = "#";
     $backgroundColor = $EventColor;
     $borderColor = $EventColor;
-
+	
+	if($id == NULL) $id = 8;
     $eventsArray['id'] = $id;
     $eventsArray['title'] = $title;
     $eventsArray['start'] = $start;
