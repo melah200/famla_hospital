@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Erstellungszeit: 28. Jun 2021 um 19:09
--- Server-Version: 10.4.10-MariaDB
--- PHP-Version: 7.3.12
+-- Erstellungszeit: 30. Jun 2021 um 05:36
+-- Server-Version: 5.7.26
+-- PHP-Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,24 +58,19 @@ CREATE TABLE IF NOT EXISTS `addappointment` (
   `sms` enum('0','1') NOT NULL DEFAULT '0',
   `app_status` enum('upcoming','perceived','cancelled') NOT NULL DEFAULT 'upcoming',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
 
 --
 -- Daten für Tabelle `addappointment`
 --
 
 INSERT INTO `addappointment` (`id`, `patient`, `name`, `phone`, `email`, `doctor`, `app_date`, `starttime`, `endtime`, `remark`, `sms`, `app_status`) VALUES
-(1, '4', NULL, NULL, NULL, 'Kanga', '2021-04-16 00:00:00', '07:00', '08:00', 'für eine Untersuchung', '1', 'perceived'),
-(2, '2', NULL, NULL, NULL, 'Amadou', '2021-04-18 00:00:00', '08:15', '09:15', 'Impfung', '1', 'cancelled'),
-(5, '3', NULL, NULL, NULL, 'kamto', '2021-04-11 00:00:00', '20:00', '21:00', 'OP', '0', 'upcoming'),
-(6, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', 'depart', NULL, NULL, '', '0', 'upcoming'),
-(7, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'OK', '0', 'upcoming'),
-(8, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'OK', '0', 'upcoming'),
-(9, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', 'depart', NULL, NULL, 'OK', '0', 'upcoming'),
-(10, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'ook', '0', 'upcoming'),
-(11, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'ook', '0', 'upcoming'),
-(12, NULL, 'Armelo', 12345678, 'melah200@yahoo.fr', 'Doctor 2', '12.07.2021', NULL, NULL, 'ook', '0', 'upcoming'),
-(13, NULL, 'Armelo123', 12345678, 'melah200@yahoo.fr', 'Doctor 3', '12.07.2021', NULL, NULL, 'Finish', '0', 'upcoming');
+(1, '4', NULL, NULL, NULL, 'Kanga', '2021-04-16', '07:00', '08:00', 'für eine Untersuchung', '1', 'perceived'),
+(2, '2', NULL, NULL, NULL, 'Amadou', '2021-04-18', '08:15', '09:15', 'Impfung', '1', 'cancelled'),
+(5, '3', NULL, NULL, NULL, 'kamto', '2021-04-11', '20:00', '21:00', 'OP', '0', 'upcoming'),
+(14, NULL, 'carmelo', 12345678, 'hjhjdhjd@jhjwh.com', 'Doctor name', '2021-07-01', '09:30', '10:00:00', 'Dummy', '0', 'upcoming'),
+(15, NULL, 'Steffen', 12345678, 'steffen@yahoo.com', 'Doctor name', '2021-06-30', '07:30', '08:00:00', 'for control', '0', 'upcoming'),
+(21, '3', 'Dhanu', NULL, NULL, 'Doctor name', '2021-06-30', '09:30', '10:00:00', '', '0', 'upcoming');
 
 -- --------------------------------------------------------
 
