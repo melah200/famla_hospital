@@ -114,12 +114,19 @@ include("../inc/connect.php") ;
               <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             
 			 </div>
-
+<!--
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
+-->
           </form>
+<script>
 
+  var city = document.getElementById("date");
+  // city.removeAttribute('required');
+
+
+</script>
 
 </div>
 </div>
