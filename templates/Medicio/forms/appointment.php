@@ -2,7 +2,7 @@
   // print_r($_POST);
   // exit();
 
-  if(!isset($_POST['namex'])){
+  if(!isset($_POST['name'])){
 	 header("Location: ../");  
   }
   // print_r($_POST);

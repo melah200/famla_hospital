@@ -34,7 +34,7 @@ include("../inc/connect.php") ;
 -->
  <div class="box-body">
 
-        <form action="appointment.php" method="post" role="form">
+        <form action="addappointment_notification.php" method="post" role="form">
            <div class="form-group">
 			   <span style="">Is the patient new?</span><b></b><br>
 			   <input type ="radio" class="input-form isnew" name="new_patient" value="1" checked><b> Yes</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -43,40 +43,23 @@ include("../inc/connect.php") ;
 <div class="new">
    <div class="form-group">
 	 <label for="fullname">Name <span style="color:red">*</span></label>
-	 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Full Name" required>
+	 <input type="text" name="fullname" class="form-control new-patient" id="fullname" placeholder="Full Name" required>
    </div>
 
   <div class="form-group" >
 	<label for="phone">Phone <span style="color:red">*</span></label>
-    <input type ="text" name="phone" required="" class="form-control" id="phone">
+    <input type ="text" name="phone" required="" class="form-control new-patient" id="phone">
   </div>
 
    <div class="form-group" >
 	   <label for="email">Email <span style="color:red">*</span></label>
-	   <input type ="email" name="email" required="" class="form-control" id="email">
+	   <input type ="email" name="email" required="" class="form-control new-patient" id="email">
    </div>
 </div>
 
-<div style="display:none" id="register_patient">
-  <div class="form-group">
-	<input type="text" id="myInput" class="form-control search-people" placeholder="Search...">
-  </div>
- <table id="example1" class="table table-bordered table-hover">
-<thead>
- <tr>
-  <th>Patient id</th>
-  <th>Name</th>
-  <th>Birth</th>               
-</tr>
-</thead>
-<tbody id="myTable">
-<tr><td>1</td><td>Flo</td><td>12-05-2001</td></tr>
-</tbody>
-</table>
-</div>	 
 	   <div class="form-group old" style="display:none">
 		 <label for="fname">Name <span style="color:red">*</span></label>
-		 <input type="text" name="fullname" class="form-control" id="fname" placeholder="Full Name" list="datalist" required>
+		 <input type="text" name="fullname" class="form-control patient-exist" id="fname" placeholder="Full Name" list="datalist" required>
 		 <datalist id="datalist">
 			<?php
 				$sel="SELECT * FROM patientregister";
@@ -90,7 +73,8 @@ include("../inc/connect.php") ;
 					$entry['birthdate'] = $row1['birthdate'];
 					// array_push($result, array_map('utf8_encode', $entry));
 			?>
-			<option value="<?php echo $entry['name']; ?>"> <?php echo $entry['birthdate']; ?> </option>
+			<option value="<?php echo $row1['id'].', '.$entry['name']; ?>"> <?php echo $entry['birthdate']; ?> </option>
+			
 			<?php
 				}					
 			?>
@@ -120,13 +104,7 @@ include("../inc/connect.php") ;
           </div>
 -->
           </form>
-<script>
 
-  var city = document.getElementById("date");
-  // city.removeAttribute('required');
-
-
-</script>
 
 </div>
 </div>
@@ -144,17 +122,25 @@ include("../inc/connect.php") ;
 		// $('.modal').fadeToggle();
 		// alert($(this).val());
 		if($(this).val() === "1"){
+			var arr = document.getElementsByClassName("patient-exist");
+			for(var index = 0; index < arr.length; index++){
+				arr[index].removeAttribute('required');  
+			}			
 			$('.new').css('display', 'block');
 			$('.old').css('display', 'none');
-			$('#register_patient').css('display', 'none');
+			// $('#register_patient').css('display', 'none');
 		}
 		else
 		{
+			var arr = document.getElementsByClassName("new-patient");
+			for(var index = 0; index < arr.length; index++){
+				arr[index].removeAttribute('required');  
+			}
 			$('.new').css('display', 'none');
 			$('.old').css('display', 'block');
 			$('#patient').on('click',function(){
 				// alert("we are focusing select");
-				$('#register_patient').css('display', 'block');
+				// $('#register_patient').css('display', 'block');
 			});
 		}
 		

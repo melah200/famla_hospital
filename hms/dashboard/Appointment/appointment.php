@@ -63,7 +63,10 @@ echo " <script>setTimeout(\"location.href='../Appointment/appointment.php';\",15
 <div class="box-header with-border">
 <i class="fa fa-user"></i> <h3 class="box-title">Patient Appointment</h3>
 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square"></i> Add New</button><br>
+<!--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square"></i> Add New</button><br>-->
+<a href="addappointment.php" class="btn btn-success"><i class="fa fa-plus-square"></i> Add New</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<hr>
 <!--  Modal appear when the button add is pressed -->
 <div class="modal fade" id="myModal" role="dialog">
 <div class="modal-dialog">
