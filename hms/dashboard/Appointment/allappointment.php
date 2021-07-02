@@ -109,7 +109,7 @@ if($row_cnt > 0) {
 <td><?php echo $row['starttime']; ?></td>
 <td><?php echo $row['endtime']; ?></td> 
 <td><?php echo $row['remark']; ?></td>
-<td><a href="deletet.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td> 
+<td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td> 
 </tr>
 <?php }
 
