@@ -55,16 +55,18 @@ All Appointments
 <td>
 <a href="./PDF/today_pdf.php"><button type="button" class="btn btn-default">PDF</button></a>
 </td>&nbsp;&nbsp; -->
+<!--
 <td>
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
+-->
 <div class="box-body">
 <input type="text" id="myInput" class="form-control search-in-list" placeholder="Search an appointment...">
 <table id="example1" class="table table-bordered table-striped">
 <thead>
 <tr>
-<th> id </th>
-<th> Patient </th>
+<th> # </th>
+<th> Patient Name</th>
 <th> Date </th>
 <th> Start Time </th>
 <th> End Time </th>
@@ -80,25 +82,33 @@ All Appointments
 $row_cnt = mysqli_num_rows($query);
 //check if there is at least one appointment in the database
 if($row_cnt > 0) {
+	$name="";
+	$i=0;
 	foreach ($row1 as $row)
 	{ 
-	$sql1=" SELECT name FROM patientregister WHERE id='".$row['patient']."'";
-	$write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
-	//print_r($sql); exit;
-	$row2=mysqli_fetch_assoc($write1)or die (mysqli_error($db_connect));
-	//print_r($row2); echo $row2['name']; exit;
+		if($row['name'] == NULL){
+			$sql1=" SELECT * FROM patientregister WHERE id='".$row['patient']."'";
+			$write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
+			//print_r($sql); exit;
+			$row2=mysqli_fetch_assoc($write1)or die (mysqli_error($db_connect));
+			$name=$row2['name'];
+		}else{
+			$name=$row['name'];
+		}
+		$i++;
+		//print_r($row2); echo $row2['name']; exit;
 	//echo "$description"; exit(); 
 	// print_r($row2); exit;
 	//echo "$description"; exit();
 
 
 ?> <tr>
-<td><?php echo $row['id'];?></td>
-<td><?php echo $row2['name'];?></td>
-<td><?php echo $row['app_date'];?></td>
-<td><?php echo $row['starttime'];?></td>
-<td><?php echo $row['endtime'];?></td> 
-<td><?php echo $row['remark'];?></td>
+<td><?php echo $i; ?></td>
+<td><?php echo $name; ?></td>
+<td><?php echo $row['app_date']; ?></td>
+<td><?php echo $row['starttime']; ?></td>
+<td><?php echo $row['endtime']; ?></td> 
+<td><?php echo $row['remark']; ?></td>
 <td><a href="deletet.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td> 
 </tr>
 <?php }
