@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
 
 	$date = escape($_POST['date']);
 	$starttime = escape($_POST['time']);
-	$endtime = date( "H:i:s", strtotime( $starttime.' +30 min' ) );
+	$endtime = date( "H:i", strtotime( $starttime.' +30 min' ) );
 
 	$doctor = "Doctor name";  //escape($_POST['doctor']);
 	$remark = escape($_POST['remark']);
