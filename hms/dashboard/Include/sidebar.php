@@ -72,7 +72,7 @@ include_once("../inc/connect.php ");
           </a>
           <ul class="treeview-menu">
             <!--<li><a class="popup" onclick="myFunction()"><i class="fa fa-plus"></i> Add Appointment<span class="popuptext" id="myPopup">Get full version at mayuri.infospace@gmail.com</span></a></li>-->
-            <li><a href="#"><i class="fa fa-plus"></i> Add Appointment</a></li>
+            <li><a href="../Appointment/addappointment.php"><i class="fa fa-plus"></i> Add Appointment</a></li>
             <li><a href="../Appointment/allappointment.php"><i class="fa fa-list"></i> All Appointment</a></li>
             <li><a href="../Appointment/appointment.php"><i class="fa fa-calendar"></i> Appointment</a></li>
             <li><a href="../Appointment/today.php"><i class="fa fa-laptop"></i> Today's Appointment</a></li>

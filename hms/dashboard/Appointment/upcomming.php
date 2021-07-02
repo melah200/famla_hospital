@@ -64,9 +64,11 @@ $row1=mysql_fetch_all($query);
 <td>
 <a href="./PDF/upcomming_pdf.php"><button type="button" class="btn btn-default">PDF</button></a>
 </td>&nbsp;&nbsp; -->
+<!--
 <td>
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
+-->
  <div class="box-body">
 			  <input type="text" id="myInput" class="form-control search-in-list" placeholder="Search an appointment...">
               <table id="example1" class="table table-bordered table-striped">
