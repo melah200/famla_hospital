@@ -63,5 +63,38 @@ $(document).ready(function() {
 		  $('#all').prop('checked', false);
 		}
 	});
+	
+	// for addappointment to switch between new and old patient
+	 $('.isnew').on('click', function(){ 
+		// alert('Radio Button has been clicked'); 
+		// $('.modal').css('display', 'none');
+		// $('.modal').hide(1000);
+		// $('.modal').fadeToggle();
+		// alert($(this).val());
+		if($(this).val() === "1"){
+			var arr = document.getElementsByClassName("patient-exist");
+			for(var index = 0; index < arr.length; index++){
+				arr[index].removeAttribute('required');  
+			}			
+			$('.new').css('display', 'block');
+			$('.old').css('display', 'none');
+			// $('#register_patient').css('display', 'none');
+		}
+		else
+		{
+			var arr = document.getElementsByClassName("new-patient");
+			for(var index = 0; index < arr.length; index++){
+				arr[index].removeAttribute('required');  
+			}
+			$('.new').css('display', 'none');
+			$('.old').css('display', 'block');
+			$('#patient').on('click',function(){
+				// alert("we are focusing select");
+				// $('#register_patient').css('display', 'block');
+			});
+		}
+		
+	 });
+
 });
 
