@@ -269,8 +269,8 @@ CREATE TABLE IF NOT EXISTS `diagnostic` (
   `pid` int(11) NOT NULL,
   `dateDiagnoctic` date NOT NULL,
   `typ` text NOT NULL,
-  `text` varchar(50) NOT NULL,
-  `codessys` varchar(20) NOT NULL,
+  `text` text NOT NULL,
+  `codessys` text NOT NULL,
   `code` text NOT NULL,
   PRIMARY KEY (`idD`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
