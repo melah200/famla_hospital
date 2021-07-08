@@ -575,7 +575,10 @@ After a first diagnosis made by his attending physician, the patient is received
           <h2>News</h2>
           <p>In this section, you can be informed of all the medical news of our center.</p>
         </div>
-
+		<a href="#news1">Decoration of 28 health personnel on an exceptional basis</a><br />
+		<a href="#news2">Nylon district hospital: the Minsanté appreciates the new face</a><br />
+		<a href="#news3">Official installation of Professor NJOCK Louis Richard Director of Laquintinie Hospital in Douala</a><br />
+		
         <!--<div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-delay="100"> -->
 		
           <div class="testimonial-item">
@@ -584,7 +587,7 @@ After a first diagnosis made by his attending physician, the patient is received
 		  
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-			  <a href="#news1">news1</a><br />
+			  
 			  <h3 id="news1">Decoration of 28 health personnel on an exceptional basis</h3>
               On behalf of the Head of State, the Minister of Public Health proceeded with the decoration of 28 health personnel on an exceptional basis stationed in the health districts suffering the atrocities of the terrorist sect Boko Haram in the region of Far North
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
@@ -597,7 +600,7 @@ After a first diagnosis made by his attending physician, the patient is received
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-			  <a href="#news2">news2</a><br />
+			  
 			  <h3 id="news2">Nylon district hospital: the Minsanté appreciates the new face</h3>
               The Minister of Public Health chaired on November 10, 2018 in Douala, the official launching ceremony of the activities of the week of the nylon district hospital.
 
@@ -618,7 +621,7 @@ Recall that the Nylon District Hospital Week, first edition, aims to promote the
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-			  <a href="#news3">news3</a><br />
+			  
 			  <h3 id="news3">Official installation of Professor NJOCK Louis Richard Director of Laquintinie Hospital in Douala</h3>
               Official installation of Professor NJOCK Louis Richard Director of Laquintinie Hospital in Douala
 
