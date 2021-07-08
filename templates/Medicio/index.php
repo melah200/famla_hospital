@@ -410,9 +410,12 @@ you will need to fill in the boxes below. for more information, please summarize
             <div class="col-md-4 form-group">
               <select name="department" id="department" class="form-control">
                 <option value="">Select Department</option>
-                <option value="Department 1">Department 1</option>
-                <option value="Department 2">Department 2</option>
-                <option value="Department 3">Department 3</option>
+                <option value="Department 1">General medicine</option>
+                <option value="Department 2">Maternity</option>
+                <option value="Department 3">dentistry</option>
+				<option value="Department 4">neurology</option>
+				<option value="Department 5">cardiologie</option>
+				<option value="Department 6">hepatology</option>
               </select>
               <div class="validate"></div>
             </div>
@@ -573,42 +576,69 @@ After a first diagnosis made by his attending physician, the patient is received
           <p>In this section, you can be informed of all the medical news of our center.</p>
         </div>
 
-        <div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-delay="100">
-
+        <!--<div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-delay="100"> -->
+		
           <div class="testimonial-item">
+		  
+
+		  
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+			  <a href="#news1">news1</a><br />
+			  <h3 id="news1">Decoration of 28 health personnel on an exceptional basis</h3>
+              On behalf of the Head of State, the Minister of Public Health proceeded with the decoration of 28 health personnel on an exceptional basis stationed in the health districts suffering the atrocities of the terrorist sect Boko Haram in the region of Far North
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-            <h3>Saul Goodman</h3>
-            <h4>Ceo &amp; Founder</h4>
+            <img src="assets/img/testimonials/decoration.jpg" class="testimonial-img" alt="">
+            <!--<h3>Saul Goodman</h3>
+            <h4>Ceo &amp; Founder</h4>--> </br> </br></br> </br></br> 
           </div>
 
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+			  <a href="#news2">news2</a><br />
+			  <h3 id="news2">Nylon district hospital: the Minsanté appreciates the new face</h3>
+              The Minister of Public Health chaired on November 10, 2018 in Douala, the official launching ceremony of the activities of the week of the nylon district hospital.
+
+During this colorful ceremony, André Mama Fouda appreciated the efforts made over the past year under the leadership of Dr. Noël Emmanuel Essomba, director of this health facility, efforts which have made it possible to restore the image of this 4th category hospital.
+
+Built on nearly 02 hectares, composed of 08 blocks which accommodate specialties such as stomatology surgery, pediatrics, blood bank and general medicine, "the public clinic", new name for the district hospital of Nylon, receives nearly 3000 patients every month for an average of 120 deliveries; 5,200 patients with HIV / AIDS are also cared for free of charge.
+
+By officially launching the week's activities, the Minsante recognized that this health facility has a welcoming aspect, a more human face. “I have come to see the new face of the Nylon District Hospital and make sure this change is to the satisfaction of the beneficiary community. And on this point, I saw a clean hospital where the patient's circuit is clear, "he said. It should also be noted that thanks to a public-private partnership, the health facility has two ambulances and a hearse for the removal of abandoned bodies, a conference room called André Mama Fouda, a canteen and a high standing building among others.
+
+Recall that the Nylon District Hospital Week, first edition, aims to promote the services offered, strengthen cohesion within the hospital, improve the quality of services and administer primary and specialized care in suitable conditions. As for the week itself, it provides for many activities such as free consultations and screenings, educational talks for patients, practical workshops, sports walking, visit to an orphanage and a gala evening at the end of the activities on December 15, 2018.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-            <h3>Sara Wilsson</h3>
-            <h4>Designer</h4>
+            <img src="assets/img/testimonials/district.jpg" class="testimonial-img" alt="">
+            <!--<h3>Sara Wilsson</h3>
+            <h4>Designer</h4>--> </br> </br></br> </br></br> 
           </div>
 
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+			  <a href="#news3">news3</a><br />
+			  <h3 id="news3">Official installation of Professor NJOCK Louis Richard Director of Laquintinie Hospital in Douala</h3>
+              Official installation of Professor NJOCK Louis Richard Director of Laquintinie Hospital in Douala
+
+The Minister of Public Health proceeded on April 18, 2016 with the official installation of the new Director of the Laquintinie Hospital in Douala, Professor NJOCK Louis Richard, appointed by decree of the Prime Minister Head of Government.
+
+In his installation speech, André MAMA FOUDA conveyed to Dr. DISSONGO Jean II, outgoing Director, the Government's recognition for the work done, in particular through the various projects initiated with a view to improving the quality of care of this hospital training which has more than 600 beds.
+
+ To the incoming Director, the Minsante conveyed the warm congratulations of the Government and prescribed:
+
+The finalization of the operational audit of the Laquintinie Hospital in Douala;
+The implementation of the Directives relating to the reception, orientation and care of patients with a view to the reconciliation of this large hospital with the populations, national and international opinion.
+The MINSANTE encouraged the medical and health corps and all other trades working in public hospitals to regain self-confidence. He also called on opinion leaders to be more tolerant, in order to restore serenity and confidence among the populations.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
-            <h4>Store Owner</h4>
+            <img src="assets/img/testimonials/laquintinie.jpg" class="testimonial-img" alt="">
+            <!--<h3>Jena Karlis</h3>
+            <h4>Store Owner</h4>-->
           </div>
 
-          <div class="testimonial-item">
+         <!-- <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
               Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
@@ -617,9 +647,9 @@ After a first diagnosis made by his attending physician, the patient is received
             <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
             <h3>Matt Brandon</h3>
             <h4>Freelancer</h4>
-          </div>
+          </div>-->
 
-          <div class="testimonial-item">
+         <!-- <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
               Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
@@ -628,9 +658,9 @@ After a first diagnosis made by his attending physician, the patient is received
             <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
             <h3>John Larson</h3>
             <h4>Entrepreneur</h4>
-          </div>
+          </div>-->
 
-        </div>
+        <!--</div>-->
 
       </div>
     </section><!-- End Testimonials Section  or news section-->
@@ -953,7 +983,7 @@ you can also contact us, either by calling us or by sending us an email</p>
 
           </div>
 
-          <div class="col-lg-6">
+         <!-- <div class="col-lg-6">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="form-row">
                 <div class="col form-group">
@@ -980,7 +1010,7 @@ you can also contact us, either by calling us or by sending us an email</p>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
-          </div>
+          </div>-->
 
         </div>
 
@@ -1004,13 +1034,13 @@ you can also contact us, either by calling us or by sending us an email</p>
                 <strong>Phone:</strong> +237 5589 55<br>
                 <strong>Email:</strong> famlacmr@yahoo.fr<br>
               </p>
-              <div class="social-links mt-3">
+              <!--<div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                 <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
+              </div>-->
             </div>
           </div>
 
@@ -1036,14 +1066,14 @@ you can also contact us, either by calling us or by sending us an email</p>
             </ul>
           </div> -->
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
+          <!--<div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>be aware of all our news</p>
             <form action="" method="post">
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
 
-          </div>
+          </div>-->
 
         </div>
       </div>
@@ -1058,7 +1088,7 @@ you can also contact us, either by calling us or by sending us an email</p>
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+       <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
       </div>
     </div>
   </footer><!-- End Footer -->
