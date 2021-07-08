@@ -575,9 +575,10 @@ After a first diagnosis made by his attending physician, the patient is received
           <h2>News</h2>
           <p>In this section, you can be informed of all the medical news of our center.</p>
         </div>
-		<a href="#news1">Decoration of 28 health personnel on an exceptional basis</a><br />
-		<a href="#news2">Nylon district hospital: the Minsanté appreciates the new face</a><br />
-		<a href="#news3">Official installation of Professor NJOCK Louis Richard Director of Laquintinie Hospital in Douala</a><br />
+		<h3> Title</h3>
+		<a href="#news1">*Decoration of 28 health personnel on an exceptional basis</a><br />
+		<a href="#news2">*Nylon district hospital: the Minsanté appreciates the new face</a><br />
+		<a href="#news3">*Official installation of Professor NJOCK Louis Richard Director of Laquintinie Hospital in Douala</a><br /><br />
 		
         <!--<div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-delay="100"> -->
 		
