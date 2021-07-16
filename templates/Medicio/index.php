@@ -382,28 +382,28 @@ During his first stay, from 1936 to 1938, the doctor-captain Jean famla, rubbed 
 you will need to fill in the boxes below. for more information, please summarize in the message box, the purpose of your meeting.</p>
         </div>
 
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+        <form action="forms/appointment.php" method="post" >
           <div class="form-row">
             <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required>
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group">
-              <input type="tel" class="form-control" name="phone" id="phone" size="20" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="text" class="form-control" name="phone" id="phone" size="20" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
               <div class="validate"></div>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 form-group">
-              <input type="date" name="date" min="<?php echo Date('Y-m-d'); ?>" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="date" name="date" min="<?php echo Date('Y-m-d'); ?>" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group">
-              <input type="time" name="time" class="form-control datepicker" id="time" min="07:30" max="17:30" step="1800" placeholder="Appointment time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="time" name="time" class="form-control datepicker" id="time" min="07:30" max="17:30" step="1800" placeholder="Appointment time" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
               <div class="validate"></div>
             </div>
 						
@@ -437,12 +437,12 @@ you will need to fill in the boxes below. for more information, please summarize
             <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
             <div class="validate"></div>
           </div>
-          <div class="mb-3">
+          <div class="mb-3" style="display:none">
             <div class="loading">Loading</div>
             <div class="error-message"></div>
             <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
           </div>
-          <div class="text-center"><button type="submit">Make an Appointment</button></div>
+          <div class="text-center" ><button class="btn-del" type="submit" style="background: #3fbbc0;border: 0;padding: 10px 35px;color: #fff;transition: 0.4s;border-radius: 50px;">Make an Appointment</button></div>
         </form>
 
       </div>
@@ -1112,10 +1112,18 @@ you can also contact us, either by calling us or by sending us an email</p>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets\bootstrap-timepicker\js\bootstrap-timepicker.js"></script>
   <script src="assets\bootstrap-datepicker\js\bootstrap-datepicker.js"></script>
-
+  <script src="assets\sweetalert.min.js"></script>
+  
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+<?php
+$act = (isset($_GET['act']) ? $_GET['act'] : '');
+	if($act=='success'){
+		echo '<script type="text/javascript">
+			 swal("", "Your appointment request has been sent successfully. Thank you!", "success");
+			 </script>';
+	}
+?>
 </body>
 
 </html>
