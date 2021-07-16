@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `addappointment` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `patient` varchar(25) DEFAULT NULL,
   `name` varchar(80) DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
+  `phone` varchar(25) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `doctor` varchar(25) NOT NULL,
   `app_date` varchar(50) NOT NULL,
