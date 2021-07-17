@@ -132,7 +132,7 @@ include("../inc/connect.php") ;
 			
 			var arr1 = document.getElementsByClassName("new-patient");
 			for(var index = 0; index < arr1.length; index++){
-				arr1[index].setAttribute('required');  
+				arr1[index].required = true;  
 			}
 		}
 		else
@@ -149,7 +149,7 @@ include("../inc/connect.php") ;
 			});
 			var arr1 = document.getElementsByClassName("patient-exist");
 			for(var index = 0; index < arr1.length; index++){
-				arr1[index].setAttribute('required');  
+				arr1[index].required = true;  
 			}
 		}
 		
