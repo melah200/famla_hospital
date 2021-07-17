@@ -42,24 +42,24 @@ include("../inc/connect.php") ;
 		   </div>
 <div class="new">
    <div class="form-group">
-	 <label for="fullname">Name <span style="color:red">*</span></label>
-	 <input type="text" name="fullname" class="form-control new-patient" id="fullname" placeholder="Full Name">
+	 <label for="fname">Name <span style="color:red">*</span></label>
+	 <input type="text" name="fname" class="form-control new-patient" id="fname" placeholder="Full Name" required>
    </div>
 
   <div class="form-group" >
 	<label for="phone">Phone <span style="color:red">*</span></label>
-    <input type ="text" name="phone" required="" class="form-control new-patient" id="phone">
+    <input type ="text" name="phone" required="" class="form-control new-patient" id="phone" required>
   </div>
 
    <div class="form-group" >
 	   <label for="email">Email <span style="color:red">*</span></label>
-	   <input type ="email" name="email" required="" class="form-control new-patient" id="email">
+	   <input type ="email" name="email" required="" class="form-control new-patient" id="email" required>
    </div>
 </div>
 
 	   <div class="form-group old" style="display:none">
-		 <label for="fname">Name <span style="color:red">*</span></label>
-		 <input type="text" name="fullname" class="form-control patient-exist" id="fname" placeholder="Full Name" list="datalist" required>
+		 <label for="fullname">Name <span style="color:red">*</span></label>
+		 <input type="text" name="fullname" class="form-control patient-exist" id="fullname" placeholder="Full Name" list="datalist">
 		 <datalist id="datalist">
 			<?php
 				$sel="SELECT * FROM patientregister";
@@ -129,6 +129,11 @@ include("../inc/connect.php") ;
 			$('.new').css('display', 'block');
 			$('.old').css('display', 'none');
 			// $('#register_patient').css('display', 'none');
+			
+			var arr1 = document.getElementsByClassName("new-patient");
+			for(var index = 0; index < arr1.length; index++){
+				arr1[index].setAttribute('required');  
+			}
 		}
 		else
 		{
@@ -142,6 +147,10 @@ include("../inc/connect.php") ;
 				// alert("we are focusing select");
 				// $('#register_patient').css('display', 'block');
 			});
+			var arr1 = document.getElementsByClassName("patient-exist");
+			for(var index = 0; index < arr1.length; index++){
+				arr1[index].setAttribute('required');  
+			}
 		}
 		
 	 });

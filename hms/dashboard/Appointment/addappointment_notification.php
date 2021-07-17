@@ -5,12 +5,12 @@
 include("../inc/connect.php") ;
 
 if(isset($_POST['submit'])){
-	
+
 	if($_POST['new_patient'] == 1){
 		// echo "new patient";
 		$email = escape($_POST['email']);
 		$phone = escape($_POST['phone']);
-		$name = escape($_POST['fullname']);
+		$name = escape($_POST['fname']);
 	}
 	else{
 		// echo "patient exit";
