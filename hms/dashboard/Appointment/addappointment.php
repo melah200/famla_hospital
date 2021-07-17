@@ -43,7 +43,7 @@ include("../inc/connect.php") ;
 <div class="new">
    <div class="form-group">
 	 <label for="fullname">Name <span style="color:red">*</span></label>
-	 <input type="text" name="fullname" class="form-control new-patient" id="fullname" placeholder="Full Name" required>
+	 <input type="text" name="fullname" class="form-control new-patient" id="fullname" placeholder="Full Name">
    </div>
 
   <div class="form-group" >
@@ -114,7 +114,7 @@ include("../inc/connect.php") ;
 </div>
 <?php include "../Include/footer.php";?>
 <script>
-  $(document).ready(function(){
+  // $(document).ready(function(){
 	 $('.isnew').on('focus', function(){ 
 		// alert('Radio Button has been clicked'); 
 		// $('.modal').css('display', 'none');
@@ -146,6 +146,6 @@ include("../inc/connect.php") ;
 		
 	 });
 	 
-  });
+  // });
   
 </script>

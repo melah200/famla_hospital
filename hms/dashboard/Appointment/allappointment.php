@@ -3,120 +3,177 @@
 <?php
 include("../inc/connect.php") ;
 
-// $s="SELECT * FROM addappointment WHERE `app_date` = '".date('Y-m-d')."'";
-$s="SELECT * FROM addappointment";
+
+$s="SELECT * FROM addappointment ";
+// $s="SELECT * FROM addappointment WHERE  `app_date`>'".date('Y-m-d')."'";
 $query=mysqli_query($db_connect, $s)or die (mysqli_error($db_connect));
+//$numrows=mysqli_num_rows($query)or die (mysqli_error($db_connect));
 
-
-function mysql_fetch_all($query) 
+function mysql_fetch_all($query)
 {
-  $temp='';
-$all = array();
-while ($all[] = mysqli_fetch_assoc($query)) {$temp=$all;}
-return $temp;
-// print_r($numrows);echo "string"; exit();
+    $temp = '';
+    $all = array();
+    
+    while ($all[] = mysqli_fetch_assoc($query))
+     {$temp=$all;}
+    return $temp;
 }
+
 $row1=mysql_fetch_all($query);
 
+//print_r($row1); exit;
+//$row1[]=mysqli_fetch_assoc($query)or die (mysqli_error($db_connect));
 ?>
 
-<div class="content-wrapper">
-<section class="content-header">
-<h1>
-All Appointments
-<small></small>
-</h1>
-<ol class="breadcrumb">
-<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-<li class="active">All Appointments
-</li>
-</ol>
-</section>
-<section class="content">
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        All Appointments
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">All Appointments</li>
+      </ol>
+    </section>
+    <section class="content">
 <!-- Small boxes (Stat box) -->
 <div class="row">
 <div class="col-md-12">
 <div class="box box-primary">
 <div class="box-header with-border">
 <i class="fa fa-user"></i> <h3 class="box-title">  All Appointments</h3>
-</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="./addappointment.php"><button type="submit"   name="submit" class="btn btn-success bg-blue"><i class="fa fa-plus-square"></i> Add Appointment</button></a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!--    <td>
 <button type="button" class="btn btn-default">Copy</button>
 </td> -->
 <!--
 <td>
-<a href="./Exceltoday.php"><button type="button" class="btn btn-default">Excel</button></a>
+<a href="Excelupcomming.php"> <button type="button" class="btn btn-default">Excel</button></a>
 </td>&nbsp;&nbsp;
 <td>
-<a href="./csvtoday.php"><button type="button" class="btn btn-default">CSV</button></a>
+<a href="csvupcomming.php"><button type="button" class="btn btn-default">CSV</button></a>
 </td>&nbsp;&nbsp;
 <td>
-<a href="./PDF/today_pdf.php"><button type="button" class="btn btn-default">PDF</button></a>
+<a href="./PDF/upcomming_pdf.php"><button type="button" class="btn btn-default">PDF</button></a>
 </td>&nbsp;&nbsp; -->
+<br/>
+<div class="text-center row">
+<div class="col-md-12 text-center" >
+<table class="table table-bordered table-striped">
+	<tbody>
+		<tr>
+			<td style="background-color:red"><label>Pass</label></td>
+			<td style="background-color:green"><label>Today</label></td>
+			<td style="background-color:yellow"><label>Upcoming</label></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
 <!--
 <td>
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
 -->
-<div class="box-body">
-<input type="text" id="myInput" class="form-control search-in-list" placeholder="Search an appointment...">
-<table id="example1" class="table table-bordered table-striped">
-<thead>
-<tr>
-<th> # </th>
-<th> Patient Name</th>
-<th> Date </th>
-<th> Start Time </th>
-<th> End Time </th>
-<th> Remark </th>
-<th> Option </th>
-</tr>
-</thead>
-<tbody id="myTable">
-<?php
-// print_r($row1);
- // print_r($query);
-//die("");
+ <div class="box-body">
+			  <input type="text" id="myInput" class="form-control search-in-list" placeholder="Search an appointment...">
+              <table id="example2" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Patient Name</th>
+                  <th>Date</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Remark</th>
+                  <th>Option</th>
+                 </tr>
+                </thead>
+                <tbody id="myTable">
+ <?php
+//foreach ($row1 as $row)
 $row_cnt = mysqli_num_rows($query);
-//check if there is at least one appointment in the database
+//check if a entry match the upcoming date
 if($row_cnt > 0) {
-	$name="";
-	$i=0;
-	foreach ($row1 as $row)
-	{ 
-		if($row['name'] == NULL){
-			$sql1=" SELECT * FROM patientregister WHERE id='".$row['patient']."'";
-			$write1 =mysqli_query($db_connect, $sql1) or die(mysqli_error($db_connect));
-			//print_r($sql); exit;
-			$row2=mysqli_fetch_assoc($write1)or die (mysqli_error($db_connect));
-			$name=$row2['name'];
-		}else{
-			$name=$row['name'];
-		}
-		$i++;
-		//print_r($row2); echo $row2['name']; exit;
-	//echo "$description"; exit(); 
-	// print_r($row2); exit;
-	//echo "$description"; exit();
-
+    for ($i=0; $i <count($row1) ; $i++) 
+      {
 
 ?> <tr>
-<td><?php echo $i; ?></td>
-<td><?php echo $name; ?></td>
-<td><?php echo $row['app_date']; ?></td>
-<td><?php echo $row['starttime']; ?></td>
-<td><?php echo $row['endtime']; ?></td> 
-<td><?php echo $row['remark']; ?></td>
-<td><a class="btn-del" href="delete.php?id=<?php echo $row['id']; ?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td> 
+<td><?php echo $row1[$i]['id'];?></td>
+<td><?php
+	if($row1[$i]['name'] == NULL){
+		
+		$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE `id`='".$row1[$i]['patient']."'")or die (mysqli_error($db_connect));
+		$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
+		$p_row1=mysql_fetch_all($p_query);
+		foreach ($p_row1 as $p) 
+		{ 
+		  // if($row1[$i]['patient']==$p['id'])
+		   // { 
+			echo $p['name']; 
+			// $mob=$p['phone'];
+		//echo $mob; 
+		  // }
+		}
+	} else{
+		echo $row1[$i]['name'];
+	}
+
+//if($row1[$i]['patient']==$p_row1[$i]['id']) { echo $p_row1[$i]['name']; } ?></td>
+<?php 
+if($row1[$i]['app_date'] < date('Y-m-d')){
+	//pass
+	$legende = "style='background-color:red;'";
+}else if($row1[$i]['app_date'] == date('Y-m-d')){
+	//present
+	$legende = "style='background-color:green;'";
+}else{
+	//future
+	$legende = "style='background-color:yellow;'";
+}
+
+?>
+<td <?php echo $legende; ?>><?php echo $row1[$i]['app_date'];   ?></td>
+<td <?php echo $legende; ?>><?php echo $row1[$i]['starttime'];?></td>
+<td <?php echo $legende; ?>><?php echo $row1[$i]['endtime'];?></td> 
+<td><?php echo $row1[$i]['remark'];?></td>
+<td><a href="sendsms.php?id=<?php echo $row1[$i]['id'];?>"><input type="button" name="submit" value="SMS" class="btn btn-success"></a>
+<!-- <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal<?php $row1[$i]['id'];?>" style="height: 30px;"><i class="fa fa-plus-square"></i> SMS</button> &nbsp; -->
+  <a class="btn-del" href="deleteu.php?fromallapp=1&id=<?php echo $row1[$i]['id'];?>"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</span></a></td>
+
+<!--  <div class="modal fade" id="myModal<?php $row1[$i]['id'];?>" role="dialog">
+    <div class="modal-dialog"> -->
+     
+      <!-- <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">SMS</h4>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="sendsms1.php" >
+          Recipient:
+          <input type="text" name="recipient" value="<?php echo $mob;?>">
+           <br><br>
+           Message:
+            <textarea rows=4 cols=40 name='message'></textarea><br><br>
+            <input type="submit" name="message" value="Send" style="width: 100px;">          
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div> 
+      </div>
+    </div>  -->
 </tr>
-<?php }
-
-} ?>
-
+  <?php } }  ?>
 </tbody>
-</table>
+ </table>
 </div>
 </div>
 </div>
@@ -124,4 +181,4 @@ if($row_cnt > 0) {
 </section>
 </div>
 <?php include "../Include/footer.php";?>
- 
+
