@@ -64,18 +64,16 @@ $row1=mysql_fetch_all($query);
 <td>
 <a href="./PDF/upcomming_pdf.php"><button type="button" class="btn btn-default">PDF</button></a>
 </td>&nbsp;&nbsp; -->
-<!--
 <td>
 <button type="button" onclick="window.print();" class="btn btn-default">Print</button>
 </td>
--->
  <div class="box-body">
 			  <input type="text" id="myInput" class="form-control search-in-list" placeholder="Search an appointment...">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>id</th>
-                  <th>Patient</th>
+                  <th>Patient Name</th>
                   <th>Date</th>
                   <th>Start Time</th>
                   <th>End Time</th>
@@ -89,21 +87,29 @@ $row1=mysql_fetch_all($query);
 $row_cnt = mysqli_num_rows($query);
 //check if a entry match the upcoming date
 if($row_cnt > 0) {
-     for ($i=0; $i <count($row1) ; $i++) 
+    for ($i=0; $i <count($row1) ; $i++) 
       {
 
 ?> <tr>
 <td><?php echo $row1[$i]['id'];?></td>
-<td><?php 
-foreach ($p_row1 as $p) 
-{ 
-  if($row1[$i]['patient']==$p['id'])
-   { 
-    echo $p['name']; 
-    $mob=$p['phone'];
-//echo $mob; 
-  }
-}
+<td><?php
+	if($row1[$i]['name'] == NULL){
+		
+		$p_query=mysqli_query($db_connect, "SELECT * FROM patientregister WHERE `id`='".$row1[$i]['patient']."'")or die (mysqli_error($db_connect));
+		$p_numrows=mysqli_num_rows($p_query)or die (mysqli_error($db_connect));
+		$p_row1=mysql_fetch_all($p_query);
+		foreach ($p_row1 as $p) 
+		{ 
+		  // if($row1[$i]['patient']==$p['id'])
+		   // { 
+			echo $p['name']; 
+			// $mob=$p['phone'];
+		//echo $mob; 
+		  // }
+		}
+	} else{
+		echo $row1[$i]['name'];
+	}
 
 //if($row1[$i]['patient']==$p_row1[$i]['id']) { echo $p_row1[$i]['name']; } ?></td>
 <td><?php echo $row1[$i]['app_date'];   ?></td>
