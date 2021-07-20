@@ -1,7 +1,7 @@
 <?php
   // print_r($_POST);
   // exit();
-  header("Location:../index.php?act=success");
+  //header("Location:../index.php?act=success");
   if(!isset($_POST['name'])){
 	 header("Location: ../");  
   }
