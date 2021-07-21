@@ -1119,9 +1119,16 @@ you can also contact us, either by calling us or by sending us an email</p>
 <?php
 $act = (isset($_GET['act']) ? $_GET['act'] : '');
 	if($act=='success'){
-		echo '<script type="text/javascript">
+		/*echo '<script type="text/javascript">
 			 swal("", "Your appointment request has been sent successfully. Thank you!", "success");
-			 </script>';
+			 </script>';*/
+		// header("Location: ./");
+		echo '<script type="text/javascript">
+				swal("Confirmation", "Your appointment request has been sent successfully. Thank you!", "success")
+				.then((value) => {
+				window.location = ".";
+				});   
+			</script>';
 	}
 ?>
 </body>
