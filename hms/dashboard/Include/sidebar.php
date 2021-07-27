@@ -44,7 +44,7 @@ include_once("../inc/connect.php ");
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="../../Index/index.php">
+          <a href="../Index/index.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
          </a>
         </li>
