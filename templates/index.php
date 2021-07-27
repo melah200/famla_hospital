@@ -1116,21 +1116,38 @@ you can also contact us, either by calling us or by sending us an email</p>
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script type="text/javascript">
+
+  </script>
 <?php
 $act = (isset($_GET['act']) ? $_GET['act'] : '');
 	if($act=='success'){
-		/*echo '<script type="text/javascript">
-			 swal("", "Your appointment request has been sent successfully. Thank you!", "success");
-			 </script>';*/
-		// header("Location: ./");
+
 		echo '<script type="text/javascript">
-				swal("Confirmation", "Your appointment request has been sent successfully. Thank you!", "success")
+				swal("Successful", "Your appointment request has been sent successfully. Thank you!", "success")
 				.then((value) => {
 				window.location = ".";
 				});   
 			</script>';
+	}else if($act=='unsuccess'){
+		$dateApp = $_GET['d'];
+		$timeApp = $_GET['t'];
+		?>
+		<!--echo json_encode($date);-->
+			<script type="text/javascript">
+				var d = <?php echo json_encode($dateApp); ?>;
+				var t = <?php echo json_encode($timeApp); ?>;
+			</script>
+			<script type="text/javascript">				
+				swal("Unsuccessful", "Your appointment request has not been sent successfully. The appointment on "+d+" at "+t+" is already taken. Try with another date and time", "error")
+				.then((value) => {
+				window.location = ".";
+				});   
+			</script>
+<?php
 	}
 ?>
+
 </body>
 
 </html>
