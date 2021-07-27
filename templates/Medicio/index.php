@@ -1124,7 +1124,18 @@ $act = (isset($_GET['act']) ? $_GET['act'] : '');
 			 </script>';*/
 		// header("Location: ./");
 		echo '<script type="text/javascript">
-				swal("Confirmation", "Your appointment request has been sent successfully. Thank you!", "success")
+				swal("Successful", "Your appointment request has been sent successfully. Thank you!", "success")
+				.then((value) => {
+				window.location = ".";
+				});   
+			</script>';
+	}else if($act=='unsuccess'){
+		/*echo '<script type="text/javascript">
+			 swal("", "Your appointment request has been sent successfully. Thank you!", "success");
+			 </script>';*/
+		// header("Location: ./");
+		echo '<script type="text/javascript">
+				swal("Unsuccessful", "Your appointment request has not been sent successfully. The date and time is already taken. Try another date and time", "error")
 				.then((value) => {
 				window.location = ".";
 				});   

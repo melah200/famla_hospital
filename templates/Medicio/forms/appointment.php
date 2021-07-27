@@ -22,16 +22,26 @@ if($_POST['name'] != ""){
 	$starttime = escape($_POST['time']);
 	$endtime = date( "H:i", strtotime( $starttime.' +30 min' ) );
 
-	$doctor = "Doctor name";  //escape($_POST['doctor']);
-	$remark = escape($_POST['message']);
+	//check if the appointment is already taken
+	$check_query = "SELECT * FROM addappointment WHERE `app_date`='$date' AND `starttime`='$starttime'";
+	$check_result = mysqli_query($db_connect, $check_query);
+	$row_cnt = mysqli_num_rows($check_result);
+	if($row_cnt > 0){
+		// The appointment exist already.
+		header("Location: ../index.php?act=unsuccess");
+	}else{
+		// The appointment do not exist already.		
+		$doctor = "Doctor name";  //escape($_POST['doctor']);
+		$remark = escape($_POST['message']);
 
-  
-	$queryAdd = "INSERT INTO addappointment(name, phone, email, doctor, app_date, starttime, endtime, remark) ";
-	$queryAdd.= "Values('$name', '$phone', '$email', '$doctor', '$date', '$starttime', '$endtime', '$remark') ";
-	$queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
-	// print_r($queryAddResult);
-	// exit();
-	header("Location: ../index.php?act=success");
+	  
+		$queryAdd = "INSERT INTO addappointment(name, phone, email, doctor, app_date, starttime, endtime, remark) ";
+		$queryAdd.= "Values('$name', '$phone', '$email', '$doctor', '$date', '$starttime', '$endtime', '$remark') ";
+		$queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
+		// print_r($queryAddResult);
+		// exit();
+		header("Location: ../index.php?act=success");
+	}
 }else{
 header("Location: ../");
 }
