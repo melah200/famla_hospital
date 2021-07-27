@@ -8,7 +8,7 @@
   // print_r($_POST);
     // exit();
 if($_POST['name'] != ""){
-	include("../../../hms/inc/connect.php");
+	include("../../hms/inc/connect.php");
 	// include("../../../hms/inc/functions.php");
 	// function escape($string){
 		
