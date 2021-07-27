@@ -26,18 +26,30 @@ if(isset($_POST['submit'])){
 	$starttime = escape($_POST['time']);
 	$endtime = date( "H:i", strtotime( $starttime.' +30 min' ) );
 
-	$doctor = "Doctor name";  //escape($_POST['doctor']);
-	$remark = escape($_POST['remark']);
+	// check if the appointment is already taken
+	$check_query = "SELECT * FROM addappointment WHERE `app_date`='$date' AND `starttime`='$starttime'";
+	$check_result=mysqli_query($db_connect, $check_query);
+	$FlagAppointmentAlreadyExist = (mysqli_num_rows($check_result) > 0)?true:false;
+	
+	if($FlagAppointmentAlreadyExist){
+		// The appointment already exist
+		//header("Location: ../index.php?act=unsuccess&d=$date&t=$starttime");
+		
+	} else {
+		
+		$doctor = "Doctor name";  //escape($_POST['doctor']);
+		$remark = escape($_POST['remark']);
 
- if($_POST['new_patient'] == 1){ 
-    $queryAdd = "INSERT INTO addappointment(name, phone, email, doctor, app_date, starttime, endtime, remark) ";
-    $queryAdd.= "Values('$name', '$phone', '$email', '$doctor', '$date', '$starttime', '$endtime', '$remark') ";
-    $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
- }else{
-    $queryAdd = "INSERT INTO addappointment(patient, name, doctor, app_date, starttime, endtime, remark) ";
-    $queryAdd.= "Values('$patientId', '$name', '$doctor', '$date', '$starttime', '$endtime', '$remark') ";
-    $queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));	 
- }
+		if($_POST['new_patient'] == 1){ 
+			$queryAdd = "INSERT INTO addappointment(name, phone, email, doctor, app_date, starttime, endtime, remark) ";
+			$queryAdd.= "Values('$name', '$phone', '$email', '$doctor', '$date', '$starttime', '$endtime', '$remark') ";
+			$queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));
+		}else{
+			$queryAdd = "INSERT INTO addappointment(patient, name, doctor, app_date, starttime, endtime, remark) ";
+			$queryAdd.= "Values('$patientId', '$name', '$doctor', '$date', '$starttime', '$endtime', '$remark') ";
+			$queryAddResult=mysqli_query($db_connect, $queryAdd)or die (mysqli_error($db_connect));	 
+		 }
+	}
 }
 
 ?>
@@ -70,12 +82,16 @@ if(isset($_POST['submit'])){
 </td>
 -->
  <div class="box-body">
-	<?php if($queryAddResult){ ?>
+	<?php 
+	if(isset($FlagAppointmentAlreadyExist) AND $FlagAppointmentAlreadyExist){ ?>
+		<h4 class="text-center" style="color:red; font-size:20px"><b> Your appointment request has not been sent successfully. The appointment on <?php echo $date; ?> at <?php echo $starttime; ?> is already taken. Try with another date and time"</b></h4>	
+	<?php
+	}else{
+	if(isset($queryAddResult) AND $queryAddResult){ ?>
 	
-	<h4 class="text-center" style="color:green; font-size:20px"><b> The Appointment is added successfully !</b></h4>
+		<h4 class="text-center" style="color:green; font-size:20px"><b> The Appointment is added successfully !</b></h4>	
 	
-	
-	<?php }?>
+	<?php } }?>
 
 </div>
 </div>
